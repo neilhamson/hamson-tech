@@ -1,0 +1,13 @@
+.qualifications { margin-top: 34px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); border: 1px solid var(--line); }
+.qualifications > div { min-height: 158px; padding: 28px 30px; background: linear-gradient(155deg, rgba(1,61,246,.09), transparent 75%); }
+.qualifications > div + div { border-left: 1px solid var(--line); }
+.qualifications span, .projectHeading span { color: #60a5fa; font-size: 11px; font-weight: 700; letter-spacing: .15em; }
+.qualifications strong { display: block; margin-top: 23px; font-size: clamp(18px,2.1vw,26px); line-height: 1.2; }
+.qualifications p { margin: 9px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.work { margin-top: 32px; border-top: 1px solid var(--line); }
+.project { padding: 34px 30px; display: grid; grid-template-columns: minmax(230px,.75fr) minmax(0,1.25fr); gap: 36px; border: 1px solid var(--line); border-top: 0; background: linear-gradient(90deg, rgba(1,61,246,.06), transparent 42%); }
+.projectHeading h3 { margin: 22px 0 0; font-size: clamp(23px,3vw,39px); line-height: 1; letter-spacing: -.025em; }
+.project p { max-width: 690px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+.tags { margin-top: 21px; display: flex; flex-wrap: wrap; gap: 8px; }
+.tags span { padding: 7px 10px; border: 1px solid rgba(1,61,246,.45); color: #91b6ff; font-size: 10px; font-weight: 700; letter-spacing: .09em; }
+@media(max-width:700px) { .qualifications { grid-template-columns: 1fr; } .qualifications > div + div { border-left: 0; border-top: 1px solid var(--line); } .project { grid-template-columns: 1fr; padding: 25px 21px; gap: 22px; } }

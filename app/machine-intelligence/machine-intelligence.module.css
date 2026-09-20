@@ -1,0 +1,10 @@
+.workflow { margin: 34px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.workflow li { padding: 22px 26px; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; border: 1px solid var(--line); border-top: 0; background: rgba(1,61,246,.025); }
+.workflow li > span, .record span { color: #60a5fa; font-size: 11px; font-weight: 700; letter-spacing: .14em; }
+.workflow h3 { margin: 0; font-size: 17px; letter-spacing: .06em; }
+.workflow p, .record p { margin: 8px 0 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.record { margin-top: 32px; border-top: 1px solid var(--line); }
+.record > div { padding: 23px 26px; display: grid; grid-template-columns: minmax(160px, .4fr) minmax(0, 1fr); gap: 22px; border: 1px solid var(--line); border-top: 0; }
+.record p { margin: 0; }
+.note { margin: 28px 0 0; padding: 17px 20px; border-left: 2px solid #013df6; background: rgba(1,61,246,.045); color: var(--muted); font-size: 14px; line-height: 1.65; }
+@media (max-width: 700px) { .workflow li { grid-template-columns: 36px minmax(0, 1fr); padding: 18px; } .record > div { grid-template-columns: 1fr; gap: 8px; padding: 20px; } }

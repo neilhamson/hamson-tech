@@ -1,0 +1,31 @@
+﻿{
+  "schema_version": "1",
+  "name": "hamson-tech-nextjs-v1",
+  "adapter": "node-npm-v1",
+  "editable_roots": [
+    "app",
+    "components"
+  ],
+  "editable_extensions": [
+    ".ts",
+    ".tsx",
+    ".css"
+  ],
+  "searchable_extensions": [
+    ".ts",
+    ".tsx",
+    ".css",
+    ".json",
+    ".md"
+  ],
+  "diagnostics": [
+    "npm:lint",
+    "npm:build"
+  ],
+  "recursive_editable": true,
+  "max_change_files": 3,
+  "npm_script_sha256": {
+    "lint": "b4f8e38cc5466435b22dd0c8f2708b4b38f8e0eca25768033b9c4a33fa67bbf1",
+    "build": "14cb36f96cfdc729cace0cdd93a3d644f0c30382837eab1300a24d3311e1c271"
+  }
+}
