@@ -260,7 +260,7 @@ export default function TechnicalInterface() {
   }
 
   return (
-    <section className={styles.interface} aria-label="Hamson Technical Interface">
+    <section id="technical-interface" className={styles.interface} aria-label="Hamson Technical Interface">
       <div className={styles.shell}>
         <section className={styles.content}>
           <div className={styles.fullWidth}>

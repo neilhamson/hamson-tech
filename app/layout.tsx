@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import SiteChatLauncher from "../components/SiteChatLauncher";
 
 const siteUrl = "https://hamson.tech";
 
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
         {children}
+        <SiteChatLauncher />
       </body>
     </html>
   );
