@@ -1369,3 +1369,41 @@ button { color: inherit; }
   *::before,
   *::after { transition-duration: 0.01ms !important; }
 }
+
+/* Technical Interface integration: secondary MI1 review demonstration */
+.machine-intelligence-review-section {
+  margin-top: clamp(82px, 8vw, 126px);
+  padding-top: clamp(42px, 5vw, 72px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.machine-intelligence-review-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(320px, 0.64fr);
+  gap: clamp(42px, 7vw, 110px);
+  align-items: end;
+}
+
+.machine-intelligence-review-heading h2 {
+  margin: 12px 0 0;
+  font-size: clamp(28px, 3.4vw, 52px);
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+}
+
+.machine-intelligence-review-heading p {
+  max-width: 560px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.66;
+}
+
+@media (max-width: 860px) {
+  .machine-intelligence-review-heading {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .machine-intelligence-review-heading p { max-width: 680px; }
+}

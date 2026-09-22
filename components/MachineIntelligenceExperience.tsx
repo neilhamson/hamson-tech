@@ -1,4 +1,5 @@
 import CodeReviewSandbox from "./CodeReviewSandbox";
+import TechnicalInterface from "./TechnicalInterface";
 
 export default function MachineIntelligenceExperience() {
   return (
@@ -17,7 +18,8 @@ export default function MachineIntelligenceExperience() {
           <p>
             Neil Hamson is engineering MI1: private software designed to prepare
             code changes for human review, then validate changes after approval.
-            A complete controlled development cycle has now been demonstrated on an external repository; repeatability is still being developed.
+            A complete controlled development cycle has now been demonstrated on
+            an external repository; repeatability is still being developed.
           </p>
 
           <div className="machine-intelligence-home-actions">
@@ -40,45 +42,7 @@ export default function MachineIntelligenceExperience() {
         </div>
       </div>
 
-      <div className="machine-intelligence-interaction-grid">
-        <div className="machine-intelligence-ask-panel">
-          <CodeReviewSandbox />
-        </div>
-
-        <aside
-          className="machine-intelligence-status-panel"
-          id="machine-intelligence-status"
-          aria-label="Machine Intelligence development status"
-        >
-          <div className="machine-intelligence-status-heading">
-            <span className="machine-intelligence-panel-label">CURRENT SYSTEM STATE</span>
-
-            <span className="machine-intelligence-active-indicator">
-              <span aria-hidden="true" />
-              DEVELOPMENT ACTIVE
-            </span>
-          </div>
-
-          <h3>WHY THE REVIEW MATTERS</h3>
-          <p className="machine-intelligence-status-explainer">
-            A code suggestion should be visible before anyone applies it.
-            The developer decides whether to approve it; validation then checks
-            the changed project. MI1 is being built around that boundary.
-          </p>
-          <ol className="machine-intelligence-status-steps">
-            <li><span>01</span> Inspect the task and source</li>
-            <li><span>02</span> Prepare a change for review</li>
-            <li><span>03</span> Ask before applying it</li>
-            <li><span>04</span> Validate and report the result</li>
-          </ol>
-
-          <p className="machine-intelligence-status-note">
-            MI1 is private and under development. The sandbox beside this
-            explanation compares text in your browser; it does not connect to
-            MI1, execute code or write to a repository.
-          </p>
-        </aside>
-      </div>
+      <TechnicalInterface />
 
       <section
         className="machine-intelligence-progression"
@@ -92,8 +56,11 @@ export default function MachineIntelligenceExperience() {
 
           <p>
             The private prototype includes saved project state, bounded tools
-            and an approval-based development loop. Recovery after an interruption has now been demonstrated, and one complete controlled cycle has been verified; broader repeatability still needs further evidence.
-            The public reviewer above shows the review idea; it is not MI1 itself.
+            and an approval-based development loop. Recovery after an interruption
+            has now been demonstrated, and one complete controlled cycle has been
+            verified; broader repeatability still needs further evidence. The
+            browser-only review sandbox lower on this page illustrates the human
+            review boundary; it is not MI1 itself.
           </p>
         </div>
 
@@ -117,6 +84,60 @@ export default function MachineIntelligenceExperience() {
           DEVELOPMENT DETAILS
         </a>
       </div>
+
+      <section className="machine-intelligence-review-section" aria-labelledby="public-review-sandbox-title">
+        <div className="machine-intelligence-review-heading">
+          <div>
+            <span className="machine-intelligence-panel-label">SECONDARY DEMONSTRATION / BROWSER ONLY</span>
+            <h2 id="public-review-sandbox-title">REVIEW THE BOUNDARY.</h2>
+          </div>
+          <p>
+            This sandbox remains available as an illustrative browser-only review
+            tool. It can later be upgraded to replay verified MI1 development
+            trajectories without exposing the private MI1 core.
+          </p>
+        </div>
+
+        <div className="machine-intelligence-interaction-grid">
+          <div className="machine-intelligence-ask-panel">
+            <CodeReviewSandbox />
+          </div>
+
+          <aside
+            className="machine-intelligence-status-panel"
+            id="machine-intelligence-status"
+            aria-label="Machine Intelligence development status"
+          >
+            <div className="machine-intelligence-status-heading">
+              <span className="machine-intelligence-panel-label">CURRENT SYSTEM STATE</span>
+
+              <span className="machine-intelligence-active-indicator">
+                <span aria-hidden="true" />
+                DEVELOPMENT ACTIVE
+              </span>
+            </div>
+
+            <h3>WHY THE REVIEW MATTERS</h3>
+            <p className="machine-intelligence-status-explainer">
+              A code suggestion should be visible before anyone applies it.
+              The developer decides whether to approve it; validation then checks
+              the changed project. MI1 is being built around that boundary.
+            </p>
+            <ol className="machine-intelligence-status-steps">
+              <li><span>01</span> Inspect the task and source</li>
+              <li><span>02</span> Prepare a change for review</li>
+              <li><span>03</span> Ask before applying it</li>
+              <li><span>04</span> Validate and report the result</li>
+            </ol>
+
+            <p className="machine-intelligence-status-note">
+              MI1 is private and under development. The sandbox beside this
+              explanation compares text in your browser; it does not connect to
+              MI1, execute code or write to a repository.
+            </p>
+          </aside>
+        </div>
+      </section>
     </div>
   );
 }
