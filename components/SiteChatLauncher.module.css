@@ -257,6 +257,224 @@
   font-size: 0.9em;
 }
 
+.projectState {
+  margin: 14px 14px 0;
+  border: 1px solid rgba(196, 163, 90, 0.28);
+  background: rgba(196, 163, 90, 0.025);
+}
+
+.projectStateHeader {
+  min-height: 38px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #c4a35a;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.projectStateHeader span:last-child {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.projectStateEmpty,
+.projectStateError {
+  padding: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.projectStateEmpty {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.projectStateError {
+  border-bottom: 1px solid rgba(248, 113, 113, 0.16);
+  color: rgba(255, 255, 255, 0.68);
+  background: rgba(248, 113, 113, 0.04);
+}
+
+.projectStateBody {
+  padding: 13px 12px 14px;
+}
+
+.projectObjectiveLabel,
+.missingBlock > div {
+  color: rgba(255, 255, 255, 0.34);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.projectObjective {
+  margin-top: 7px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.readinessRow {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.34);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.readinessRow strong {
+  color: #60a5fa;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.readinessTrack {
+  margin-top: 7px;
+  height: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.readinessFill {
+  height: 100%;
+  background: #60a5fa;
+}
+
+.missingBlock {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.missingBlock ul {
+  margin: 8px 0 0;
+  padding-left: 17px;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.missingBlock li + li {
+  margin-top: 4px;
+}
+
+.missingBlock > span {
+  display: block;
+  margin-top: 7px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 10px;
+}
+
+.prepareButton {
+  width: 100%;
+  min-height: 38px;
+  margin-top: 14px;
+  border: 1px solid rgba(96, 165, 250, 0.58);
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.05);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.prepareButton:hover:not(:disabled),
+.prepareButton:focus-visible:not(:disabled) {
+  background: rgba(96, 165, 250, 0.12);
+  outline: none;
+}
+
+.prepareButton:disabled {
+  border-color: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.2);
+  background: transparent;
+  cursor: not-allowed;
+}
+
+.prepareNote {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.enquiryDraft {
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.enquiryDraftMeta {
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+}
+
+.enquiryDraftObjective {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.enquiryDraftActions {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.enquiryDraftActions button,
+.enquiryDraftActions a {
+  min-height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0 10px;
+  border: 1px solid rgba(96, 165, 250, 0.5);
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.04);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.enquiryDraftActions a {
+  border-color: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.62);
+  background: transparent;
+}
+
+.enquiryDraftActions button:hover,
+.enquiryDraftActions button:focus-visible,
+.enquiryDraftActions a:hover,
+.enquiryDraftActions a:focus-visible {
+  border-color: rgba(96, 165, 250, 0.72);
+  color: #fff;
+  outline: none;
+}
+
+.enquiryDraftNote {
+  margin-top: 9px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
 .error,
 .notice {
   margin: 14px 18px 0;
