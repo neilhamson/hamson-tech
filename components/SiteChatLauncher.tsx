@@ -59,8 +59,10 @@ export default function SiteChatLauncher() {
   const [copyStatus, setCopyStatus] = useState<
     "idle" | "copied" | "error"
   >("idle");
+  const [projectStateExpanded, setProjectStateExpanded] = useState(false);
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const latestAssistantRef = useRef<HTMLElement | null>(null);
   const lastSubmittedTextRef = useRef("");
   const processedAssistantRef = useRef<string | null>(null);
   const stateRequestInFlightRef = useRef<string | null>(null);
@@ -86,6 +88,14 @@ export default function SiteChatLauncher() {
     stateStatus === "ready" &&
     projectState.readiness.status === "ready" &&
     projectState.objective !== null;
+
+  let latestAssistantMessageId: string | null = null;
+  for (let index = messages.length - 1; index >= 0; index -= 1) {
+    if (messages[index].role === "assistant") {
+      latestAssistantMessageId = messages[index].id;
+      break;
+    }
+  }
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -124,8 +134,30 @@ export default function SiteChatLauncher() {
       return;
     }
 
-    node.scrollTop = node.scrollHeight;
-  }, [messages, open, status, projectState, preparedEnquiry]);
+    if (status === "submitted" || status === "streaming") {
+      node.scrollTop = node.scrollHeight;
+      return;
+    }
+
+    if (status !== "ready" || !latestAssistantRef.current) {
+      return;
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      const scroller = scrollRef.current;
+      const target = latestAssistantRef.current;
+
+      if (!scroller || !target) {
+        return;
+      }
+
+      const scrollerRect = scroller.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      scroller.scrollTop += targetRect.top - scrollerRect.top;
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [messages, open, status]);
 
   useEffect(() => {
     if (status === "error" && !input && lastSubmittedTextRef.current) {
@@ -197,6 +229,7 @@ export default function SiteChatLauncher() {
     setProjectState(null);
     setPreparedEnquiry(null);
     setCopyStatus("idle");
+    setProjectStateExpanded(false);
     setStateStatus("idle");
     processedAssistantRef.current = null;
     stateRequestInFlightRef.current = null;
@@ -342,6 +375,12 @@ export default function SiteChatLauncher() {
                 {messages.map((message) => (
                   <article
                     key={message.id}
+                    ref={
+                      message.role === "assistant" &&
+                      message.id === latestAssistantMessageId
+                        ? latestAssistantRef
+                        : undefined
+                    }
                     className={
                       message.role === "user"
                         ? styles.userMessage
@@ -385,130 +424,6 @@ export default function SiteChatLauncher() {
               </div>
             )}
 
-            {workflowMode === "project_enquiry" && (
-              <section className={styles.projectState} aria-label="Project enquiry state">
-                <div className={styles.projectStateHeader}>
-                  <span>PROJECT STATE</span>
-                  <span>
-                    {stateStatus === "updating"
-                      ? "ANALYSING"
-                      : stateStatus === "error"
-                        ? "UPDATE FAILED"
-                        : projectState
-                          ? projectState.readiness.status.toUpperCase()
-                          : "AWAITING CONVERSATION"}
-                  </span>
-                </div>
-
-                {stateStatus === "error" && (
-                  <div className={styles.projectStateError} role="alert">
-                    The latest Project State update failed. Enquiry preparation
-                    is disabled until a new update succeeds.
-                  </div>
-                )}
-
-                {!projectState ? (
-                  <div className={styles.projectStateEmpty}>
-                    The interface will build a structured project summary as
-                    the conversation develops.
-                  </div>
-                ) : (
-                  <div className={styles.projectStateBody}>
-                    <div className={styles.projectObjectiveLabel}>OBJECTIVE</div>
-                    <div className={styles.projectObjective}>
-                      {projectState.objective ?? "Not established yet."}
-                    </div>
-
-                    <div className={styles.readinessRow}>
-                      <span>ENQUIRY READINESS</span>
-                      <strong>{readinessScore}%</strong>
-                    </div>
-
-                    <div className={styles.readinessTrack} aria-hidden="true">
-                      <div
-                        className={styles.readinessFill}
-                        style={{ width: `${readinessScore}%` }}
-                      />
-                    </div>
-
-                    {missingInformation.length > 0 && (
-                      <div className={styles.missingBlock}>
-                        <div>CRITICAL INFORMATION STILL NEEDED</div>
-                        <ul>
-                          {missingInformation.slice(0, 3).map((item) => (
-                            <li key={item}>{item}</li>
-                          ))}
-                        </ul>
-                        {missingInformation.length > 3 && (
-                          <span>
-                            + {missingInformation.length - 3} more item
-                            {missingInformation.length - 3 === 1 ? "" : "s"}
-                          </span>
-                        )}
-                      </div>
-                    )}
-
-                    <button
-                      type="button"
-                      onClick={handlePrepareEnquiry}
-                      disabled={!canPrepareEnquiry}
-                      className={styles.prepareButton}
-                    >
-                      {stateStatus === "updating"
-                        ? "STATE UPDATING"
-                        : preparedEnquiry
-                          ? "REFRESH ENQUIRY"
-                          : "PREPARE ENQUIRY"}
-                    </button>
-
-                    {!canPrepareEnquiry && stateStatus !== "error" && (
-                      <div className={styles.prepareNote}>
-                        Continue the project conversation until the required
-                        information is established.
-                      </div>
-                    )}
-
-                    {preparedEnquiry && (
-                      <div className={styles.enquiryDraft}>
-                        <div className={styles.enquiryDraftMeta}>
-                          DRAFT ARTEFACT · VERSION {preparedEnquiry.version} · {" "}
-                          READINESS {preparedEnquiry.readiness.score}%
-                        </div>
-
-                        <div className={styles.enquiryDraftObjective}>
-                          {preparedEnquiry.objective ?? "Objective not established."}
-                        </div>
-
-                        <div className={styles.enquiryDraftActions}>
-                          <button
-                            type="button"
-                            onClick={() => void handleCopyEnquiry()}
-                          >
-                            {copyStatus === "copied"
-                              ? "ENQUIRY COPIED"
-                              : "COPY ENQUIRY"}
-                          </button>
-
-                          <a href="mailto:neil@hamson.tech?subject=Software%20project%20enquiry%20via%20Hamson%20Technical%20Interface">
-                            EMAIL NEIL
-                          </a>
-                        </div>
-
-                        <div className={styles.enquiryDraftNote}>
-                          {copyStatus === "copied" &&
-                            "Copied to your clipboard. Open your email and paste the enquiry."}
-                          {copyStatus === "error" &&
-                            "Clipboard access was blocked. You can still email Neil directly."}
-                          {copyStatus === "idle" &&
-                            "Nothing is sent automatically. Copy the draft, then email it to Neil."}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </section>
-            )}
-
             {error && (
               <div className={styles.error} role="alert">
                 The chat request failed. Your last message has been restored so
@@ -522,6 +437,180 @@ export default function SiteChatLauncher() {
               </div>
             )}
           </div>
+
+          {workflowMode === "project_enquiry" && (
+            <section
+              className={styles.projectDock}
+              aria-label="Project enquiry progress"
+              aria-busy={stateStatus === "updating"}
+            >
+              <button
+                type="button"
+                className={styles.projectDockToggle}
+                onClick={() =>
+                  setProjectStateExpanded((current) => !current)
+                }
+                aria-expanded={projectStateExpanded}
+                aria-controls="site-project-state-details"
+              >
+                <span className={styles.projectDockMain}>
+                  <span className={styles.projectDockLabel}>
+                    {canPrepareEnquiry
+                      ? "PROJECT ENQUIRY READY"
+                      : "PROJECT ENQUIRY"}
+                  </span>
+                  <span className={styles.projectDockSummary} aria-live="polite">
+                    {stateStatus === "updating"
+                      ? projectState
+                        ? "Updating project state"
+                        : "Analysing project conversation"
+                      : stateStatus === "error"
+                        ? "Update failed · open for details"
+                        : canPrepareEnquiry
+                          ? "Ready to review"
+                          : projectState
+                            ? `${missingInformation.length} critical detail${missingInformation.length === 1 ? "" : "s"} still needed`
+                            : "Building project summary"}
+                  </span>
+                </span>
+
+                <span className={styles.projectDockMeta}>
+                  <strong>
+                    {projectState
+                      ? `${readinessScore}%`
+                      : stateStatus === "updating"
+                        ? "…"
+                        : "0%"}
+                  </strong>
+                  <span className={styles.projectDockAction}>
+                    {projectStateExpanded
+                      ? "HIDE"
+                      : canPrepareEnquiry
+                        ? "REVIEW"
+                        : "VIEW"}
+                  </span>
+                  <span className={styles.projectDockGlyph} aria-hidden="true">
+                    {projectStateExpanded ? "−" : "+"}
+                  </span>
+                </span>
+              </button>
+
+              <div className={styles.projectDockTrack} aria-hidden="true">
+                <div
+                  className={styles.projectDockFill}
+                  style={{ width: `${readinessScore}%` }}
+                />
+              </div>
+
+              <div
+                id="site-project-state-details"
+                className={styles.projectDockDetails}
+                hidden={!projectStateExpanded}
+              >
+                  {stateStatus === "error" && (
+                    <div className={styles.projectStateError} role="alert">
+                      The latest Project State update failed. Enquiry preparation
+                      is disabled until a new update succeeds.
+                    </div>
+                  )}
+
+                  {!projectState ? (
+                    <div className={styles.projectStateEmpty}>
+                      The interface will build a structured project summary as
+                      the conversation develops.
+                    </div>
+                  ) : (
+                    <div className={styles.projectStateBody}>
+                      <div className={styles.projectStateStatusLine}>
+                        <span>STATE</span>
+                        <strong>
+                          {projectState.readiness.status.toUpperCase()}
+                        </strong>
+                      </div>
+
+                      <div className={styles.projectObjectiveLabel}>OBJECTIVE</div>
+                      <div className={styles.projectObjective}>
+                        {projectState.objective ?? "Not established yet."}
+                      </div>
+
+                      {missingInformation.length > 0 && (
+                        <div className={styles.missingBlock}>
+                          <div>CRITICAL INFORMATION STILL NEEDED</div>
+                          <ul>
+                            {missingInformation.slice(0, 3).map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                          {missingInformation.length > 3 && (
+                            <span>
+                              + {missingInformation.length - 3} more item
+                              {missingInformation.length - 3 === 1 ? "" : "s"}
+                            </span>
+                          )}
+                        </div>
+                      )}
+
+                      <button
+                        type="button"
+                        onClick={handlePrepareEnquiry}
+                        disabled={!canPrepareEnquiry}
+                        className={styles.prepareButton}
+                      >
+                        {stateStatus === "updating"
+                          ? "STATE UPDATING"
+                          : preparedEnquiry
+                            ? "REFRESH ENQUIRY"
+                            : "PREPARE ENQUIRY"}
+                      </button>
+
+                      {!canPrepareEnquiry && stateStatus !== "error" && (
+                        <div className={styles.prepareNote}>
+                          Continue the project conversation until the required
+                          information is established.
+                        </div>
+                      )}
+
+                      {preparedEnquiry && (
+                        <div className={styles.enquiryDraft}>
+                          <div className={styles.enquiryDraftMeta}>
+                            DRAFT ARTEFACT · VERSION {preparedEnquiry.version} · {" "}
+                            READINESS {preparedEnquiry.readiness.score}%
+                          </div>
+
+                          <div className={styles.enquiryDraftObjective}>
+                            {preparedEnquiry.objective ?? "Objective not established."}
+                          </div>
+
+                          <div className={styles.enquiryDraftActions}>
+                            <button
+                              type="button"
+                              onClick={() => void handleCopyEnquiry()}
+                            >
+                              {copyStatus === "copied"
+                                ? "ENQUIRY COPIED"
+                                : "COPY ENQUIRY"}
+                            </button>
+
+                            <a href="mailto:neil@hamson.tech?subject=Software%20project%20enquiry%20via%20Hamson%20Technical%20Interface">
+                              EMAIL NEIL
+                            </a>
+                          </div>
+
+                          <div className={styles.enquiryDraftNote}>
+                            {copyStatus === "copied" &&
+                              "Copied to your clipboard. Open your email and paste the enquiry."}
+                            {copyStatus === "error" &&
+                              "Clipboard access was blocked. You can still email Neil directly."}
+                            {copyStatus === "idle" &&
+                              "Nothing is sent automatically. Copy the draft, then email it to Neil."}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+              </div>
+            </section>
+          )}
 
           <form onSubmit={handleSubmit} className={styles.form}>
             <textarea
