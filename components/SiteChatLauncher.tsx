@@ -469,7 +469,9 @@ export default function SiteChatLauncher() {
                         : canPrepareEnquiry
                           ? "Ready to review"
                           : projectState
-                            ? `${missingInformation.length} critical detail${missingInformation.length === 1 ? "" : "s"} still needed`
+                            ? missingInformation.length > 0
+                              ? `${missingInformation.length} critical detail${missingInformation.length === 1 ? "" : "s"} still needed`
+                              : "Details being established"
                             : "Building project summary"}
                   </span>
                 </span>
