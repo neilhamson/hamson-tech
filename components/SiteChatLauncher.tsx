@@ -11,6 +11,11 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import type { ConversationState } from "@/lib/conversationState";
+import {
+  productConfig,
+  projectMailtoHref,
+  type WorkflowMode,
+} from "@/lib/productConfig";
 import { MAX_CHAT_MESSAGES, MAX_INPUT_CHARS } from "@/lib/interfaceLimits";
 import {
   formatProjectEnquiryText,
@@ -19,29 +24,7 @@ import {
 } from "@/lib/projectEnquiry";
 import styles from "./SiteChatLauncher.module.css";
 
-type WorkflowMode = "general" | "project_enquiry" | "contact";
-
-const quickPrompts: {
-  label: string;
-  text: string;
-  mode: WorkflowMode;
-}[] = [
-  {
-    label: "MI1",
-    text: "What has MI1 actually demonstrated?",
-    mode: "general",
-  },
-  {
-    label: "PROJECT",
-    text: "I have a software project I would like to discuss.",
-    mode: "project_enquiry",
-  },
-  {
-    label: "CONTACT",
-    text: "I would like to contact Neil about working together.",
-    mode: "contact",
-  },
-];
+const quickPrompts = productConfig.launcher.prompts;
 
 export default function SiteChatLauncher() {
   const [open, setOpen] = useState(false);
@@ -315,12 +298,12 @@ export default function SiteChatLauncher() {
           className={styles.panel}
           role="dialog"
           aria-modal="false"
-          aria-label="Hamson technical chat"
+          aria-label={productConfig.launcher.ariaLabel}
         >
           <div className={styles.header}>
             <div>
-              <div className={styles.eyebrow}>HAMSON.TECH / TECHNICAL CHAT</div>
-              <div className={styles.headerTitle}>Ask about the work.</div>
+              <div className={styles.eyebrow}>{productConfig.launcher.eyebrow}</div>
+              <div className={styles.headerTitle}>{productConfig.launcher.title}</div>
             </div>
 
             <button
@@ -352,10 +335,7 @@ export default function SiteChatLauncher() {
           <div ref={scrollRef} className={styles.conversation} aria-live="polite">
             {messages.length === 0 ? (
               <div className={styles.emptyState}>
-                <p>
-                  Ask about MI1, published evidence, software engineering,
-                  services, or a project.
-                </p>
+                <p>{productConfig.launcher.emptyState}</p>
 
                 <div className={styles.quickPrompts}>
                   {quickPrompts.map((prompt) => (
@@ -593,8 +573,8 @@ export default function SiteChatLauncher() {
                                 : "COPY ENQUIRY"}
                             </button>
 
-                            <a href="mailto:neil@hamson.tech?subject=Software%20project%20enquiry%20via%20Hamson%20Technical%20Interface">
-                              EMAIL NEIL
+                            <a href={projectMailtoHref()}>
+                              {productConfig.launcher.emailLabel}
                             </a>
                           </div>
 
@@ -602,9 +582,9 @@ export default function SiteChatLauncher() {
                             {copyStatus === "copied" &&
                               "Copied to your clipboard. Open your email and paste the enquiry."}
                             {copyStatus === "error" &&
-                              "Clipboard access was blocked. You can still email Neil directly."}
+                              productConfig.launcher.copyBlockedMessage}
                             {copyStatus === "idle" &&
-                              "Nothing is sent automatically. Copy the draft, then email it to Neil."}
+                              productConfig.launcher.copyIdleMessage}
                           </div>
                         </div>
                       )}
@@ -618,7 +598,7 @@ export default function SiteChatLauncher() {
             <textarea
               value={input}
               onChange={(event) => setInput(event.target.value)}
-              placeholder="Ask a question or describe a project..."
+              placeholder={productConfig.launcher.inputPlaceholder}
               maxLength={MAX_INPUT_CHARS}
               rows={2}
               disabled={isBusy || conversationLimitReached}
@@ -668,11 +648,15 @@ export default function SiteChatLauncher() {
       >
         <span className={styles.launcherDot} aria-hidden="true" />
         <span className={styles.launcherText}>
-          <strong>{open ? "CLOSE INTERFACE" : "ASK HAMSON.TECH"}</strong>
+          <strong>
+            {open
+              ? productConfig.launcher.openLabel
+              : productConfig.launcher.closedLabel}
+          </strong>
           <span>
             {open
-              ? "TECHNICAL CHAT OPEN"
-              : "MI1 · SOFTWARE · PROJECTS"}
+              ? productConfig.launcher.openSubtitle
+              : productConfig.launcher.closedSubtitle}
           </span>
         </span>
       </button>

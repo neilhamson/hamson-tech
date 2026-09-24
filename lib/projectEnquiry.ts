@@ -1,4 +1,5 @@
 import type { ConversationState } from "@/lib/conversationState";
+import { productConfig } from "@/lib/productConfig";
 
 export const projectEnquiryVersion = 1 as const;
 
@@ -67,7 +68,7 @@ export function formatProjectEnquiryText(
   enquiry: ProjectEnquiry,
 ): string {
   const lines: string[] = [
-    "HAMSON TECHNICAL INTERFACE — PROJECT ENQUIRY",
+    productConfig.enquiry.documentTitle,
     `DRAFT ARTEFACT — VERSION ${enquiry.version}`,
     "",
   ];

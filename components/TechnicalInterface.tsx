@@ -13,6 +13,11 @@ import remarkGfm from "remark-gfm";
 import styles from "./TechnicalInterface.module.css";
 
 import type { ConversationState } from "@/lib/conversationState";
+import {
+  productConfig,
+  projectMailtoHref,
+  type WorkflowMode,
+} from "@/lib/productConfig";
 import { MAX_CHAT_MESSAGES, MAX_INPUT_CHARS } from "@/lib/interfaceLimits";
 import {
   formatProjectEnquiryText,
@@ -20,34 +25,7 @@ import {
   type ProjectEnquiry,
 } from "@/lib/projectEnquiry";
 
-type WorkflowMode = "general" | "project_enquiry" | "contact";
-
-const prompts: {
-  label: string;
-  text: string;
-  mode: WorkflowMode;
-}[] = [
-  {
-    label: "EXPLORE MI1",
-    text: "What has MI1 actually demonstrated?",
-    mode: "general",
-  },
-  {
-    label: "VIEW EVIDENCE",
-    text: "Show me the public technical evidence for MI1.",
-    mode: "general",
-  },
-  {
-    label: "DISCUSS A PROJECT",
-    text: "I have a software project I would like to discuss.",
-    mode: "project_enquiry",
-  },
-  {
-    label: "CONTACT NEIL",
-    text: "I would like to contact Neil about working together.",
-    mode: "contact",
-  },
-];
+const prompts = productConfig.technicalInterface.prompts;
 
 function StateList({
   title,
@@ -260,7 +238,11 @@ export default function TechnicalInterface() {
   }
 
   return (
-    <section id="technical-interface" className={styles.interface} aria-label="Hamson Technical Interface">
+    <section
+      id="technical-interface"
+      className={styles.interface}
+      aria-label={productConfig.technicalInterface.ariaLabel}
+    >
       <div className={styles.shell}>
         <section className={styles.content}>
           <div className={styles.fullWidth}>
@@ -272,11 +254,11 @@ export default function TechnicalInterface() {
                 </div>
 
                 <h2 className={styles.title}>
-                  Ask about the work.
+                  {productConfig.technicalInterface.title}
                 </h2>
 
                 <p className={styles.intro}>
-                  MI1 evidence · software engineering · project enquiries
+                  {productConfig.technicalInterface.intro}
                 </p>
               </div>
 
@@ -740,10 +722,10 @@ export default function TechnicalInterface() {
                         </button>
 
                         <a
-                          href="mailto:neil@hamson.tech?subject=Software%20project%20enquiry%20via%20Hamson%20Technical%20Interface"
+                          href={projectMailtoHref()}
                           className={styles.secondaryButton}
                         >
-                          EMAIL NEIL
+                          {productConfig.technicalInterface.emailLabel}
                         </a>
                       </div>
 
@@ -754,9 +736,9 @@ export default function TechnicalInterface() {
                         {copyStatus === "copied" &&
                           "Copied to your clipboard. Open your email and paste the enquiry."}
                         {copyStatus === "error" &&
-                          "Your browser blocked clipboard access. You can still email Neil directly and copy the visible draft manually."}
+                          productConfig.technicalInterface.copyBlockedMessage}
                         {copyStatus === "idle" &&
-                          "Copy the prepared enquiry, then email it to Neil. Nothing is sent automatically."}
+                          productConfig.technicalInterface.copyIdleMessage}
                       </div>
                     </div>
                   )}
@@ -791,7 +773,7 @@ export default function TechnicalInterface() {
                   onChange={(event) =>
                     setInput(event.target.value)
                   }
-                  placeholder="Ask about MI1, evidence, Neil's work, or describe a project..."
+                  placeholder={productConfig.technicalInterface.queryPlaceholder}
                   rows={3}
                   maxLength={MAX_INPUT_CHARS}
                   disabled={isBusy || conversationLimitReached}
@@ -844,20 +826,17 @@ export default function TechnicalInterface() {
             )}
 
             <div className={styles.footerMeta}>
-              <span>CONTROLLED PUBLIC SOURCES</span>
+              <span>{productConfig.technicalInterface.footerStatusLabels[0]}</span>
               <span>•</span>
-              <span>EVIDENCE-AWARE</span>
+              <span>{productConfig.technicalInterface.footerStatusLabels[1]}</span>
               <span>•</span>
-              <span>NOT MI1</span>
+              <span>{productConfig.technicalInterface.footerStatusLabels[2]}</span>
             </div>
           </div>
         </section>
 
         <footer className={styles.disclaimer}>
-          This interface provides access to published
-          material and technical evidence. It is a separate
-          system and does not expose or operate the private
-          MI1 core.
+          {productConfig.technicalInterface.disclaimer}
         </footer>
       </div>
     </section>

@@ -6,6 +6,8 @@ import {
   emptyConversationState,
   type ConversationState,
 } from "@/lib/conversationState";
+import { productConfig } from "@/lib/productConfig";
+import { serverProductConfig } from "@/lib/serverProductConfig";
 
 function messageText(message: UIMessage): string {
   return message.parts
@@ -37,7 +39,7 @@ export async function extractConversationState(
   }
 
   const { output } = await generateText({
-    model: xai.responses("grok-4.3"),
+    model: xai.responses(serverProductConfig.models.projectState),
 
     output: Output.object({
       name: "ConversationState",
@@ -56,7 +58,7 @@ CORE RULES
 - Extract only information stated by the visitor or directly implied by
   ordinary language.
 - Do not invent project facts.
-- Do not infer Neil Hamson's capabilities, pricing, availability, experience,
+- Do not infer ${productConfig.identity.operatorName}'s capabilities, pricing, availability, experience,
   delivery dates, contractual terms, or willingness to accept work.
 - Do not treat assistant questions as facts about the visitor's project.
 
@@ -130,7 +132,7 @@ The objective and several useful facts are known, but important discovery
 information is still missing.
 
 ready:
-Enough information exists to create a meaningful initial enquiry for Neil,
+Enough information exists to create a meaningful initial enquiry for ${productConfig.identity.operatorFirstName},
 although detailed technical discovery may still be required.
 
 Score from 0 to 100.
