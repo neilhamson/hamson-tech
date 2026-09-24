@@ -7,6 +7,7 @@ import {
   type UIMessage,
 } from "ai";
 
+import { productKnowledge } from "@/data/productKnowledge";
 import { productConfig } from "@/lib/productConfig";
 import { readValidatedMessages } from "@/lib/requestValidation";
 import { retrieveKnowledge } from "@/lib/retrieveKnowledge";
@@ -41,7 +42,7 @@ export async function POST(req: Request) {
 
   try {
     const query = getLatestUserText(messages);
-    const records = retrieveKnowledge(query);
+    const records = retrieveKnowledge(query, productKnowledge);
 
     const evidence =
       records.length > 0

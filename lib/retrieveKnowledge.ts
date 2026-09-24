@@ -1,7 +1,4 @@
-import {
-  knowledge,
-  type KnowledgeRecord,
-} from "@/data/knowledge";
+import type { KnowledgeRecord } from "@/lib/knowledgeRecord";
 
 const stopWords = new Set([
   "a",
@@ -75,6 +72,7 @@ function scoreRecord(
 
 export function retrieveKnowledge(
   query: string,
+  records: readonly KnowledgeRecord[],
   limit = 4,
 ): KnowledgeRecord[] {
   const terms = queryTerms(query);
@@ -83,7 +81,7 @@ export function retrieveKnowledge(
     return [];
   }
 
-  return knowledge
+  return records
     .map((record) => ({
       record,
       score: scoreRecord(record, terms),
