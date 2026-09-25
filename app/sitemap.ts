@@ -18,9 +18,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteUrl}/bitcoin`,
-      lastModified: "2026-09-14",
-      changeFrequency: "monthly",
+      lastModified: "2026-09-25",
+      changeFrequency: "weekly",
       priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/bitcoin/gbp`,
+      lastModified: "2026-09-25",
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/bitcoin/wallets`,
+      lastModified: "2026-09-25",
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/bitcoin/mining`,
+      lastModified: "2026-09-25",
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
     {
       url: `${siteUrl}/services`,

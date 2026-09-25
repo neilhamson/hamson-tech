@@ -29,8 +29,10 @@ export default function Home() {
 
             <details className="nav-dropdown">
               <summary>BITCOIN</summary>
+
               <div className="nav-dropdown-menu">
                 <Link href="/bitcoin">OVERVIEW</Link>
+                <Link href="/bitcoin/gbp">BTC / GBP</Link>
                 <Link href="/bitcoin/wallets">WALLETS &amp; USE</Link>
                 <Link href="/bitcoin/mining">MINING</Link>
               </div>

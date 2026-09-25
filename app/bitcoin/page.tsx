@@ -39,6 +39,7 @@ function Header() {
             <summary>BITCOIN</summary>
             <div className="nav-dropdown-menu">
               <Link href="/bitcoin">OVERVIEW</Link>
+              <Link href="/bitcoin/gbp">BTC / GBP</Link>
               <Link href="/bitcoin/wallets">WALLETS &amp; USE</Link>
               <Link href="/bitcoin/mining">MINING</Link>
             </div>
@@ -109,7 +110,7 @@ export default function BitcoinPage() {
           </p>
 
           <div className={styles.heroActions}>
-            <a href="#gbp-system">BTC / GBP SYSTEM</a>
+            <Link href="/bitcoin/gbp">BTC / GBP SYSTEM</Link>
             <Link href="/bitcoin/wallets">WALLETS &amp; USE</Link>
           </div>
         </div>
@@ -344,6 +345,17 @@ export default function BitcoinPage() {
           </div>
 
           <div className={styles.grid2}>
+            <article className={styles.panel}>
+              <span className={styles.panelNumber}>BTC / GBP</span>
+              <h3>POUNDS. BITCOIN. SATOSHIS.</h3>
+              <p>
+                Use the working development calculator to translate between
+                British Sterling, bitcoin and satoshis using a manual reference
+                rate.
+              </p>
+              <Link href="/bitcoin/gbp">ENTER BTC / GBP →</Link>
+            </article>
+
             <article className={styles.panel}>
               <span className={styles.panelNumber}>WALLETS / USE</span>
               <h3>KEYS. CUSTODY. TRANSACTIONS.</h3>
