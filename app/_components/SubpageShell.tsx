@@ -6,8 +6,11 @@ import Link from "next/link";
 import styles from "./subpage.module.css";
 
 const navigation = [
-  { href: "/machine-intelligence", label: "MI1", accessibleLabel: "MI1 — Machine Intelligence" },
-  { href: "/bitcoin", label: "BITCOIN" },
+  {
+    href: "/machine-intelligence",
+    label: "MI1",
+    accessibleLabel: "MI1 — Machine Intelligence",
+  },
   { href: "/services", label: "SERVICES" },
   { href: "/about-us", label: "ABOUT" },
   { href: "/articles", label: "ARTICLES" },
@@ -37,20 +40,63 @@ function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <Link className="brand-lockup" href="/" aria-label="Neil Hamson home">
+        <Link
+          className="brand-lockup"
+          href="/"
+          aria-label="Neil Hamson home"
+        >
           <span className="brand-reveal-shell" aria-hidden="true">
-            <Image className="brand-reveal" src="/brand/neil-hamson-wordmark.svg" alt="" width={1624} height={88} priority />
+            <Image
+              className="brand-reveal"
+              src="/brand/neil-hamson-wordmark.svg"
+              alt=""
+              width={1624}
+              height={88}
+              priority
+            />
           </span>
         </Link>
 
         <nav className="navigation" aria-label="Main navigation">
-          {navigation.map((item) => <Link key={item.href} href={item.href} aria-label={"accessibleLabel" in item ? item.accessibleLabel : undefined}>{item.label}</Link>)}
+          <Link
+            href="/machine-intelligence"
+            aria-label="MI1 — Machine Intelligence"
+          >
+            MI1
+          </Link>
+
+          <details className="nav-dropdown">
+            <summary>BITCOIN</summary>
+            <div className="nav-dropdown-menu">
+              <Link href="/bitcoin">OVERVIEW</Link>
+              <Link href="/bitcoin/wallets">WALLETS &amp; USE</Link>
+              <Link href="/bitcoin/mining">MINING</Link>
+            </div>
+          </details>
+
+          <Link href="/services">SERVICES</Link>
+          <Link href="/about-us">ABOUT</Link>
+          <Link href="/articles">ARTICLES</Link>
         </nav>
 
         <details className="mobile-navigation">
-          <summary aria-label="Open navigation"><span /><span /></summary>
+          <summary aria-label="Open navigation">
+            <span />
+            <span />
+          </summary>
+
           <nav aria-label="Mobile navigation">
-            {navigation.map((item) => <Link key={item.href} href={item.href} aria-label={"accessibleLabel" in item ? item.accessibleLabel : undefined}>{item.label}</Link>)}
+            <Link
+              href="/machine-intelligence"
+              aria-label="MI1 — Machine Intelligence"
+            >
+              MI1
+            </Link>
+            <Link href="/bitcoin">BITCOIN</Link>
+            <Link href="/services">SERVICES</Link>
+            <Link href="/about-us">ABOUT</Link>
+            <Link href="/articles">ARTICLES</Link>
+            <Link href="/contact-us">CONTACT</Link>
           </nav>
         </details>
       </div>
@@ -85,28 +131,63 @@ const accents = {
   gold: "#f2b84b",
 };
 
-export function PageShell({ eyebrow, title, lede, heroImage, heroAlt = "", heroAside, compactHero = false, accent = "blue", children }: PageShellProps) {
-  const pageStyle = { "--page-accent": accents[accent] } as CSSProperties;
+export function PageShell({
+  eyebrow,
+  title,
+  lede,
+  heroImage,
+  heroAlt = "",
+  heroAside,
+  compactHero = false,
+  accent = "blue",
+  children,
+}: PageShellProps) {
+  const pageStyle = {
+    "--page-accent": accents[accent],
+  } as CSSProperties;
 
   return (
     <main className={`${styles.page} site`} style={pageStyle}>
-      <a className="skip-link" href="#main-content">Skip to content</a>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+
       <Header />
-      <section className={`${styles.hero} ${compactHero ? styles.heroCompact : ""}`} id="main-content">
+
+      <section
+        className={`${styles.hero} ${
+          compactHero ? styles.heroCompact : ""
+        }`}
+        id="main-content"
+      >
         <div className={styles.heroCopy}>
           <p className="eyebrow">{eyebrow}</p>
           <h1>{title}</h1>
           <div className={styles.lede}>{lede}</div>
         </div>
+
         {heroAside ? (
           <div className={styles.heroAside}>{heroAside}</div>
         ) : heroImage ? (
           <figure className={styles.heroMedia}>
-            <Image src={heroImage} alt={heroAlt} fill sizes="(max-width: 800px) 100vw, 48vw" priority />
+            <Image
+              src={heroImage}
+              alt={heroAlt}
+              fill
+              sizes="(max-width: 800px) 100vw, 48vw"
+              priority
+            />
           </figure>
-        ) : !compactHero ? <div className={styles.signal} aria-hidden="true"><span>NEIL</span><span>HAMSON</span></div> : null}
+        ) : !compactHero ? (
+          <div className={styles.signal} aria-hidden="true">
+            <span>NEIL</span>
+            <span>HAMSON</span>
+          </div>
+        ) : null}
       </section>
+
       <div className={styles.content}>{children}</div>
+
       <Footer />
     </main>
   );
@@ -121,9 +202,19 @@ type SectionProps = {
   narrow?: boolean;
 };
 
-export function Section({ label, title, intro, children, id, narrow = false }: SectionProps) {
+export function Section({
+  label,
+  title,
+  intro,
+  children,
+  id,
+  narrow = false,
+}: SectionProps) {
   return (
-    <section className={`${styles.section} ${narrow ? styles.narrow : ""}`} id={id}>
+    <section
+      className={`${styles.section} ${narrow ? styles.narrow : ""}`}
+      id={id}
+    >
       {label && <p className="eyebrow">{label}</p>}
       <h2>{title}</h2>
       {intro && <div className={styles.sectionIntro}>{intro}</div>}
@@ -132,11 +223,29 @@ export function Section({ label, title, intro, children, id, narrow = false }: S
   );
 }
 
-export function Cards({ children, columns = 3 }: { children: ReactNode; columns?: 2 | 3 | 4 }) {
-  return <div className={styles.cards} data-columns={columns}>{children}</div>;
+export function Cards({
+  children,
+  columns = 3,
+}: {
+  children: ReactNode;
+  columns?: 2 | 3 | 4;
+}) {
+  return (
+    <div className={styles.cards} data-columns={columns}>
+      {children}
+    </div>
+  );
 }
 
-export function Card({ label, title, children }: { label?: string; title: ReactNode; children: ReactNode }) {
+export function Card({
+  label,
+  title,
+  children,
+}: {
+  label?: string;
+  title: ReactNode;
+  children: ReactNode;
+}) {
   return (
     <article className={styles.card}>
       {label && <span>{label}</span>}
@@ -146,10 +255,31 @@ export function Card({ label, title, children }: { label?: string; title: ReactN
   );
 }
 
-export function MediaBlock({ src, alt, portrait = false }: { src: string; alt: string; portrait?: boolean }) {
+export function MediaBlock({
+  src,
+  alt,
+  portrait = false,
+}: {
+  src: string;
+  alt: string;
+  portrait?: boolean;
+}) {
   return (
-    <figure className={`${styles.mediaBlock} ${portrait ? styles.portrait : ""}`}>
-      <Image src={src} alt={alt} fill sizes={portrait ? "(max-width: 800px) 82vw, 34vw" : "(max-width: 800px) 100vw, 72vw"} />
+    <figure
+      className={`${styles.mediaBlock} ${
+        portrait ? styles.portrait : ""
+      }`}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={
+          portrait
+            ? "(max-width: 800px) 82vw, 34vw"
+            : "(max-width: 800px) 100vw, 72vw"
+        }
+      />
     </figure>
   );
 }

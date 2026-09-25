@@ -20,8 +20,22 @@ export default function Home() {
           </Link>
 
           <nav className="navigation" aria-label="Main navigation">
-            <Link href="/machine-intelligence" aria-label="MI1 — Machine Intelligence">MI1</Link>
-            <Link href="/bitcoin">BITCOIN</Link>
+            <Link
+              href="/machine-intelligence"
+              aria-label="MI1 — Machine Intelligence"
+            >
+              MI1
+            </Link>
+
+            <details className="nav-dropdown">
+              <summary>BITCOIN</summary>
+              <div className="nav-dropdown-menu">
+                <Link href="/bitcoin">OVERVIEW</Link>
+                <Link href="/bitcoin/wallets">WALLETS &amp; USE</Link>
+                <Link href="/bitcoin/mining">MINING</Link>
+              </div>
+            </details>
+
             <Link href="/services">SERVICES</Link>
             <Link href="/about-us">ABOUT</Link>
             <Link href="/articles">ARTICLES</Link>
@@ -38,7 +52,12 @@ export default function Home() {
             </summary>
 
             <nav aria-label="Mobile navigation">
-              <Link href="/machine-intelligence" aria-label="MI1 — Machine Intelligence">MI1</Link>
+              <Link
+                href="/machine-intelligence"
+                aria-label="MI1 — Machine Intelligence"
+              >
+                MI1
+              </Link>
               <Link href="/bitcoin">BITCOIN</Link>
               <Link href="/services">SERVICES</Link>
               <Link href="/about-us">ABOUT</Link>
@@ -55,7 +74,6 @@ export default function Home() {
         aria-label="Machine Intelligence development"
       >
         <MachineIntelligenceExperience />
-
       </section>
 
       <section
@@ -65,7 +83,11 @@ export default function Home() {
         <p className="eyebrow">SOFTWARE ENGINEERING / NEIL HAMSON</p>
 
         <h2 id="closing-title">HAVE SOFTWARE TO BUILD OR IMPROVE?</h2>
-        <p className="closing-copy">Bring a defined problem, an existing system or an idea to explore. Work begins with a clear scope and a direct conversation.</p>
+
+        <p className="closing-copy">
+          Bring a defined problem, an existing system or an idea to explore.
+          Work begins with a clear scope and a direct conversation.
+        </p>
 
         <Link
           className="brand-button brand-button-primary"
