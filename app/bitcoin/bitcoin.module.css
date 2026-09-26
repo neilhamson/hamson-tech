@@ -44,7 +44,7 @@
   padding:
     clamp(120px, 11vw, 175px)
     clamp(34px, 7vw, 120px)
-    clamp(90px, 9vw, 145px);
+    clamp(56px, 6vw, 88px);
   border-bottom: 1px solid rgba(0, 220, 255, 0.16);
   isolation: isolate;
 }
@@ -128,9 +128,9 @@
   margin: 0;
   max-width: 920px;
   font-family: "D-DIN", "Arial Narrow", Arial, sans-serif;
-  font-size: clamp(72px, 8vw, 138px);
+  font-size: clamp(56px, 6vw, 100px);
   font-weight: 700;
-  line-height: 0.78;
+  line-height: 0.84;
   letter-spacing: -0.045em;
   text-transform: uppercase;
 }
@@ -449,7 +449,7 @@
 .section {
   position: relative;
   padding:
-    clamp(90px, 9vw, 145px)
+    clamp(56px, 6vw, 88px)
     clamp(34px, 7vw, 120px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.065);
 }
@@ -507,8 +507,8 @@
   margin: 0;
   max-width: 760px;
   font-family: "D-DIN", "Arial Narrow", Arial, sans-serif;
-  font-size: clamp(46px, 5vw, 78px);
-  line-height: 0.93;
+  font-size: clamp(32px, 3vw, 50px);
+  line-height: 0.98;
   letter-spacing: -0.025em;
   text-transform: uppercase;
 }
@@ -656,7 +656,7 @@
 
 .disclaimer {
   padding:
-    clamp(54px, 5vw, 80px)
+    clamp(24px, 2.5vw, 38px)
     clamp(34px, 7vw, 120px);
   border-top: 1px solid rgba(245, 185, 66, 0.21);
   background: #020409;

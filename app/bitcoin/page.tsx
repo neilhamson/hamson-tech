@@ -6,7 +6,7 @@ import styles from "./bitcoin.module.css";
 
 export const metadata = pageMetadata(
   "Bitcoin UK — Bitcoin Explained in British Pounds",
-  "Bitcoin for UK users: British Sterling, BTC, satoshis, wallets, transactions, mining and the development of a UK-first BTC/GBP reference system.",
+  "Bitcoin explained for people in Britain: what Bitcoin is, what £50 represents in BTC and satoshis, how wallets work, how Bitcoin is used and how mining secures the network.",
   "/bitcoin",
 );
 
@@ -37,6 +37,7 @@ function Header() {
 
           <details className="nav-dropdown">
             <summary>BITCOIN</summary>
+
             <div className="nav-dropdown-menu">
               <Link href="/bitcoin">OVERVIEW</Link>
               <Link href="/bitcoin/gbp">BTC / GBP</Link>
@@ -96,7 +97,9 @@ export default function BitcoinPage() {
 
       <section className={styles.hero} id="main-content">
         <div className={styles.heroCopy}>
-          <p className={styles.kicker}>BITCOIN / UNITED KINGDOM / GBP</p>
+          <p className={styles.kicker}>
+            BITCOIN / UNITED KINGDOM / PLAIN ENGLISH
+          </p>
 
           <h1>
             BITCOIN
@@ -104,50 +107,56 @@ export default function BitcoinPage() {
           </h1>
 
           <p className={styles.heroLead}>
-            Bitcoin explained for Britain in the currency people here actually
-            earn, spend and understand. Follow BTC through pounds, satoshis,
-            wallets, transactions and mining.
+            Bitcoin explained for Britain — without assuming you already
+            understand cryptocurrency. Start with pounds, learn what Bitcoin
+            actually is, see what £50 represents, and understand how people
+            buy, own and use it.
           </p>
 
           <div className={styles.heroActions}>
-            <Link href="/bitcoin/gbp">BTC / GBP SYSTEM</Link>
-            <Link href="/bitcoin/wallets">WALLETS &amp; USE</Link>
+            <Link href="#what-is-bitcoin">START WITH BITCOIN</Link>
+            <Link href="/bitcoin/gbp">SHOW ME £50 IN BITCOIN</Link>
           </div>
         </div>
 
-        <aside className={styles.console} aria-label="BTC GBP development panel">
+        <aside
+          className={styles.console}
+          aria-label="Start here with Bitcoin"
+        >
           <div className={styles.consoleTop}>
-            <span className={styles.consoleName}>HAMSON // BTC_GBP</span>
+            <span className={styles.consoleName}>
+              START HERE // UK BITCOIN
+            </span>
 
             <span className={styles.consoleStatus}>
               <span className={styles.statusDot} />
-              DEVELOPMENT
+              BEGINNER GUIDE
             </span>
           </div>
 
           <div className={styles.readout}>
             <div className={styles.readoutBlock}>
-              <span className={styles.readoutLabel}>STERLING INPUT</span>
-              <span className={styles.readoutValue}>£100.00</span>
+              <span className={styles.readoutLabel}>STARTING POINT</span>
+              <span className={styles.readoutValue}>£50</span>
             </div>
 
             <span className={styles.readoutArrow}>→</span>
 
             <div className={styles.readoutBlock}>
-              <span className={styles.readoutLabel}>BTC OUTPUT</span>
-              <span className={styles.readoutValue}>—</span>
+              <span className={styles.readoutLabel}>SEE IT AS</span>
+              <span className={styles.readoutValue}>BTC</span>
             </div>
           </div>
 
           <div className={styles.sats}>
-            <span className={styles.readoutLabel}>SATOSHI OUTPUT</span>
-            <strong>—</strong>
+            <span className={styles.readoutLabel}>AND UNDERSTAND</span>
+            <strong>SATOSHIS</strong>
           </div>
 
           <div className={styles.consoleMeta}>
             <div className={styles.consoleRow}>
-              <span>MARKET</span>
-              <strong>BTC / GBP</strong>
+              <span>GUIDE</span>
+              <strong>BEGINNER FIRST</strong>
             </div>
 
             <div className={styles.consoleRow}>
@@ -156,13 +165,13 @@ export default function BitcoinPage() {
             </div>
 
             <div className={styles.consoleRow}>
-              <span>REFERENCE ENGINE</span>
-              <strong>NOT YET LIVE</strong>
+              <span>CURRENCY</span>
+              <strong>GBP</strong>
             </div>
 
             <div className={styles.consoleRow}>
-              <span>FUNCTION</span>
-              <strong>EDUCATION / CONVERSION</strong>
+              <span>LANGUAGE</span>
+              <strong>PLAIN ENGLISH</strong>
             </div>
           </div>
         </aside>
@@ -170,59 +179,64 @@ export default function BitcoinPage() {
 
       <div className={styles.signalBar} aria-hidden="true">
         <span>
-          NETWORK <strong>BITCOIN</strong>
+          START <strong>£50</strong>
         </span>
         <span>
-          FIAT <strong>GBP</strong>
+          ASSET <strong>BITCOIN</strong>
         </span>
         <span>
           UNIT <strong>SATOSHI</strong>
         </span>
         <span>
-          SYSTEM <strong>IN DEVELOPMENT</strong>
+          GUIDE <strong>PLAIN ENGLISH</strong>
         </span>
       </div>
 
-      <section className={styles.section} id="gbp-system">
+      <section
+        className={styles.section}
+        id="what-is-bitcoin"
+      >
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
             <div>
-              <p className={styles.sectionCode}>UK BITCOIN / 01</p>
-              <h2>START WITH POUNDS</h2>
+              <p className={styles.sectionCode}>START HERE / 01</p>
+              <h2>WHAT IS BITCOIN?</h2>
             </div>
 
             <div className={styles.sectionIntro}>
-              Bitcoin is global. Everyday finances are local. For people in the
-              UK, that means understanding Bitcoin against British Sterling
-              rather than defaulting to US dollars.
+              At its simplest, Bitcoin is a way of holding and transferring
+              digital value over the internet. It operates through a network of
+              computers following the same rules rather than through one bank
+              or company.
             </div>
           </div>
 
           <div className={styles.grid3}>
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>GBP</span>
-              <h3>BRITISH STERLING</h3>
-              <p>
-                Familiar pound values provide the starting point for
-                understanding what a quantity of Bitcoin represents.
-              </p>
-            </article>
-
-            <article className={styles.panel}>
               <span className={styles.panelNumber}>BTC</span>
-              <h3>BITCOIN</h3>
+              <h3>THE ASSET</h3>
               <p>
-                BTC is the digital asset transferred through the Bitcoin
-                network. Ownership does not require buying one whole bitcoin.
+                BTC is the digital asset people can own, send and receive. You
+                do not need to own one whole bitcoin.
               </p>
             </article>
 
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>SATS</span>
-              <h3>SATOSHIS</h3>
+              <span className={styles.panelNumber}>NETWORK</span>
+              <h3>THE SYSTEM</h3>
               <p>
-                One bitcoin contains 100 million satoshis, allowing Bitcoin to
-                represent much smaller values.
+                Computers around the world communicate with each other and
+                independently check that Bitcoin&apos;s rules are being
+                followed.
+              </p>
+            </article>
+
+            <article className={styles.panel}>
+              <span className={styles.panelNumber}>RECORD</span>
+              <h3>THE BLOCKCHAIN</h3>
+              <p>
+                Confirmed Bitcoin transactions become part of a shared
+                historical record known as the blockchain.
               </p>
             </article>
           </div>
@@ -233,44 +247,48 @@ export default function BitcoinPage() {
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
             <div>
-              <p className={styles.sectionCode}>HAMSON BTC / GBP / 02</p>
-              <h2>BUILD THE REFERENCE SYSTEM</h2>
+              <p className={styles.sectionCode}>UNDERSTAND VALUE / 02</p>
+              <h2>START WITH POUNDS</h2>
             </div>
 
             <div className={styles.sectionIntro}>
-              The planned system will collect sterling Bitcoin market data and
-              produce a transparent BTC/GBP reference value for educational
-              conversion between pounds, bitcoin and satoshis.
+              Bitcoin is global, but everyday money is local. For somebody in
+              Britain, starting with pounds makes unfamiliar Bitcoin numbers
+              much easier to understand.
             </div>
           </div>
 
           <div className={styles.grid3}>
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>INPUT</span>
-              <h3>£ → BTC</h3>
+              <span className={styles.panelNumber}>GBP</span>
+              <h3>START WITH £50</h3>
               <p>
-                Enter a sterling value and see the equivalent quantity of
-                bitcoin and satoshis.
+                Begin with an amount in British Sterling that already makes
+                sense to you.
               </p>
             </article>
 
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>INPUT</span>
-              <h3>BTC → £</h3>
+              <span className={styles.panelNumber}>BTC</span>
+              <h3>SEE THE BITCOIN</h3>
               <p>
-                Enter a Bitcoin quantity and translate it back into British
-                Sterling.
+                Convert the pound value into the corresponding fraction of one
+                bitcoin.
               </p>
             </article>
 
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>STATUS</span>
-              <h3>DEVELOPMENT</h3>
+              <span className={styles.panelNumber}>SATS</span>
+              <h3>SEE THE SATOSHIS</h3>
               <p>
-                The rate methodology, data sources and calculator will be added
-                as working software rather than simulated functionality.
+                One bitcoin contains 100 million satoshis, allowing much
+                smaller values to be represented.
               </p>
             </article>
+          </div>
+
+          <div className={styles.heroActions}>
+            <Link href="/bitcoin/gbp">TRY BTC / GBP →</Link>
           </div>
         </div>
       </section>
@@ -279,53 +297,105 @@ export default function BitcoinPage() {
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
             <div>
-              <p className={styles.sectionCode}>BITCOIN NETWORK / 03</p>
-              <h2>FROM WALLET TO BLOCK</h2>
+              <p className={styles.sectionCode}>EVERYDAY BITCOIN / 03</p>
+              <h2>WHAT CAN PEOPLE DO WITH BITCOIN?</h2>
             </div>
 
             <div className={styles.sectionIntro}>
-              A Bitcoin payment is authorised by a wallet, broadcast to the
-              peer-to-peer network, validated independently and then eligible
-              for inclusion in a mined block.
+              Bitcoin is not only a number on a price chart. People can obtain
+              it, hold it, send it to somebody else, receive it and use it with
+              businesses or services that support Bitcoin.
             </div>
           </div>
 
           <div className={styles.grid4}>
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>01 / SIGN</span>
-              <h3>AUTHORISE</h3>
+              <span className={styles.panelNumber}>01</span>
+              <h3>BUY OR RECEIVE</h3>
               <p>
-                A wallet uses private-key control to digitally sign an
-                authorised transaction.
+                Bitcoin can be bought through supported services or received
+                directly from another person.
               </p>
             </article>
 
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>02 / BROADCAST</span>
-              <h3>PROPAGATE</h3>
+              <span className={styles.panelNumber}>02</span>
+              <h3>OWN</h3>
               <p>
-                The signed transaction is distributed across Bitcoin&apos;s
-                peer-to-peer network.
+                You can hold a fraction of a bitcoin rather than needing to
+                purchase one whole BTC.
               </p>
             </article>
 
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>03 / VALIDATE</span>
-              <h3>CHECK</h3>
+              <span className={styles.panelNumber}>03</span>
+              <h3>SEND &amp; RECEIVE</h3>
               <p>
-                Nodes independently check the transaction against Bitcoin&apos;s
-                consensus rules.
+                Bitcoin can be transferred between compatible Bitcoin wallets
+                over the network.
               </p>
             </article>
 
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>04 / CONFIRM</span>
-              <h3>BLOCK</h3>
+              <span className={styles.panelNumber}>04</span>
+              <h3>USE</h3>
               <p>
-                Mining can include the transaction in a valid block, with later
-                blocks adding further confirmation.
+                Bitcoin can be used with merchants and services that choose to
+                accept or support it.
               </p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section className={`${styles.section} ${styles.development}`}>
+        <div className={styles.sectionInner}>
+          <div className={styles.sectionHeader}>
+            <div>
+              <p className={styles.sectionCode}>WALLETS / 04</p>
+              <h2>WHERE DOES MY BITCOIN GO?</h2>
+            </div>
+
+            <div className={styles.sectionIntro}>
+              A Bitcoin wallet does not contain coins in the same way a
+              physical wallet contains cash. It helps manage the information
+              needed to control and use Bitcoin recorded on the network.
+            </div>
+          </div>
+
+          <div className={styles.grid3}>
+            <article className={styles.panel}>
+              <span className={styles.panelNumber}>SERVICE</span>
+              <h3>A COMPANY CAN HOLD IT</h3>
+              <p>
+                Some services hold Bitcoin on behalf of their customers and
+                manage the keys needed to control it.
+              </p>
+            </article>
+
+            <article className={styles.panel}>
+              <span className={styles.panelNumber}>SELF-CUSTODY</span>
+              <h3>YOU CAN CONTROL IT</h3>
+              <p>
+                A self-custody wallet allows the user to control the keys
+                required to authorise transactions.
+              </p>
+            </article>
+
+            <article className={styles.panel}>
+              <span className={styles.panelNumber}>KEYS</span>
+              <h3>CONTROL MATTERS</h3>
+              <p>
+                Private keys are what allow Bitcoin to be spent. Protecting
+                them is therefore fundamental to self-custody.
+              </p>
+            </article>
+          </div>
+
+          <div className={styles.heroActions}>
+            <Link href="/bitcoin/wallets">
+              UNDERSTAND WALLETS &amp; USE →
+            </Link>
           </div>
         </div>
       </section>
@@ -334,46 +404,52 @@ export default function BitcoinPage() {
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
             <div>
-              <p className={styles.sectionCode}>BITCOIN PATH / 04</p>
-              <h2>GO DEEPER</h2>
+              <p className={styles.sectionCode}>THE NETWORK / 05</p>
+              <h2>HOW DOES A BITCOIN PAYMENT MOVE?</h2>
             </div>
 
             <div className={styles.sectionIntro}>
-              The Bitcoin area is being split into focused technical paths
-              rather than forcing every subject into one long beginner page.
+              You do not need to understand every technical detail to use
+              Bitcoin. At a high level, a payment moves through four simple
+              stages.
             </div>
           </div>
 
-          <div className={styles.grid2}>
+          <div className={styles.grid4}>
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>BTC / GBP</span>
-              <h3>POUNDS. BITCOIN. SATOSHIS.</h3>
+              <span className={styles.panelNumber}>01 / CREATE</span>
+              <h3>AUTHORISE</h3>
               <p>
-                Use the working development calculator to translate between
-                British Sterling, bitcoin and satoshis using a manual reference
-                rate.
+                A wallet creates and digitally signs a transaction telling the
+                network where Bitcoin should be sent.
               </p>
-              <Link href="/bitcoin/gbp">ENTER BTC / GBP →</Link>
             </article>
 
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>WALLETS / USE</span>
-              <h3>KEYS. CUSTODY. TRANSACTIONS.</h3>
+              <span className={styles.panelNumber}>02 / SHARE</span>
+              <h3>BROADCAST</h3>
               <p>
-                Understand what wallets actually control, the difference
-                between custody and self-custody, and how Bitcoin is used.
+                The transaction is shared with computers participating in the
+                Bitcoin network.
               </p>
-              <Link href="/bitcoin/wallets">ENTER WALLETS &amp; USE →</Link>
             </article>
 
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>MINING</span>
-              <h3>COMPUTE. POWER. PROOF OF WORK.</h3>
+              <span className={styles.panelNumber}>03 / CHECK</span>
+              <h3>VERIFY</h3>
               <p>
-                Understand what Bitcoin miners actually do and the physical
-                infrastructure behind the network.
+                Network participants independently check that the transaction
+                follows Bitcoin&apos;s rules.
               </p>
-              <Link href="/bitcoin/mining">ENTER BITCOIN MINING →</Link>
+            </article>
+
+            <article className={styles.panel}>
+              <span className={styles.panelNumber}>04 / RECORD</span>
+              <h3>CONFIRM</h3>
+              <p>
+                Valid transactions can be included in a mined block and become
+                part of the blockchain.
+              </p>
             </article>
           </div>
         </div>
@@ -383,43 +459,43 @@ export default function BitcoinPage() {
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
             <div>
-              <p className={styles.sectionCode}>FIELD EXPERIENCE / 2018</p>
-              <h2>MINING WAS PHYSICAL</h2>
+              <p className={styles.sectionCode}>
+                REAL EXPERIENCE / PLAIN ENGLISH
+              </p>
+              <h2>EXPLAINED FROM PRACTICAL EXPERIENCE</h2>
             </div>
 
             <div className={styles.sectionIntro}>
-              In 2018 I was part of a four-student Bitcoin mining team at Perth
-              College UHI and acted as data centre manager. Our installation
-              operated ten Bitmain Antminer S9 units and participated in a
-              wider 30-machine mining pool.
+              Neil Hamson owns and uses Bitcoin and has previous hands-on
+              experience operating Bitcoin mining hardware. That practical experience informs this guide and Neil Hamson's support for wider voluntary Bitcoin adoption in the United Kingdom.
             </div>
           </div>
 
           <div className={styles.grid3}>
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>HARDWARE</span>
+              <span className={styles.panelNumber}>OWNER</span>
+              <h3>OWNS &amp; USES BITCOIN</h3>
+              <p>
+                The explanations here are informed by practical experience
+                owning and using Bitcoin.
+              </p>
+            </article>
+
+            <article className={styles.panel}>
+              <span className={styles.panelNumber}>MINING</span>
               <h3>10 × ANTMINER S9</h3>
               <p>
-                Dedicated ASIC hardware running continuously as part of the
-                mining installation.
+                Neil Hamson previously worked as data centre manager within a
+                student Bitcoin mining operation using ten Antminer S9 units.
               </p>
             </article>
 
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>ROLE</span>
-              <h3>DATA CENTRE MANAGER</h3>
+              <span className={styles.panelNumber}>SOFTWARE</span>
+              <h3>UK BITCOIN TOOLS</h3>
               <p>
-                Technical operation, configuration and maintenance formed part
-                of the day-to-day work.
-              </p>
-            </article>
-
-            <article className={styles.panel}>
-              <span className={styles.panelNumber}>REALITY</span>
-              <h3>HEAT / NOISE / POWER</h3>
-              <p>
-                Mining meant electricity, cooling, networking, noise and
-                physical hardware — not an abstract cloud process.
+                hamson.tech is developing software intended to make Bitcoin
+                easier to understand in British pounds.
               </p>
             </article>
           </div>
@@ -430,44 +506,50 @@ export default function BitcoinPage() {
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
             <div>
-              <p className={styles.sectionCode}>DIRECTION / 2026 →</p>
-              <h2>BUILD IT IN PUBLIC</h2>
+              <p className={styles.sectionCode}>CHOOSE YOUR ROUTE / 07</p>
+              <h2>GO DEEPER WHEN YOU ARE READY</h2>
             </div>
 
             <div className={styles.sectionIntro}>
-              Bitcoin is becoming a larger technical area within hamson.tech.
-              The site will evolve alongside the BTC/GBP system, wallet work and
-              future return to mining rather than presenting unfinished ideas
-              as completed products.
+              You do not need to learn everything at once. Choose the part of
+              Bitcoin that answers your next question.
             </div>
           </div>
 
           <div className={styles.grid3}>
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>NOW</span>
-              <h3>UK BITCOIN</h3>
+              <span className={styles.panelNumber}>BTC / GBP</span>
+              <h3>BITCOIN IN POUNDS</h3>
               <p>
-                Build a clear British entry point using pounds, bitcoin and
-                satoshis.
+                See how British pounds relate to bitcoin and satoshis using the
+                working conversion system.
               </p>
+
+              <Link href="/bitcoin/gbp">OPEN BTC / GBP →</Link>
             </article>
 
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>NEXT</span>
-              <h3>BTC / GBP ENGINE</h3>
+              <span className={styles.panelNumber}>WALLETS</span>
+              <h3>WALLETS &amp; USE</h3>
               <p>
-                Build the market-data pipeline, reference methodology and
-                interactive conversion software.
+                Understand keys, custody, self-custody and what happens when
+                Bitcoin is sent or received.
               </p>
+
+              <Link href="/bitcoin/wallets">
+                OPEN WALLETS &amp; USE →
+              </Link>
             </article>
 
             <article className={styles.panel}>
-              <span className={styles.panelNumber}>FUTURE</span>
-              <h3>WALLET + MINING</h3>
+              <span className={styles.panelNumber}>MINING</span>
+              <h3>BITCOIN MINING</h3>
               <p>
-                Move from educational material into original Bitcoin software
-                and physical mining infrastructure.
+                Understand the computing hardware, power and proof-of-work
+                process behind Bitcoin mining.
               </p>
+
+              <Link href="/bitcoin/mining">OPEN MINING →</Link>
             </article>
           </div>
         </div>
@@ -475,12 +557,10 @@ export default function BitcoinPage() {
 
       <section className={styles.disclaimer}>
         <div className={styles.disclaimerInner}>
-          <span className={styles.disclaimerCode}>SYSTEM / NOTICE</span>
+          <span className={styles.disclaimerCode}>BITCOIN / POSITION</span>
+
           <p>
-            hamson.tech does not sell Bitcoin, take orders or hold customer
-            Bitcoin. BTC/GBP figures presented here are intended for technical
-            and educational use and do not represent an executable purchase
-            price.
+            hamson.tech does not sell Bitcoin, take Bitcoin orders or hold customer Bitcoin. Neil Hamson owns and uses Bitcoin, accepts Bitcoin for eligible software and development services, and supports wider voluntary adoption of Bitcoin in the United Kingdom, including its use as a means of payment alongside sterling. Bitcoin prices can rise or fall substantially.
           </p>
         </div>
       </section>

@@ -39,7 +39,7 @@ function formatSatoshis(value: number) {
 
 export default function BtcGbpCalculator() {
   const [referenceRate, setReferenceRate] = useState("");
-  const [sterlingAmount, setSterlingAmount] = useState("100");
+  const [sterlingAmount, setSterlingAmount] = useState("50");
   const [bitcoinAmount, setBitcoinAmount] = useState("0.001");
 
   const rate = toNumber(referenceRate);
