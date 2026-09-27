@@ -35,21 +35,12 @@ function Header() {
             MI1
           </Link>
 
-          <details className="nav-dropdown">
-            <summary>BITCOIN</summary>
-
-            <div className="nav-dropdown-menu">
-              <Link href="/bitcoin">OVERVIEW</Link>
-              <Link href="/bitcoin/gbp">BTC / GBP</Link>
-              <Link href="/bitcoin/fractions-satoshis">FRACTIONS &amp; SATOSHIS</Link>
-              <Link href="/bitcoin/wallets">WALLETS &amp; USE</Link>
-              <Link href="/bitcoin/mining">MINING</Link>
-            </div>
-          </details>
+          <Link href="/bitcoin">BITCOIN</Link>
 
           <Link href="/services">SERVICES</Link>
           <Link href="/about-us">ABOUT</Link>
           <Link href="/articles">ARTICLES</Link>
+          <Link href="/contact-us">CONTACT</Link>
         </nav>
 
         <details className="mobile-navigation">
