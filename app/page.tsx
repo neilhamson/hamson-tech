@@ -33,6 +33,7 @@ export default function Home() {
               <div className="nav-dropdown-menu">
                 <Link href="/bitcoin">OVERVIEW</Link>
                 <Link href="/bitcoin/gbp">BTC / GBP</Link>
+                <Link href="/bitcoin/fractions-satoshis">FRACTIONS &amp; SATOSHIS</Link>
                 <Link href="/bitcoin/wallets">WALLETS &amp; USE</Link>
                 <Link href="/bitcoin/mining">MINING</Link>
               </div>

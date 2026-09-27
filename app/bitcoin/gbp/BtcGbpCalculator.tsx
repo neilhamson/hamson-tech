@@ -1,11 +1,18 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import styles from "./gbp.module.css";
 
 const SATOSHIS_PER_BTC = 100_000_000;
 const MARKET_REFRESH_MS = 180_000;
+
+const CURRENCY = {
+  code: "GBP",
+  symbol: "£",
+  locale: "en-GB",
+  name: "pounds",
+} as const;
 
 type MarketState = "loading" | "live" | "stale" | "error";
 
@@ -24,45 +31,77 @@ function toNumber(value: string) {
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
+function formatBitcoinInput(value: number) {
+  if (!Number.isFinite(value) || value <= 0) {
+    return "";
+  }
+
+  return value
+    .toFixed(8)
+    .replace(/0+$/, "")
+    .replace(/\.$/, "");
+}
+
+function formatSterlingInput(value: number) {
+  if (!Number.isFinite(value) || value <= 0) {
+    return "";
+  }
+
+  return value.toFixed(2);
+}
+
 function formatBitcoin(value: number) {
-  if (!Number.isFinite(value) || value <= 0) return "—";
+  if (!Number.isFinite(value) || value <= 0) {
+    return "—";
+  }
 
   return value.toLocaleString("en-GB", {
-    minimumFractionDigits: 8,
+    minimumFractionDigits: 0,
     maximumFractionDigits: 8,
   });
 }
 
 function formatSterling(value: number) {
-  if (!Number.isFinite(value) || value <= 0) return "—";
+  if (!Number.isFinite(value) || value <= 0) {
+    return "—";
+  }
 
-  return new Intl.NumberFormat("en-GB", {
+  return new Intl.NumberFormat(CURRENCY.locale, {
     style: "currency",
-    currency: "GBP",
+    currency: CURRENCY.code,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(value);
 }
 
 function formatSatoshis(value: number) {
-  if (!Number.isFinite(value) || value <= 0) return "—";
+  if (!Number.isFinite(value) || value <= 0) {
+    return "—";
+  }
 
   return Math.round(value).toLocaleString("en-GB");
 }
 
 function formatPercent(value: number | null) {
-  if (value === null || !Number.isFinite(value)) return "—";
+  if (value === null || !Number.isFinite(value)) {
+    return "—";
+  }
 
   const prefix = value > 0 ? "+" : "";
+
   return `${prefix}${value.toFixed(2)}%`;
 }
 
 function formatMarketTime(value: string | null) {
-  if (!value) return "—";
+  if (!value) {
+    return "—";
+  }
 
   const date = new Date(value);
 
-  if (Number.isNaN(date.getTime())) return "—";
+  if (Number.isNaN(date.getTime())) {
+    return "—";
+  }
 
   return new Intl.DateTimeFormat("en-GB", {
     day: "2-digit",
@@ -77,9 +116,13 @@ function formatMarketTime(value: string | null) {
 }
 
 export default function BtcGbpCalculator() {
-  const [referenceRate, setReferenceRate] = useState("");
-  const [sterlingAmount, setSterlingAmount] = useState("50");
-  const [bitcoinAmount, setBitcoinAmount] = useState("0.001");
+  const [referenceRate, setReferenceRate] = useState(0);
+
+  const [sterlingAmount, setSterlingAmount] =
+    useState("50");
+
+  const [bitcoinAmount, setBitcoinAmount] =
+    useState("");
 
   const [marketState, setMarketState] =
     useState<MarketState>("loading");
@@ -90,21 +133,22 @@ export default function BtcGbpCalculator() {
   const [lastUpdated, setLastUpdated] =
     useState<string | null>(null);
 
-  const [rateSource, setRateSource] =
-    useState("CoinMarketCap");
-
   const hasValidRate = useRef(false);
+  const lastEdited = useRef<"gbp" | "btc">("gbp");
 
   useEffect(() => {
     const controller = new AbortController();
 
     async function loadMarketData() {
       try {
-        const response = await fetch("/api/bitcoin/price", {
-          method: "GET",
-          cache: "no-store",
-          signal: controller.signal,
-        });
+        const response = await fetch(
+          "/api/bitcoin/price",
+          {
+            method: "GET",
+            cache: "no-store",
+            signal: controller.signal,
+          },
+        );
 
         if (!response.ok) {
           throw new Error(
@@ -125,7 +169,7 @@ export default function BtcGbpCalculator() {
           );
         }
 
-        setReferenceRate(String(payload.price));
+        setReferenceRate(payload.price);
 
         setPercentChange24h(
           typeof payload.percentChange24h === "number"
@@ -137,13 +181,6 @@ export default function BtcGbpCalculator() {
           typeof payload.lastUpdated === "string"
             ? payload.lastUpdated
             : null,
-        );
-
-        setRateSource(
-          typeof payload.source === "string" &&
-            payload.source.trim().length > 0
-            ? payload.source
-            : "CoinMarketCap",
         );
 
         hasValidRate.current = true;
@@ -176,33 +213,83 @@ export default function BtcGbpCalculator() {
     };
   }, []);
 
-  const rate = toNumber(referenceRate);
+  useEffect(() => {
+    if (referenceRate <= 0) {
+      return;
+    }
+
+    if (lastEdited.current === "gbp") {
+      const pounds = toNumber(sterlingAmount);
+
+      setBitcoinAmount(
+        pounds > 0
+          ? formatBitcoinInput(
+              pounds / referenceRate,
+            )
+          : "",
+      );
+
+      return;
+    }
+
+    const bitcoin = toNumber(bitcoinAmount);
+
+    setSterlingAmount(
+      bitcoin > 0
+        ? formatSterlingInput(
+            bitcoin * referenceRate,
+          )
+        : "",
+    );
+  }, [referenceRate]);
+
+  function handleSterlingChange(value: string) {
+    lastEdited.current = "gbp";
+
+    setSterlingAmount(value);
+
+    if (referenceRate <= 0) {
+      return;
+    }
+
+    const pounds = toNumber(value);
+
+    setBitcoinAmount(
+      pounds > 0
+        ? formatBitcoinInput(
+            pounds / referenceRate,
+          )
+        : "",
+    );
+  }
+
+  function handleBitcoinChange(value: string) {
+    lastEdited.current = "btc";
+
+    setBitcoinAmount(value);
+
+    if (referenceRate <= 0) {
+      return;
+    }
+
+    const bitcoin = toNumber(value);
+
+    setSterlingAmount(
+      bitcoin > 0
+        ? formatSterlingInput(
+            bitcoin * referenceRate,
+          )
+        : "",
+    );
+  }
+
   const pounds = toNumber(sterlingAmount);
   const bitcoin = toNumber(bitcoinAmount);
 
-  const sterlingToBitcoin = useMemo(() => {
-    if (rate <= 0 || pounds <= 0) {
-      return {
-        btc: 0,
-        sats: 0,
-      };
-    }
-
-    const btc = pounds / rate;
-
-    return {
-      btc,
-      sats: btc * SATOSHIS_PER_BTC,
-    };
-  }, [rate, pounds]);
-
-  const bitcoinToSterling = useMemo(() => {
-    if (rate <= 0 || bitcoin <= 0) {
-      return 0;
-    }
-
-    return bitcoin * rate;
-  }, [rate, bitcoin]);
+  const satoshis =
+    bitcoin > 0
+      ? bitcoin * SATOSHIS_PER_BTC
+      : 0;
 
   const marketLabel =
     marketState === "live"
@@ -223,21 +310,30 @@ export default function BtcGbpCalculator() {
           : "CONNECTING";
 
   const displayedRate =
-    rate > 0
-      ? rate.toLocaleString("en-GB", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        })
+    referenceRate > 0
+      ? referenceRate.toLocaleString(
+          CURRENCY.locale,
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          },
+        )
       : "";
+
+  const hasValue =
+    pounds > 0 &&
+    bitcoin > 0 &&
+    satoshis > 0;
 
   return (
     <div className={styles.calculator}>
       <div className={styles.systemHeader}>
         <div>
           <span className={styles.systemCode}>
-            NH / BTC-GBP / LIVE-01
+            HAMSON SOFTWARE / BTC-GBP / UK-01
           </span>
-          <strong>CONVERSION ENGINE</strong>
+
+          <strong>BITCOIN IN POUNDS</strong>
         </div>
 
         <span className={styles.developmentState}>
@@ -248,133 +344,350 @@ export default function BtcGbpCalculator() {
 
       <div className={styles.rateInput}>
         <label htmlFor="btc-reference-rate">
-          <span>MARKET RATE</span>
-          <strong>GBP PER 1 BTC</strong>
+          <span>LIVE BITCOIN PRICE</span>
+          <strong>1 BITCOIN IN POUNDS</strong>
         </label>
 
         <div className={styles.inputShell}>
-          <span>£</span>
+          <span>{CURRENCY.symbol}</span>
+
           <input
             id="btc-reference-rate"
             type="text"
-            inputMode="decimal"
             value={displayedRate}
             readOnly
-            placeholder="Loading market rate"
-            aria-label="Current Bitcoin price in pounds sterling"
+            placeholder="Loading live price"
+            aria-label="Current Bitcoin price in pounds"
           />
         </div>
 
         <p>
           {marketState === "live" ||
-          marketState === "stale"
-            ? `Market reference supplied by ${rateSource}. Last market update: ${formatMarketTime(
-                lastUpdated,
-              )}.`
-            : marketState === "error"
-              ? "Live Bitcoin market data is currently unavailable."
-              : "Connecting to the Bitcoin market data feed."}
+          marketState === "stale" ? (
+            <>
+              Updated{" "}
+              {formatMarketTime(lastUpdated)}.{" "}
+              <a
+                href="https://coinmarketcap.com/"
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  color: "inherit",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "0.15em",
+                }}
+              >
+                Data provided by CoinMarketCap.com
+              </a>
+              .
+            </>
+          ) : marketState === "error" ? (
+            "The live Bitcoin price is currently unavailable."
+          ) : (
+            "Connecting to the live Bitcoin price."
+          )}
         </p>
       </div>
 
-      <div className={styles.conversionGrid}>
-        <section className={styles.conversionPanel}>
-          <div className={styles.panelHeader}>
-            <span>CHANNEL / 01</span>
-            <strong>GBP → BTC</strong>
-          </div>
+      <div
+        style={{
+          padding: "clamp(28px, 4vw, 56px)",
+          borderTop:
+            "1px solid rgba(255,255,255,0.08)",
+        }}
+      >
+        <div
+          style={{
+            marginBottom: "2rem",
+          }}
+        >
+          <span
+            className={styles.systemCode}
+            style={{
+              display: "block",
+              marginBottom: "0.75rem",
+            }}
+          >
+            YOUR CONVERSION
+          </span>
 
-          <label htmlFor="sterling-amount">
-            STERLING INPUT
-          </label>
+          <strong
+            style={{
+              display: "block",
+              fontSize:
+                "clamp(1.35rem, 2.3vw, 2.15rem)",
+              lineHeight: 1.2,
+            }}
+          >
+            POUNDS ⇄ BITCOIN ⇄ SATOSHIS
+          </strong>
 
-          <div className={styles.inputShell}>
-            <span>£</span>
-            <input
-              id="sterling-amount"
-              type="number"
-              inputMode="decimal"
-              min="0"
-              step="0.01"
-              value={sterlingAmount}
-              onChange={(event) =>
-                setSterlingAmount(event.target.value)
-              }
-            />
-          </div>
+          <p
+            style={{
+              margin: "0.85rem 0 0",
+              maxWidth: "760px",
+              opacity: 0.76,
+              lineHeight: 1.65,
+            }}
+          >
+            Enter pounds or Bitcoin. The other
+            value updates automatically.
+          </p>
+        </div>
 
-          <div className={styles.outputBlock}>
-            <span>BITCOIN OUTPUT</span>
-            <strong>
-              {formatBitcoin(sterlingToBitcoin.btc)} BTC
-            </strong>
-          </div>
+        <div className={styles.conversionGrid}>
+          <section className={styles.conversionPanel}>
+            <div className={styles.panelHeader}>
+              <span>START HERE</span>
+              <strong>POUNDS</strong>
+            </div>
 
-          <div className={styles.outputBlock}>
-            <span>SATOSHI OUTPUT</span>
-            <strong>
-              {formatSatoshis(sterlingToBitcoin.sats)} SATS
-            </strong>
-          </div>
-        </section>
+            <label htmlFor="sterling-amount">
+              HOW MUCH IN POUNDS?
+            </label>
 
-        <section className={styles.conversionPanel}>
-          <div className={styles.panelHeader}>
-            <span>CHANNEL / 02</span>
-            <strong>BTC → GBP</strong>
-          </div>
+            <div className={styles.inputShell}>
+              <span>{CURRENCY.symbol}</span>
 
-          <label htmlFor="bitcoin-amount">
-            BITCOIN INPUT
-          </label>
+              <input
+                id="sterling-amount"
+                type="number"
+                inputMode="decimal"
+                min="0"
+                step="0.01"
+                value={sterlingAmount}
+                onChange={(event) =>
+                  handleSterlingChange(
+                    event.target.value,
+                  )
+                }
+                aria-label="Amount in pounds"
+              />
+            </div>
 
-          <div className={styles.inputShell}>
-            <span>₿</span>
-            <input
-              id="bitcoin-amount"
-              type="number"
-              inputMode="decimal"
-              min="0"
-              step="0.00000001"
-              value={bitcoinAmount}
-              onChange={(event) =>
-                setBitcoinAmount(event.target.value)
-              }
-            />
-          </div>
+            <p
+              style={{
+                margin: "0.9rem 0 0",
+                opacity: 0.7,
+                lineHeight: 1.55,
+              }}
+            >
+              Enter an amount you want to
+              understand, spend, buy or pay.
+            </p>
+          </section>
 
-          <div className={styles.outputBlock}>
-            <span>STERLING OUTPUT</span>
-            <strong>
-              {formatSterling(bitcoinToSterling)}
-            </strong>
-          </div>
+          <section className={styles.conversionPanel}>
+            <div className={styles.panelHeader}>
+              <span>LINKED VALUE</span>
+              <strong>BITCOIN</strong>
+            </div>
 
-          <div className={styles.outputBlock}>
-            <span>SATOSHI VALUE</span>
-            <strong>
-              {formatSatoshis(
-                bitcoin * SATOSHIS_PER_BTC,
-              )}{" "}
-              SATS
-            </strong>
-          </div>
-        </section>
+            <label htmlFor="bitcoin-amount">
+              BITCOIN EQUIVALENT
+            </label>
+
+            <div className={styles.inputShell}>
+              <span>₿</span>
+
+              <input
+                id="bitcoin-amount"
+                type="number"
+                inputMode="decimal"
+                min="0"
+                step="0.00000001"
+                value={bitcoinAmount}
+                onChange={(event) =>
+                  handleBitcoinChange(
+                    event.target.value,
+                  )
+                }
+                aria-label="Amount in Bitcoin"
+              />
+            </div>
+
+            <p
+              style={{
+                margin: "0.9rem 0 0",
+                opacity: 0.7,
+                lineHeight: 1.55,
+              }}
+            >
+              This updates automatically. You can
+              also change the Bitcoin amount and
+              the pounds will update.
+            </p>
+          </section>
+        </div>
+
+        <div
+          style={{
+            marginTop: "2rem",
+            padding:
+              "clamp(28px, 4vw, 48px)",
+            border:
+              "1px solid rgba(255,255,255,0.1)",
+          }}
+        >
+          <span
+            className={styles.systemCode}
+            style={{
+              display: "block",
+              marginBottom: "0.9rem",
+            }}
+          >
+            SAME VALUE
+          </span>
+
+          {hasValue ? (
+            <>
+              <div
+                style={{
+                  fontSize:
+                    "clamp(1.55rem, 3vw, 2.8rem)",
+                  fontWeight: 700,
+                  lineHeight: 1.3,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {formatSterling(pounds)}
+                {"  ≈  "}
+                {formatBitcoin(bitcoin)} BTC
+                {"  ≈  "}
+                {formatSatoshis(satoshis)} SATOSHIS
+              </div>
+
+              <p
+                style={{
+                  margin: "1rem 0 0",
+                  opacity: 0.76,
+                  lineHeight: 1.65,
+                }}
+              >
+                These three figures represent
+                approximately the same value at
+                the current live Bitcoin price.
+              </p>
+            </>
+          ) : (
+            <p
+              style={{
+                margin: 0,
+                opacity: 0.76,
+                lineHeight: 1.65,
+              }}
+            >
+              Enter pounds or Bitcoin to begin.
+            </p>
+          )}
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "1px",
+            marginTop: "1px",
+            background:
+              "rgba(255,255,255,0.08)",
+          }}
+        >
+          <section
+            style={{
+              padding:
+                "clamp(24px, 3vw, 36px)",
+              background: "#05070d",
+            }}
+          >
+            <span
+              className={styles.systemCode}
+              style={{
+                display: "block",
+                marginBottom: "0.8rem",
+              }}
+            >
+              WHAT IS A SATOSHI?
+            </span>
+
+            <p
+              style={{
+                margin: 0,
+                lineHeight: 1.7,
+                opacity: 0.82,
+              }}
+            >
+              A satoshi is a smaller unit of
+              Bitcoin.{" "}
+              <strong>
+                1 Bitcoin = 100,000,000
+                satoshis.
+              </strong>{" "}
+              {hasValue
+                ? `${formatSatoshis(
+                    satoshis,
+                  )} satoshis is the same Bitcoin amount as ${formatBitcoin(
+                    bitcoin,
+                  )} BTC.`
+                : ""}
+            </p>
+          </section>
+
+          <section
+            style={{
+              padding:
+                "clamp(24px, 3vw, 36px)",
+              background: "#05070d",
+            }}
+          >
+            <span
+              className={styles.systemCode}
+              style={{
+                display: "block",
+                marginBottom: "0.8rem",
+              }}
+            >
+              BUYING OR PAYING?
+            </span>
+
+            <p
+              style={{
+                margin: 0,
+                lineHeight: 1.7,
+                opacity: 0.82,
+              }}
+            >
+              {hasValue ? (
+                <>
+                  At this market reference,{" "}
+                  <strong>
+                    {formatSterling(pounds)}
+                  </strong>{" "}
+                  is approximately{" "}
+                  <strong>
+                    {formatBitcoin(bitcoin)} BTC
+                  </strong>
+                  . Buying services may add fees
+                  or spread. Wallets and payment
+                  services may also apply fees.
+                </>
+              ) : (
+                "Enter an amount above to see its approximate Bitcoin equivalent."
+              )}
+            </p>
+          </section>
+        </div>
       </div>
 
       <div className={styles.engineFooter}>
         <span>
-          RATE SOURCE{" "}
-          <strong>
-            {marketState === "live" ||
-            marketState === "stale"
-              ? rateSource.toUpperCase()
-              : "WAITING"}
-          </strong>
+          SYSTEM{" "}
+          <strong>HAMSON SOFTWARE</strong>
         </span>
 
         <span>
-          MARKET FEED <strong>{feedLabel}</strong>
+          MARKET FEED{" "}
+          <strong>{feedLabel}</strong>
         </span>
 
         <span>
@@ -385,7 +698,8 @@ export default function BtcGbpCalculator() {
         </span>
 
         <span>
-          CALCULATION <strong>LOCAL</strong>
+          CALCULATION{" "}
+          <strong>LINKED</strong>
         </span>
       </div>
     </div>
