@@ -1,10 +1,23 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import styles from "./gbp.module.css";
 
 const SATOSHIS_PER_BTC = 100_000_000;
+const MARKET_REFRESH_MS = 180_000;
+
+type MarketState = "loading" | "live" | "stale" | "error";
+
+type BitcoinPriceResponse = {
+  symbol?: string;
+  currency?: string;
+  price?: number;
+  percentChange24h?: number | null;
+  lastUpdated?: string | null;
+  source?: string;
+  error?: string;
+};
 
 function toNumber(value: string) {
   const parsed = Number(value.replace(/,/g, ""));
@@ -37,10 +50,131 @@ function formatSatoshis(value: number) {
   return Math.round(value).toLocaleString("en-GB");
 }
 
+function formatPercent(value: number | null) {
+  if (value === null || !Number.isFinite(value)) return "—";
+
+  const prefix = value > 0 ? "+" : "";
+  return `${prefix}${value.toFixed(2)}%`;
+}
+
+function formatMarketTime(value: string | null) {
+  if (!value) return "—";
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) return "—";
+
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    timeZone: "Europe/London",
+    timeZoneName: "short",
+  }).format(date);
+}
+
 export default function BtcGbpCalculator() {
   const [referenceRate, setReferenceRate] = useState("");
   const [sterlingAmount, setSterlingAmount] = useState("50");
   const [bitcoinAmount, setBitcoinAmount] = useState("0.001");
+
+  const [marketState, setMarketState] =
+    useState<MarketState>("loading");
+
+  const [percentChange24h, setPercentChange24h] =
+    useState<number | null>(null);
+
+  const [lastUpdated, setLastUpdated] =
+    useState<string | null>(null);
+
+  const [rateSource, setRateSource] =
+    useState("CoinMarketCap");
+
+  const hasValidRate = useRef(false);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadMarketData() {
+      try {
+        const response = await fetch("/api/bitcoin/price", {
+          method: "GET",
+          cache: "no-store",
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            `Bitcoin price request failed with status ${response.status}.`,
+          );
+        }
+
+        const payload =
+          (await response.json()) as BitcoinPriceResponse;
+
+        if (
+          typeof payload.price !== "number" ||
+          !Number.isFinite(payload.price) ||
+          payload.price <= 0
+        ) {
+          throw new Error(
+            "Bitcoin price response did not contain a valid GBP price.",
+          );
+        }
+
+        setReferenceRate(String(payload.price));
+
+        setPercentChange24h(
+          typeof payload.percentChange24h === "number"
+            ? payload.percentChange24h
+            : null,
+        );
+
+        setLastUpdated(
+          typeof payload.lastUpdated === "string"
+            ? payload.lastUpdated
+            : null,
+        );
+
+        setRateSource(
+          typeof payload.source === "string" &&
+            payload.source.trim().length > 0
+            ? payload.source
+            : "CoinMarketCap",
+        );
+
+        hasValidRate.current = true;
+        setMarketState("live");
+      } catch (error) {
+        if (controller.signal.aborted) {
+          return;
+        }
+
+        console.error(
+          "Bitcoin market data request failed:",
+          error,
+        );
+
+        setMarketState(
+          hasValidRate.current ? "stale" : "error",
+        );
+      }
+    }
+
+    void loadMarketData();
+
+    const refreshTimer = window.setInterval(() => {
+      void loadMarketData();
+    }, MARKET_REFRESH_MS);
+
+    return () => {
+      controller.abort();
+      window.clearInterval(refreshTimer);
+    };
+  }, []);
 
   const rate = toNumber(referenceRate);
   const pounds = toNumber(sterlingAmount);
@@ -70,23 +204,51 @@ export default function BtcGbpCalculator() {
     return bitcoin * rate;
   }, [rate, bitcoin]);
 
+  const marketLabel =
+    marketState === "live"
+      ? "LIVE MARKET DATA"
+      : marketState === "stale"
+        ? "LAST VALID MARKET RATE"
+        : marketState === "error"
+          ? "MARKET DATA UNAVAILABLE"
+          : "CONNECTING MARKET FEED";
+
+  const feedLabel =
+    marketState === "live"
+      ? "CONNECTED"
+      : marketState === "stale"
+        ? "STALE"
+        : marketState === "error"
+          ? "UNAVAILABLE"
+          : "CONNECTING";
+
+  const displayedRate =
+    rate > 0
+      ? rate.toLocaleString("en-GB", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })
+      : "";
+
   return (
     <div className={styles.calculator}>
       <div className={styles.systemHeader}>
         <div>
-          <span className={styles.systemCode}>NH / BTC-GBP / DEV-01</span>
+          <span className={styles.systemCode}>
+            NH / BTC-GBP / LIVE-01
+          </span>
           <strong>CONVERSION ENGINE</strong>
         </div>
 
         <span className={styles.developmentState}>
           <span />
-          MANUAL TEST MODE
+          {marketLabel}
         </span>
       </div>
 
       <div className={styles.rateInput}>
         <label htmlFor="btc-reference-rate">
-          <span>REFERENCE RATE</span>
+          <span>MARKET RATE</span>
           <strong>GBP PER 1 BTC</strong>
         </label>
 
@@ -94,19 +256,24 @@ export default function BtcGbpCalculator() {
           <span>£</span>
           <input
             id="btc-reference-rate"
-            type="number"
+            type="text"
             inputMode="decimal"
-            min="0"
-            step="0.01"
-            placeholder="Enter test rate"
-            value={referenceRate}
-            onChange={(event) => setReferenceRate(event.target.value)}
+            value={displayedRate}
+            readOnly
+            placeholder="Loading market rate"
+            aria-label="Current Bitcoin price in pounds sterling"
           />
         </div>
 
         <p>
-          Manual development input only. This is not a live Bitcoin market
-          price.
+          {marketState === "live" ||
+          marketState === "stale"
+            ? `Market reference supplied by ${rateSource}. Last market update: ${formatMarketTime(
+                lastUpdated,
+              )}.`
+            : marketState === "error"
+              ? "Live Bitcoin market data is currently unavailable."
+              : "Connecting to the Bitcoin market data feed."}
         </p>
       </div>
 
@@ -117,7 +284,9 @@ export default function BtcGbpCalculator() {
             <strong>GBP → BTC</strong>
           </div>
 
-          <label htmlFor="sterling-amount">STERLING INPUT</label>
+          <label htmlFor="sterling-amount">
+            STERLING INPUT
+          </label>
 
           <div className={styles.inputShell}>
             <span>£</span>
@@ -128,18 +297,24 @@ export default function BtcGbpCalculator() {
               min="0"
               step="0.01"
               value={sterlingAmount}
-              onChange={(event) => setSterlingAmount(event.target.value)}
+              onChange={(event) =>
+                setSterlingAmount(event.target.value)
+              }
             />
           </div>
 
           <div className={styles.outputBlock}>
             <span>BITCOIN OUTPUT</span>
-            <strong>{formatBitcoin(sterlingToBitcoin.btc)} BTC</strong>
+            <strong>
+              {formatBitcoin(sterlingToBitcoin.btc)} BTC
+            </strong>
           </div>
 
           <div className={styles.outputBlock}>
             <span>SATOSHI OUTPUT</span>
-            <strong>{formatSatoshis(sterlingToBitcoin.sats)} SATS</strong>
+            <strong>
+              {formatSatoshis(sterlingToBitcoin.sats)} SATS
+            </strong>
           </div>
         </section>
 
@@ -149,7 +324,9 @@ export default function BtcGbpCalculator() {
             <strong>BTC → GBP</strong>
           </div>
 
-          <label htmlFor="bitcoin-amount">BITCOIN INPUT</label>
+          <label htmlFor="bitcoin-amount">
+            BITCOIN INPUT
+          </label>
 
           <div className={styles.inputShell}>
             <span>₿</span>
@@ -160,19 +337,26 @@ export default function BtcGbpCalculator() {
               min="0"
               step="0.00000001"
               value={bitcoinAmount}
-              onChange={(event) => setBitcoinAmount(event.target.value)}
+              onChange={(event) =>
+                setBitcoinAmount(event.target.value)
+              }
             />
           </div>
 
           <div className={styles.outputBlock}>
             <span>STERLING OUTPUT</span>
-            <strong>{formatSterling(bitcoinToSterling)}</strong>
+            <strong>
+              {formatSterling(bitcoinToSterling)}
+            </strong>
           </div>
 
           <div className={styles.outputBlock}>
             <span>SATOSHI VALUE</span>
             <strong>
-              {formatSatoshis(bitcoin * SATOSHIS_PER_BTC)} SATS
+              {formatSatoshis(
+                bitcoin * SATOSHIS_PER_BTC,
+              )}{" "}
+              SATS
             </strong>
           </div>
         </section>
@@ -180,16 +364,28 @@ export default function BtcGbpCalculator() {
 
       <div className={styles.engineFooter}>
         <span>
-          RATE SOURCE <strong>MANUAL</strong>
+          RATE SOURCE{" "}
+          <strong>
+            {marketState === "live" ||
+            marketState === "stale"
+              ? rateSource.toUpperCase()
+              : "WAITING"}
+          </strong>
         </span>
+
         <span>
-          MARKET FEED <strong>DISCONNECTED</strong>
+          MARKET FEED <strong>{feedLabel}</strong>
         </span>
+
+        <span>
+          24H CHANGE{" "}
+          <strong>
+            {formatPercent(percentChange24h)}
+          </strong>
+        </span>
+
         <span>
           CALCULATION <strong>LOCAL</strong>
-        </span>
-        <span>
-          STATUS <strong>DEVELOPMENT</strong>
         </span>
       </div>
     </div>
