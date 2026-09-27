@@ -7,8 +7,8 @@ import bitcoinStyles from "../bitcoin.module.css";
 import styles from "./gbp.module.css";
 
 export const metadata = pageMetadata(
-  "Bitcoin in Pounds — BTC GBP Calculator for the UK",
-  "Understand Bitcoin in British pounds. Convert GBP to Bitcoin and satoshis with a UK-focused Bitcoin system developed by Neil Hamson.",
+  "Live Bitcoin Price in Pounds — BTC GBP Calculator UK",
+  "See a live Bitcoin market reference in British pounds. Convert GBP to Bitcoin and satoshis with a UK-focused Bitcoin calculator developed by Neil Hamson.",
   "/bitcoin/gbp",
 );
 
@@ -47,7 +47,9 @@ function Header() {
             <div className="nav-dropdown-menu">
               <Link href="/bitcoin">OVERVIEW</Link>
               <Link href="/bitcoin/gbp">BTC / GBP</Link>
-              <Link href="/bitcoin/wallets">WALLETS &amp; USE</Link>
+              <Link href="/bitcoin/wallets">
+                WALLETS &amp; USE
+              </Link>
               <Link href="/bitcoin/mining">MINING</Link>
             </div>
           </details>
@@ -86,7 +88,9 @@ function Footer() {
   return (
     <footer className="site-footer">
       <span>© 2026 Neil Hamson</span>
-      <span>Human direction. Machine intelligence. Shared construction.</span>
+      <span>
+        Human direction. Machine intelligence. Shared construction.
+      </span>
       <span>Developed by Dr Neil Hamson</span>
     </footer>
   );
@@ -115,14 +119,14 @@ export default function BitcoinGbpPage() {
               </h1>
 
               <p className={styles.introLead}>
-                Start with money you already understand. Enter pounds, see the
-                Bitcoin and satoshi equivalent, and understand what those
-                numbers actually mean.
+                Start with money you already understand. Enter pounds,
+                see the Bitcoin and satoshi equivalent, and understand
+                what those numbers actually mean.
               </p>
 
               <p className={styles.introPlain}>
-                Built for people who are completely new to Bitcoin as well as
-                those who already own or use it.
+                Built for people who are completely new to Bitcoin as
+                well as those who already own or use it.
               </p>
             </div>
 
@@ -136,20 +140,27 @@ export default function BitcoinGbpPage() {
               </div>
 
               <div className={styles.quickChoices}>
-                <Link href="#calculator" className={styles.quickChoice}>
+                <Link
+                  href="#calculator"
+                  className={styles.quickChoice}
+                >
                   <span className={styles.quickNumber}>01</span>
 
                   <span className={styles.quickCopy}>
                     <strong>TRY THE CALCULATOR</strong>
                     <span>
-                      Put in pounds and see the Bitcoin and satoshi equivalent.
+                      Put in pounds and see the Bitcoin and satoshi
+                      equivalent.
                     </span>
                   </span>
 
                   <span className={styles.quickArrow}>→</span>
                 </Link>
 
-                <Link href="/bitcoin" className={styles.quickChoice}>
+                <Link
+                  href="/bitcoin"
+                  className={styles.quickChoice}
+                >
                   <span className={styles.quickNumber}>02</span>
 
                   <span className={styles.quickCopy}>
@@ -171,8 +182,8 @@ export default function BitcoinGbpPage() {
                   <span className={styles.quickCopy}>
                     <strong>WALLETS &amp; USE</strong>
                     <span>
-                      Learn where Bitcoin is held and how people actually use
-                      it.
+                      Learn where Bitcoin is held and how people
+                      actually use it.
                     </span>
                   </span>
 
@@ -189,16 +200,20 @@ export default function BitcoinGbpPage() {
 
             <p>
               Neil Hamson owns and uses Bitcoin, has previous hands-on
-              experience operating Bitcoin mining hardware, and is developing
-              UK-focused Bitcoin software through hamson.tech. The purpose of
-              this section is to make Bitcoin easier to understand, not to tell
-              visitors whether they should invest.
+              experience operating Bitcoin mining hardware, accepts
+              Bitcoin for eligible software and development services,
+              and supports wider voluntary adoption of Bitcoin in the
+              United Kingdom. This page is designed to make Bitcoin
+              values easier to understand in British pounds.
             </p>
           </div>
         </div>
       </section>
 
-      <section className={bitcoinStyles.section} id="calculator">
+      <section
+        className={bitcoinStyles.section}
+        id="calculator"
+      >
         <div className={bitcoinStyles.sectionInner}>
           <div className={bitcoinStyles.sectionHeader}>
             <div>
@@ -210,9 +225,10 @@ export default function BitcoinGbpPage() {
             </div>
 
             <div className={bitcoinStyles.sectionIntro}>
-              Try the conversion system below. While the live market feed is
-              being developed, the reference rate is entered manually. The
-              conversion mathematics itself is fully working.
+              The calculator uses a live BTC/GBP market reference
+              supplied by CoinMarketCap. Enter an amount in pounds or
+              Bitcoin to see the corresponding BTC, sterling and
+              satoshi values.
             </div>
           </div>
 
@@ -234,36 +250,49 @@ export default function BitcoinGbpPage() {
             </div>
 
             <div className={bitcoinStyles.sectionIntro}>
-              Bitcoin can look difficult when every number is shown in BTC.
-              Starting with pounds makes the relationship much easier to see.
+              Bitcoin can look difficult when every number is shown in
+              BTC. Starting with pounds makes the relationship much
+              easier to see.
             </div>
           </div>
 
           <div className={bitcoinStyles.grid3}>
             <article className={bitcoinStyles.panel}>
-              <span className={bitcoinStyles.panelNumber}>01 / POUNDS</span>
+              <span className={bitcoinStyles.panelNumber}>
+                01 / POUNDS
+              </span>
+
               <h3>START WITH £</h3>
+
               <p>
-                Enter an amount you already understand, such as £10, £50 or
-                £100.
+                Enter an amount you already understand, such as £10,
+                £50 or £100.
               </p>
             </article>
 
             <article className={bitcoinStyles.panel}>
-              <span className={bitcoinStyles.panelNumber}>02 / BITCOIN</span>
+              <span className={bitcoinStyles.panelNumber}>
+                02 / BITCOIN
+              </span>
+
               <h3>SEE THE BTC</h3>
+
               <p>
                 The system shows how much Bitcoin that sterling amount
-                represents at the reference rate.
+                represents at the current market reference rate.
               </p>
             </article>
 
             <article className={bitcoinStyles.panel}>
-              <span className={bitcoinStyles.panelNumber}>03 / SATOSHIS</span>
+              <span className={bitcoinStyles.panelNumber}>
+                03 / SATOSHIS
+              </span>
+
               <h3>SEE THE SATS</h3>
+
               <p>
-                The same amount is also shown in satoshis — the smaller units
-                that make up one bitcoin.
+                The same amount is also shown in satoshis — the
+                smaller units that make up one bitcoin.
               </p>
             </article>
           </div>
@@ -275,45 +304,59 @@ export default function BitcoinGbpPage() {
           <div className={bitcoinStyles.sectionHeader}>
             <div>
               <p className={bitcoinStyles.sectionCode}>
-                DEVELOPMENT / 03
+                MARKET SYSTEM / 03
               </p>
 
-              <h2>THE LIVE RATE COMES NEXT</h2>
+              <h2>LIVE MARKET DATA. LOCAL CALCULATION.</h2>
             </div>
 
             <div className={bitcoinStyles.sectionIntro}>
-              The calculator currently uses a manual reference rate so the
-              conversion engine can be developed and tested independently. A
-              suitable live BTC/GBP market-data source will be connected only
-              after its permitted use has been verified.
+              hamson.tech retrieves the BTC/GBP market reference from
+              CoinMarketCap through a server-side connection. The
+              conversion calculations are then performed locally in
+              the calculator.
             </div>
           </div>
 
           <div className={bitcoinStyles.grid3}>
             <article className={bitcoinStyles.panel}>
-              <span className={bitcoinStyles.panelNumber}>NOW</span>
-              <h3>MANUAL RATE</h3>
-              <p>
-                The visitor supplies the test value for one bitcoin in British
-                pounds.
-              </p>
-            </article>
+              <span className={bitcoinStyles.panelNumber}>
+                MARKET
+              </span>
 
-            <article className={bitcoinStyles.panel}>
-              <span className={bitcoinStyles.panelNumber}>ENGINE</span>
-              <h3>REAL CONVERSION</h3>
-              <p>
-                GBP, BTC and satoshi calculations are performed locally using
-                deterministic arithmetic.
-              </p>
-            </article>
-
-            <article className={bitcoinStyles.panel}>
-              <span className={bitcoinStyles.panelNumber}>NEXT</span>
               <h3>LIVE BTC / GBP</h3>
+
               <p>
-                The manual input will eventually be replaced by a transparent
-                UK-focused reference-rate system.
+                The current Bitcoin market reference is supplied by
+                CoinMarketCap and refreshed periodically by
+                hamson.tech.
+              </p>
+            </article>
+
+            <article className={bitcoinStyles.panel}>
+              <span className={bitcoinStyles.panelNumber}>
+                ENGINE
+              </span>
+
+              <h3>LOCAL CONVERSION</h3>
+
+              <p>
+                GBP, BTC and satoshi calculations are performed in the
+                calculator using deterministic arithmetic.
+              </p>
+            </article>
+
+            <article className={bitcoinStyles.panel}>
+              <span className={bitcoinStyles.panelNumber}>
+                TRANSPARENCY
+              </span>
+
+              <h3>SOURCE &amp; TIME</h3>
+
+              <p>
+                The calculator displays its market-data source, feed
+                status, 24-hour change and the source&apos;s latest
+                market-update time.
               </p>
             </article>
           </div>
@@ -323,13 +366,16 @@ export default function BitcoinGbpPage() {
       <section className={bitcoinStyles.disclaimer}>
         <div className={bitcoinStyles.disclaimerInner}>
           <span className={bitcoinStyles.disclaimerCode}>
-            DEVELOPMENT / NOTICE
+            MARKET DATA / NOTICE
           </span>
 
           <p>
-            The current calculator uses a manually supplied reference rate. It
-            is an educational and software-development tool, not a live market
-            quotation, exchange service or executable Bitcoin purchase price.
+            The BTC/GBP figure shown here is a market reference
+            supplied by CoinMarketCap. It may differ from the price
+            available from an exchange, wallet, payment provider or
+            other service at a particular moment. hamson.tech does not
+            execute Bitcoin purchases or sales through this
+            calculator.
           </p>
         </div>
       </section>
