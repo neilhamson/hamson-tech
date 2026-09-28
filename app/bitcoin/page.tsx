@@ -216,20 +216,27 @@ export default function BitcoinPage() {
             </Link>
           </div>
 
-          <div className={styles.sats}>
+          <div className={styles.consoleRouteGrid}>
             <Link
               href="/bitcoin/wallets"
-              style={{
-                display: "block",
-                color: "inherit",
-                textDecoration: "none",
-              }}
+              className={styles.consoleRoute}
             >
               <span className={styles.readoutLabel}>
                 03 / OWN &amp; USE
               </span>
 
               <strong>WALLETS →</strong>
+            </Link>
+
+            <Link
+              href="/bitcoin/fees"
+              className={styles.consoleRoute}
+            >
+              <span className={styles.readoutLabel}>
+                04 / LIVE NETWORK
+              </span>
+
+              <strong>FEES →</strong>
             </Link>
           </div>
 
@@ -513,7 +520,7 @@ export default function BitcoinPage() {
             </div>
           </div>
 
-          <div className={styles.grid4}>
+          <div className={styles.grid5}>
             <article className={styles.panel}>
               <span className={styles.panelNumber}>
                 BASICS
@@ -566,6 +573,25 @@ export default function BitcoinPage() {
 
               <Link href="/bitcoin/wallets">
                 OPEN WALLETS &amp; USE →
+              </Link>
+            </article>
+
+            <article className={styles.panel}>
+              <span className={styles.panelNumber}>
+                LIVE NETWORK
+              </span>
+
+              <h3>NETWORK FEES</h3>
+
+              <p>
+                See current Bitcoin fee rates,
+                mempool activity and estimate a
+                transaction cost in satoshis and
+                pounds.
+              </p>
+
+              <Link href="/bitcoin/fees">
+                OPEN LIVE FEES →
               </Link>
             </article>
 
