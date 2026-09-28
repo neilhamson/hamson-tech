@@ -35,8 +35,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${siteUrl}/bitcoin/fees`,
+      lastModified: "2026-09-28",
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
+    {
       url: `${siteUrl}/bitcoin/wallets`,
-      lastModified: "2026-09-25",
+      lastModified: "2026-09-28",
       changeFrequency: "monthly",
       priority: 0.7,
     },
@@ -48,21 +54,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteUrl}/services`,
-      lastModified: "2026-09-14",
+      lastModified: "2026-09-28",
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/about-us`,
-      lastModified: "2026-09-14",
+      lastModified: "2026-09-28",
       changeFrequency: "monthly",
       priority: 0.7,
-    },
-    {
-      url: `${siteUrl}/articles`,
-      lastModified: "2026-09-14",
-      changeFrequency: "weekly",
-      priority: 0.8,
     },
     {
       url: `${siteUrl}/contact-us`,
