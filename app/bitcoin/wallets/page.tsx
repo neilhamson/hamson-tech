@@ -241,11 +241,11 @@ export default function BitcoinWalletsPage() {
             </div>
 
             <div className={styles.sectionIntro}>
-              Neil Hamson uses Revolut to buy and hold Bitcoin. Revolut states
-              that it appoints third-party custodians to protect customers&apos;
-              crypto private keys, so customers do not directly hold or access
-              those keys. Supported Bitcoin can also be withdrawn to a
-              compatible external wallet.
+              Neil Hamson uses Revolut to buy and hold Bitcoin. Under Revolut&apos;s
+              UK crypto terms, Revolut holds legal title as nominee while the
+              customer remains the beneficial owner. Customers can instruct
+              Revolut to sell, transfer or withdraw supported cryptoassets, but
+              do not directly control the private keys used for custody.
             </div>
           </div>
 
@@ -258,15 +258,16 @@ export default function BitcoinWalletsPage() {
               <h3>REVOLUT&apos;S CUSTODIANS SAFEGUARD THE KEYS</h3>
 
               <p>
-                While Bitcoin is held through Revolut, appointed third-party
-                custodians protect the private keys associated with the
-                cryptoassets.
+                Revolut holds the legal title to cryptoassets as nominee while
+                the customer remains the beneficial owner. Revolut may appoint
+                sub-custodians as part of its custody arrangements.
               </p>
 
               <p>
-                Neil Hamson can use Revolut to buy, sell and, where supported,
-                withdraw Bitcoin, but does not directly possess the private
-                keys while it remains within that custodial arrangement.
+                Neil Hamson can instruct Revolut to buy, sell, transfer and,
+                where supported, withdraw Bitcoin, but does not directly
+                control the private keys while it remains within that
+                custodial arrangement.
               </p>
             </article>
 
