@@ -55,9 +55,6 @@ function Header() {
             ABOUT
           </Link>
 
-          <Link href="/articles">
-            ARTICLES
-          </Link>
           <Link href="/contact-us">CONTACT</Link>
         </nav>
 
@@ -87,9 +84,6 @@ function Header() {
               ABOUT
             </Link>
 
-            <Link href="/articles">
-              ARTICLES
-            </Link>
 
             <Link href="/contact-us">
               CONTACT

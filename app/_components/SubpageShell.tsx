@@ -13,7 +13,6 @@ const navigation = [
   },
   { href: "/services", label: "SOFTWARE" },
   { href: "/about-us", label: "ABOUT" },
-  { href: "/articles", label: "ARTICLES" },
   { href: "/contact-us", label: "CONTACT" },
 ] as const;
 
@@ -69,7 +68,6 @@ function Header() {
 
           <Link href="/services">SOFTWARE</Link>
           <Link href="/about-us">ABOUT</Link>
-          <Link href="/articles">ARTICLES</Link>
           <Link href="/contact-us">CONTACT</Link>
         </nav>
 
@@ -89,8 +87,7 @@ function Header() {
             <Link href="/bitcoin">BITCOIN</Link>
             <Link href="/services">SOFTWARE</Link>
             <Link href="/about-us">ABOUT</Link>
-            <Link href="/articles">ARTICLES</Link>
-            <Link href="/contact-us">CONTACT</Link>
+              <Link href="/contact-us">CONTACT</Link>
           </nav>
         </details>
       </div>
