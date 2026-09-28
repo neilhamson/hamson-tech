@@ -48,7 +48,7 @@ function Header() {
           <Link href="/bitcoin">BITCOIN</Link>
 
           <Link href="/services">
-            SERVICES
+            SOFTWARE
           </Link>
 
           <Link href="/about-us">
@@ -80,7 +80,7 @@ function Header() {
             </Link>
 
             <Link href="/services">
-              SERVICES
+              SOFTWARE
             </Link>
 
             <Link href="/about-us">

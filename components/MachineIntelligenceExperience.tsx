@@ -4,9 +4,16 @@ import TechnicalInterface from "./TechnicalInterface";
 export default function MachineIntelligenceExperience() {
   return (
     <div className="machine-intelligence-experience">
+      <div className="machine-intelligence-system-index" aria-hidden="true">
+        <span>HS / MI1</span>
+        <span>PRIVATE DEVELOPMENT SYSTEM</span>
+        <span>HUMAN AUTHORITY / ACTIVE</span>
+      </div>
+
       <div className="machine-intelligence-experience-heading">
         <div>
           <p className="eyebrow">MI1 / PRIVATE MACHINE INTELLIGENCE PROTOTYPE</p>
+
           <h1>
             BUILDING
             <br />
@@ -24,20 +31,43 @@ export default function MachineIntelligenceExperience() {
 
           <div className="machine-intelligence-home-actions">
             <a className="machine-intelligence-hire-link" href="/services">
-              SOFTWARE ENGINEERING
+              HAMSON SOFTWARE →
             </a>
-            <a className="brand-button brand-button-secondary" href="/machine-intelligence">
+
+            <a
+              className="brand-button brand-button-secondary"
+              href="/machine-intelligence"
+            >
               EXPLORE MI1
             </a>
           </div>
 
           <div
             className="machine-intelligence-stage-summary"
-            aria-label="Current Machine Intelligence development stage"
+            aria-label="Current Machine Intelligence system state"
           >
-            <span>CURRENT FOCUS</span>
-            <strong>HUMAN-REVIEWED CODE CHANGES</strong>
-            <span>PRIVATE PROTOTYPE · RELIABILITY IN DEVELOPMENT</span>
+            <div>
+              <span>SYSTEM</span>
+              <strong>MI1</strong>
+            </div>
+
+            <div>
+              <span>STATE</span>
+              <strong className="machine-intelligence-stage-active">
+                <i aria-hidden="true" />
+                DEVELOPMENT ACTIVE
+              </strong>
+            </div>
+
+            <div>
+              <span>CURRENT FOCUS</span>
+              <strong>HUMAN-REVIEWED CODE CHANGES</strong>
+            </div>
+
+            <div>
+              <span>AUTHORITY</span>
+              <strong>HUMAN APPROVAL</strong>
+            </div>
           </div>
         </div>
       </div>
@@ -50,28 +80,50 @@ export default function MachineIntelligenceExperience() {
       >
         <div className="machine-intelligence-progression-heading">
           <div>
-            <span className="machine-intelligence-panel-label">BUILD STATUS / MI1</span>
-            <h2 id="machine-intelligence-progression-title">BUILT, TESTED, STILL BEING PROVED.</h2>
+            <span className="machine-intelligence-panel-label">
+              HS / MI1 / BUILD STATUS / 01
+            </span>
+
+            <h2 id="machine-intelligence-progression-title">
+              BUILT, TESTED, STILL BEING PROVED.
+            </h2>
           </div>
 
-          <p>
-            The private prototype includes saved project state, bounded tools
-            and an approval-based development loop. Recovery after an interruption
-            has now been demonstrated, and one complete controlled cycle has been
-            verified; broader repeatability still needs further evidence. The
-            browser-only review sandbox lower on this page illustrates the human
-            review boundary; it is not MI1 itself.
-          </p>
+          <div className="machine-intelligence-section-readout">
+            <div>
+              <span>CONTROLLED CYCLE</span>
+              <strong>VERIFIED</strong>
+            </div>
+
+            <div>
+              <span>REPEATABILITY</span>
+              <strong>IN DEVELOPMENT</strong>
+            </div>
+
+            <p>
+              The private prototype includes saved project state, bounded tools
+              and an approval-based development loop. Recovery after an interruption
+              has now been demonstrated, and one complete controlled cycle has been
+              verified; broader repeatability still needs further evidence. The
+              browser-only review sandbox lower on this page illustrates the human
+              review boundary; it is not MI1 itself.
+            </p>
+          </div>
         </div>
 
-        <a className="brand-button brand-button-secondary machine-intelligence-record-link" href="/machine-intelligence">
+        <a
+          className="brand-button brand-button-secondary machine-intelligence-record-link"
+          href="/machine-intelligence"
+        >
           SEE THE DEVELOPMENT DETAILS
         </a>
       </section>
 
       <div className="machine-intelligence-investor-strip">
         <div>
-          <span className="machine-intelligence-panel-label">A SEPARATE MODEL EXPERIMENT</span>
+          <span className="machine-intelligence-panel-label">
+            MODEL EXPERIMENT / 01 / SEPARATE SYSTEM
+          </span>
 
           <p>
             Local inference with Qwen3-14B has been demonstrated through llama.cpp.
@@ -80,22 +132,44 @@ export default function MachineIntelligenceExperience() {
           </p>
         </div>
 
-        <a className="brand-button brand-button-primary" href="/machine-intelligence">
+        <a
+          className="brand-button brand-button-primary"
+          href="/machine-intelligence"
+        >
           DEVELOPMENT DETAILS
         </a>
       </div>
 
-      <section className="machine-intelligence-review-section" aria-labelledby="public-review-sandbox-title">
+      <section
+        className="machine-intelligence-review-section"
+        aria-labelledby="public-review-sandbox-title"
+      >
         <div className="machine-intelligence-review-heading">
           <div>
-            <span className="machine-intelligence-panel-label">SECONDARY DEMONSTRATION / BROWSER ONLY</span>
+            <span className="machine-intelligence-panel-label">
+              HS / REVIEW BOUNDARY / 02
+            </span>
+
             <h2 id="public-review-sandbox-title">REVIEW THE BOUNDARY.</h2>
           </div>
-          <p>
-            This sandbox remains available as an illustrative browser-only review
-            tool. It can later be upgraded to replay verified MI1 development
-            trajectories without exposing the private MI1 core.
-          </p>
+
+          <div className="machine-intelligence-section-readout">
+            <div>
+              <span>AUTHORITY</span>
+              <strong>HUMAN APPROVAL</strong>
+            </div>
+
+            <div>
+              <span>EXECUTION</span>
+              <strong>BROWSER ONLY</strong>
+            </div>
+
+            <p>
+              This sandbox remains available as an illustrative browser-only review
+              tool. It can later be upgraded to replay verified MI1 development
+              trajectories without exposing the private MI1 core.
+            </p>
+          </div>
         </div>
 
         <div className="machine-intelligence-interaction-grid">
@@ -109,7 +183,9 @@ export default function MachineIntelligenceExperience() {
             aria-label="Machine Intelligence development status"
           >
             <div className="machine-intelligence-status-heading">
-              <span className="machine-intelligence-panel-label">CURRENT SYSTEM STATE</span>
+              <span className="machine-intelligence-panel-label">
+                CURRENT SYSTEM STATE
+              </span>
 
               <span className="machine-intelligence-active-indicator">
                 <span aria-hidden="true" />
@@ -118,11 +194,13 @@ export default function MachineIntelligenceExperience() {
             </div>
 
             <h3>WHY THE REVIEW MATTERS</h3>
+
             <p className="machine-intelligence-status-explainer">
               A code suggestion should be visible before anyone applies it.
               The developer decides whether to approve it; validation then checks
               the changed project. MI1 is being built around that boundary.
             </p>
+
             <ol className="machine-intelligence-status-steps">
               <li><span>01</span> Inspect the task and source</li>
               <li><span>02</span> Prepare a change for review</li>

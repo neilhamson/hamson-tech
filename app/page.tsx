@@ -29,10 +29,9 @@ export default function Home() {
 
             <Link href="/bitcoin">BITCOIN</Link>
 
-            <Link href="/services">SERVICES</Link>
+            <Link href="/services">SOFTWARE</Link>
             <Link href="/about-us">ABOUT</Link>
             <Link href="/articles">ARTICLES</Link>
-            <Link href="/contact-us">CONTACT</Link>
           </nav>
 
           <Link className="header-contact" href="/contact-us">
@@ -53,7 +52,7 @@ export default function Home() {
                 MI1
               </Link>
               <Link href="/bitcoin">BITCOIN</Link>
-              <Link href="/services">SERVICES</Link>
+              <Link href="/services">SOFTWARE</Link>
               <Link href="/about-us">ABOUT</Link>
               <Link href="/articles">ARTICLES</Link>
               <Link href="/contact-us">CONTACT</Link>
@@ -74,21 +73,74 @@ export default function Home() {
         className="closing-statement"
         aria-labelledby="closing-title"
       >
-        <p className="eyebrow">SOFTWARE ENGINEERING / NEIL HAMSON</p>
+        <div className="closing-system-frame">
+          <div className="closing-system-top">
+            <span>HS / SOFTWARE SYSTEM / 03</span>
 
-        <h2 id="closing-title">HAVE SOFTWARE TO BUILD OR IMPROVE?</h2>
+            <span className="closing-system-state">
+              <i aria-hidden="true" />
+              ACTIVE DEVELOPMENT
+            </span>
+          </div>
 
-        <p className="closing-copy">
-          Bring a defined problem, an existing system or an idea to explore.
-          Work begins with a clear scope and a direct conversation.
-        </p>
+          <div className="closing-system-grid">
+            <div className="closing-system-copy">
+              <p className="eyebrow">HAMSON SOFTWARE / NEIL HAMSON</p>
 
-        <Link
-          className="brand-button brand-button-primary"
-          href="/services"
-        >
-          DISCUSS A SOFTWARE PROJECT
-        </Link>
+              <h2 id="closing-title">SOFTWARE BUILT TO BE USED.</h2>
+
+              <p className="closing-copy">
+                Explore live software, Bitcoin tools and the systems Neil Hamson
+                is building through Hamson Software.
+              </p>
+
+              <div className="closing-system-actions">
+                <Link
+                  className="brand-button brand-button-primary"
+                  href="/services"
+                >
+                  EXPLORE HAMSON SOFTWARE
+                </Link>
+
+                <Link
+                  className="brand-button brand-button-secondary"
+                  href="/contact-us"
+                >
+                  COMMERCIAL ENQUIRIES
+                </Link>
+              </div>
+            </div>
+
+            <nav
+              className="closing-route-grid"
+              aria-label="Hamson Software systems"
+            >
+              <Link href="/services">
+                <span>01 / LIVE SOFTWARE</span>
+                <strong>HAMSON SOFTWARE</strong>
+                <small>OPEN →</small>
+              </Link>
+
+              <Link href="/bitcoin">
+                <span>02 / UK BITCOIN</span>
+                <strong>LIVE TOOLS + GUIDES</strong>
+                <small>OPEN →</small>
+              </Link>
+
+              <Link href="/machine-intelligence">
+                <span>03 / MI1</span>
+                <strong>PRIVATE / ACTIVE</strong>
+                <small>VIEW →</small>
+              </Link>
+
+              <Link href="/contact-us">
+                <span>04 / DIRECT CHANNEL</span>
+                <strong>COMMERCIAL CONTACT</strong>
+                <small>OPEN →</small>
+              </Link>
+            </nav>
+          </div>
+        </div>
       </section>
 
       <footer className="site-footer">

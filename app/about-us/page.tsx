@@ -54,7 +54,7 @@ export default function AboutPage() {
     <PageShell
       eyebrow="COMPUTER SCIENTIST / SOFTWARE ENGINEER"
       title="DR NEIL HAMSON"
-      lede={<p>I work on software that must be implemented, tested and integrated into a larger system. My background spans game patch delivery, application maintenance, security fixes and research-led engineering. Today I am developing MI1 and taking enquiries for clearly scoped software projects.</p>}
+      lede={<p>I work on software that must be implemented, tested and integrated into a larger system. My background spans game patch delivery, application maintenance, security fixes and research-led engineering. Today I am developing MI1 and Hamson Software products.</p>}
       compactHero
       accent="blue"
     >
@@ -92,13 +92,13 @@ export default function AboutPage() {
 
       <Section
         label="CURRENT ENGINEERING"
-        title="MI1 AND SOFTWARE PROJECTS"
-        intro={<p>I am developing MI1, a private Machine Intelligence prototype for human-reviewed code changes. Its implementation and remaining verification work are described on the dedicated MI1 page. For other software engineering work, projects start with a defined problem, scope and intended result.</p>}
+        title="MI1 AND HAMSON SOFTWARE"
+        intro={<p>I am developing MI1, a private Machine Intelligence prototype for human-reviewed code changes. Its implementation and remaining verification work are described on the dedicated MI1 page. Alongside MI1, I am building Hamson Software products and public technical systems.</p>}
         narrow
       >
         <Actions>
           <Link className="brand-button brand-button-secondary" href="/machine-intelligence">EXPLORE MI1</Link>
-          <Link className="brand-button brand-button-primary" href="/services">DISCUSS SOFTWARE WORK</Link>
+          <Link className="brand-button brand-button-primary" href="/services">EXPLORE HAMSON SOFTWARE</Link>
         </Actions>
       </Section>
     </PageShell>

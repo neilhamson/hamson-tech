@@ -64,7 +64,7 @@ export default function MachineIntelligencePage() {
       <Section
         label="TECHNICAL ENQUIRIES"
         title="DISCUSS MI1 WITH NEIL HAMSON"
-        intro={<p>MI1 is private and has no public release date. For a technical discussion about the development work or a separately scoped software project, contact Neil directly.</p>}
+        intro={<p>MI1 is private and has no public release date. For a technical discussion about the development work, funding or strategic collaboration, contact Neil directly.</p>}
         narrow
       >
         <Actions><Link className="brand-button brand-button-primary" href="/contact-us">CONTACT NEIL</Link></Actions>
