@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { pageMetadata } from "../_components/SubpageShell";
+import BitcoinPriceChart from "./BitcoinPriceChart";
 import BitcoinLiveStrip from "./BitcoinLiveStrip";
 import styles from "./bitcoin.module.css";
 
@@ -260,6 +261,33 @@ export default function BitcoinPage() {
       </section>
 
       <BitcoinLiveStrip />
+
+      <section
+        className={`${styles.section} ${styles.marketSection}`}
+        id="bitcoin-market"
+      >
+        <div className={styles.sectionInner}>
+          <div className={styles.sectionHeader}>
+            <div>
+              <p className={styles.sectionCode}>
+                LIVE MARKET / 24H
+              </p>
+
+              <h2>SEE BITCOIN MOVE IN POUNDS</h2>
+            </div>
+
+            <div className={styles.sectionIntro}>
+              A live BTC/GBP chart gives the current
+              market price context that a single
+              number cannot. See the last 24 hours,
+              the day&apos;s range and the direction
+              of movement before going deeper.
+            </div>
+          </div>
+
+          <BitcoinPriceChart />
+        </div>
+      </section>
 
       <section
         className={styles.section}

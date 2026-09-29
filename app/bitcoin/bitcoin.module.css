@@ -861,3 +861,496 @@
     transition: none;
   }
 }
+
+/* -------------------------------------------------
+   PHASE 3 / LIVE BTC-GBP MARKET
+------------------------------------------------- */
+
+.marketSection {
+  background:
+    radial-gradient(circle at 82% 24%, rgba(0, 220, 255, 0.055), transparent 30%),
+    linear-gradient(90deg, rgba(23, 92, 255, 0.025), transparent 45%),
+    #02050b;
+}
+
+.marketTerminal {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 220, 255, 0.24);
+  background:
+    linear-gradient(145deg, rgba(23, 92, 255, 0.06), transparent 42%),
+    #030710;
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.34),
+    0 0 48px rgba(0, 220, 255, 0.035);
+}
+
+.marketTerminal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 74px;
+  height: 1px;
+  background: var(--btc-gold);
+}
+
+.marketTopline {
+  min-height: 72px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.marketTopline > div {
+  display: grid;
+  gap: 7px;
+}
+
+.marketTopControls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.marketRangeSelector {
+  display: inline-flex;
+  border: 1px solid rgba(0, 220, 255, 0.18);
+  background: rgba(2, 6, 13, 0.58);
+}
+
+.marketRangeSelector button {
+  min-width: 44px;
+  height: 32px;
+  padding: 0 10px;
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  color: #718096;
+  background: transparent;
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.marketRangeSelector button:last-child {
+  border-right: 0;
+}
+
+.marketRangeSelector button:hover,
+.marketRangeSelector button:focus-visible {
+  color: var(--btc-white);
+  background: rgba(0, 220, 255, 0.06);
+  outline: none;
+}
+
+.marketRangeSelector .marketRangeActive {
+  color: var(--btc-cyan);
+  background: rgba(0, 220, 255, 0.10);
+  box-shadow: inset 0 -1px 0 var(--btc-cyan);
+}
+
+.marketTopline strong {
+  color: var(--btc-white);
+  font-family: "D-DIN", "Arial Narrow", Arial, sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+}
+
+.marketCode {
+  color: var(--btc-cyan);
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.marketStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--btc-gold);
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.marketStatus i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--btc-gold);
+  box-shadow: 0 0 12px rgba(245, 185, 66, 0.8);
+}
+
+.marketStatusError {
+  color: #ff7b7b;
+}
+
+.marketStatusError i {
+  background: #ff7b7b;
+  box-shadow: 0 0 12px rgba(255, 123, 123, 0.8);
+}
+
+.marketSummary {
+  display: grid;
+  grid-template-columns: minmax(290px, 0.72fr) minmax(0, 1.28fr);
+  min-height: 150px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.marketPriceBlock {
+  padding: 27px 28px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.marketPriceBlock > span,
+.marketRangeBlock span {
+  color: #718096;
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.marketPriceBlock > strong {
+  display: block;
+  margin-top: 13px;
+  color: var(--btc-white);
+  font-family: "D-DIN", monospace;
+  font-size: clamp(38px, 4.4vw, 66px);
+  line-height: 0.95;
+}
+
+.marketPriceBlock em {
+  display: block;
+  margin-top: 13px;
+  font-family: monospace;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.marketChangePositive {
+  color: var(--btc-cyan);
+}
+
+.marketChangeNegative {
+  color: var(--btc-gold);
+}
+
+.marketRangeBlock {
+  padding: 27px 28px;
+  display: grid;
+  grid-template-columns: auto minmax(100px, 1fr) auto;
+  align-items: center;
+  gap: 22px;
+}
+
+.marketRangeBlock > div:last-child {
+  text-align: right;
+}
+
+.marketRangeBlock strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--btc-white);
+  font-family: "D-DIN", monospace;
+  font-size: clamp(22px, 2vw, 31px);
+}
+
+.marketRangeTrack {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, var(--btc-gold), var(--btc-cyan));
+}
+
+.marketRangeTrack::before,
+.marketRangeTrack::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.marketRangeTrack::before {
+  left: 0;
+  background: var(--btc-gold);
+}
+
+.marketRangeTrack::after {
+  right: 0;
+  background: var(--btc-cyan);
+  box-shadow: 0 0 10px rgba(0, 220, 255, 0.45);
+}
+
+.marketRangeTrack span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--btc-white);
+  border-radius: 50%;
+  background: #030710;
+  box-shadow: 0 0 16px rgba(0, 220, 255, 0.24);
+  transform: translate(-50%, -50%);
+}
+
+.marketChartShell {
+  position: relative;
+  min-height: 390px;
+  padding: 22px 24px 46px;
+  background-image:
+    linear-gradient(rgba(0, 220, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 220, 255, 0.028) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.marketChart {
+  display: block;
+  width: 100%;
+  height: 320px;
+  overflow: visible;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.marketGridLine {
+  stroke: rgba(255, 255, 255, 0.065);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.marketArea {
+  fill: url(#btc-market-area);
+  stroke: none;
+}
+
+.marketLine {
+  fill: none;
+  stroke: var(--btc-cyan);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px rgba(0, 220, 255, 0.22));
+}
+
+.marketCursorLine {
+  stroke: rgba(245, 185, 66, 0.5);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+}
+
+.marketCursorPoint {
+  fill: var(--btc-gold);
+  stroke: #030710;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 7px rgba(245, 185, 66, 0.7));
+}
+
+.marketTooltip {
+  position: absolute;
+  top: 20px;
+  z-index: 2;
+  min-width: 118px;
+  padding: 9px 11px;
+  border: 1px solid rgba(245, 185, 66, 0.38);
+  background: rgba(2, 6, 13, 0.94);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.marketTooltip strong,
+.marketTooltip span {
+  display: block;
+}
+
+.marketTooltip strong {
+  color: var(--btc-white);
+  font-family: "D-DIN", monospace;
+  font-size: 17px;
+}
+
+.marketTooltip span {
+  margin-top: 5px;
+  color: var(--btc-gold);
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.marketTimeAxis {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 17px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  color: #5e6b80;
+  font-family: monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+.marketTimeAxis span:nth-child(2),
+.marketTimeAxis span:nth-child(3),
+.marketTimeAxis span:nth-child(4) {
+  text-align: center;
+}
+
+.marketTimeAxis span:last-child {
+  text-align: right;
+}
+
+.marketChartEmpty {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  color: #6f7d92;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.marketFooter {
+  min-height: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(210px, auto);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #02050b;
+}
+
+.marketFooter span,
+.marketFooter a {
+  padding: 15px 18px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: monospace;
+  font-size: 8px;
+  letter-spacing: 0.11em;
+}
+
+.marketFooter span {
+  color: #5e6b80;
+}
+
+.marketFooter strong {
+  color: var(--btc-cyan);
+}
+
+.marketFooter a {
+  display: grid;
+  place-items: center;
+  border-right: 0;
+  color: var(--btc-gold);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.marketFooter a:hover,
+.marketFooter a:focus-visible {
+  color: white;
+  background: rgba(0, 220, 255, 0.05);
+  outline: none;
+}
+
+@media (max-width: 900px) {
+  .marketSummary {
+    grid-template-columns: 1fr;
+  }
+
+  .marketPriceBlock {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .marketFooter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .marketFooter a {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+@media (max-width: 600px) {
+  .marketTopline {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .marketTopControls {
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .marketRangeSelector {
+    width: 100%;
+  }
+
+  .marketRangeSelector button {
+    flex: 1;
+  }
+
+  .marketRangeBlock {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .marketRangeBlock > div:last-child {
+    text-align: left;
+  }
+
+  .marketRangeTrack {
+    order: 3;
+  }
+
+  .marketChartShell {
+    min-height: 315px;
+    padding: 14px 12px 42px;
+  }
+
+  .marketChart {
+    height: 250px;
+  }
+
+  .marketTooltip {
+    top: 12px;
+  }
+
+  .marketTimeAxis {
+    left: 12px;
+    right: 12px;
+  }
+
+  .marketFooter {
+    grid-template-columns: 1fr;
+  }
+
+  .marketFooter span,
+  .marketFooter a {
+    border-right: 0;
+  }
+
+  .marketFooter span + span,
+  .marketFooter a {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
