@@ -2211,3 +2211,34 @@
     line-height: 1.45;
   }
 }
+
+/* -------------------------------------------------
+   PHASE 5.2C / DESKTOP LAYOUT CORRECTION
+------------------------------------------------- */
+
+@media (min-width: 701px) {
+  .homeHero {
+    min-height: auto;
+    padding-top: clamp(112px, 8vw, 138px);
+    padding-bottom: clamp(56px, 5vw, 78px);
+    gap: clamp(44px, 5vw, 82px);
+  }
+
+  .homeHeroCopy .kicker {
+    margin-bottom: 24px;
+    white-space: nowrap;
+    font-size: clamp(8px, 0.72vw, 10px);
+    letter-spacing: clamp(0.14em, 0.18vw, 0.22em);
+  }
+
+  .homePrimary {
+    grid-template-columns: minmax(300px, 0.88fr) minmax(0, 1.12fr);
+  }
+
+  .homePrice > strong {
+    max-width: 100%;
+    font-size: clamp(38px, 3vw, 52px);
+    letter-spacing: -0.035em;
+    white-space: nowrap;
+  }
+}
