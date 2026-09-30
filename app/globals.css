@@ -1311,12 +1311,31 @@ button { color: inherit; }
 .site-footer span:nth-child(2) { color: #4bdbff; }
 
 @media (max-width: 1120px) {
+  .site-header {
+    position: fixed;
+    height: 64px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    background: rgba(2, 5, 11, 0.92);
+    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(18px);
+  }
+
+  .header-inner {
+    width: min(1440px, calc(100% - 32px));
+  }
+
+  .brand-lockup {
+    width: min(210px, 58vw);
+    height: 21px;
+  }
+
   .navigation { display: none; }
   .header-contact { display: none; }
 
   .mobile-navigation {
     position: relative;
     display: block;
+    margin-left: auto;
   }
 
   .mobile-navigation > summary {
@@ -1366,6 +1385,10 @@ button { color: inherit; }
   }
 
   .mobile-navigation nav a:last-child { border: 0; color: var(--cyan); }
+
+  [id] {
+    scroll-margin-top: 76px;
+  }
 
   .hero { min-height: 820px; align-items: flex-end; padding-bottom: 120px; }
   .hero-visual { object-position: 64% center; }

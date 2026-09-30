@@ -30,6 +30,7 @@ export default function SiteChatLauncher() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [footerVisible, setFooterVisible] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const [workflowMode, setWorkflowMode] =
     useState<WorkflowMode>("general");
   const [projectState, setProjectState] =
@@ -89,6 +90,17 @@ export default function SiteChatLauncher() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    function handleScroll() {
+      setShowBackToTop(window.scrollY > 720);
+    }
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -636,6 +648,18 @@ export default function SiteChatLauncher() {
             )}
           </div>
         </section>
+      )}
+
+      {showBackToTop && !open && (
+        <button
+          type="button"
+          className={styles.backToTop}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Back to top"
+        >
+          <span aria-hidden="true">↑</span>
+          <strong>TOP</strong>
+        </button>
       )}
 
       <button
