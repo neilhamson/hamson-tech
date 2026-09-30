@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { pageMetadata } from "../_components/SubpageShell";
+import BitcoinNetworkPanel from "./BitcoinNetworkPanel";
 import BitcoinPriceChart from "./BitcoinPriceChart";
 import BitcoinLiveStrip from "./BitcoinLiveStrip";
 import styles from "./bitcoin.module.css";
@@ -286,6 +287,33 @@ export default function BitcoinPage() {
           </div>
 
           <BitcoinPriceChart />
+        </div>
+      </section>
+
+      <section
+        className={`${styles.section} ${styles.networkSection}`}
+        id="bitcoin-network"
+      >
+        <div className={styles.sectionInner}>
+          <div className={styles.sectionHeader}>
+            <div>
+              <p className={styles.sectionCode}>
+                LIVE NETWORK / BLOCKCHAIN
+              </p>
+
+              <h2>SEE THE BITCOIN NETWORK RUN</h2>
+            </div>
+
+            <div className={styles.sectionIntro}>
+              Price is only one part of Bitcoin. This
+              live network view shows the current block
+              height, when the latest block arrived,
+              the block subsidy and progress towards
+              the next halving.
+            </div>
+          </div>
+
+          <BitcoinNetworkPanel />
         </div>
       </section>
 

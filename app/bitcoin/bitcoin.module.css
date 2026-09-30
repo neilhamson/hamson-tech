@@ -1354,3 +1354,40 @@
     border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 }
+
+/* -------------------------------------------------
+   PHASE 4 / LIVE BITCOIN NETWORK
+------------------------------------------------- */
+.networkSection { background: radial-gradient(circle at 18% 30%, rgba(245,185,66,.045), transparent 28%), linear-gradient(90deg, rgba(0,220,255,.02), transparent 48%), #020409; }
+.networkTerminal { position:relative; overflow:hidden; border:1px solid rgba(245,185,66,.24); background:linear-gradient(145deg, rgba(245,185,66,.035), transparent 36%),linear-gradient(315deg, rgba(0,220,255,.035), transparent 44%),#030710; box-shadow:0 28px 80px rgba(0,0,0,.34),0 0 44px rgba(245,185,66,.025); }
+.networkTerminal::before { content:""; position:absolute; top:0; left:0; width:74px; height:1px; background:var(--btc-cyan); }
+.networkTopline { min-height:72px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid rgba(255,255,255,.08); }
+.networkTopline>div { display:grid; gap:7px; }
+.networkTopline strong { color:var(--btc-white); font-family:"D-DIN","Arial Narrow",Arial,sans-serif; font-size:22px; letter-spacing:.03em; }
+.networkCode { color:var(--btc-gold); font-family:monospace; font-size:9px; font-weight:800; letter-spacing:.16em; }
+.networkStatus { display:inline-flex; align-items:center; gap:9px; color:var(--btc-cyan); font-family:monospace; font-size:9px; font-weight:800; letter-spacing:.12em; white-space:nowrap; }
+.networkStatus i { width:7px; height:7px; border-radius:50%; background:var(--btc-cyan); box-shadow:0 0 12px rgba(0,220,255,.8); }
+.networkStatusError { color:#ff7b7b; } .networkStatusError i { background:#ff7b7b; box-shadow:0 0 12px rgba(255,123,123,.8); }
+.networkMetrics { display:grid; grid-template-columns:1.35fr 1fr 1fr; border-bottom:1px solid rgba(255,255,255,.08); }
+.networkMetricPrimary,.networkMetric { min-width:0; padding:30px 28px 28px; }
+.networkMetricPrimary,.networkMetric:not(:last-child) { border-right:1px solid rgba(255,255,255,.08); }
+.networkMetricPrimary>span,.networkMetric>span,.halvingCopy>span { color:#718096; font-family:monospace; font-size:9px; font-weight:700; letter-spacing:.14em; }
+.networkMetricPrimary>strong,.networkMetric>strong { display:block; margin-top:13px; color:var(--btc-white); font-family:"D-DIN",monospace; line-height:.95; }
+.networkMetricPrimary>strong { color:var(--btc-cyan); font-size:clamp(44px,5vw,74px); }
+.networkMetric>strong { font-size:clamp(28px,3vw,42px); }
+.networkMetricPrimary>em,.networkMetric>em,.halvingCopy>em { display:block; margin-top:12px; color:#66758b; font-family:monospace; font-size:9px; font-style:normal; letter-spacing:.08em; }
+.halvingPanel { display:grid; grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr); align-items:center; min-height:174px; }
+.halvingCopy { padding:30px 28px; border-right:1px solid rgba(255,255,255,.08); }
+.halvingCopy>strong { display:block; margin-top:13px; color:var(--btc-gold); font-family:"D-DIN",monospace; font-size:clamp(34px,3.6vw,54px); line-height:.95; }
+.halvingProgress { padding:30px 28px; }
+.halvingProgressLabels,.halvingScale { display:flex; justify-content:space-between; gap:24px; font-family:monospace; font-size:9px; letter-spacing:.11em; }
+.halvingProgressLabels { color:#718096; } .halvingProgressLabels strong { color:var(--btc-white); }
+.halvingTrack { position:relative; height:5px; margin:22px 0 12px; overflow:hidden; background:rgba(255,255,255,.07); }
+.halvingTrack::after { content:""; position:absolute; inset:0; background-image:linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px); background-size:10% 100%; pointer-events:none; }
+.halvingTrack span { display:block; height:100%; background:linear-gradient(90deg,var(--btc-cyan),var(--btc-gold)); box-shadow:0 0 12px rgba(0,220,255,.18); }
+.halvingScale { color:#536176; font-size:8px; }
+.networkFooter { min-height:50px; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid rgba(255,255,255,.08); background:#02050b; }
+.networkFooter span { padding:15px 18px; border-right:1px solid rgba(255,255,255,.06); color:#5e6b80; font-family:monospace; font-size:8px; letter-spacing:.11em; }
+.networkFooter span:last-child { border-right:0; } .networkFooter strong { color:var(--btc-cyan); }
+@media (max-width:900px) { .networkMetrics{grid-template-columns:1fr}.networkMetricPrimary,.networkMetric:not(:last-child){border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}.halvingPanel{grid-template-columns:1fr}.halvingCopy{border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}.networkFooter{grid-template-columns:repeat(2,minmax(0,1fr))}.networkFooter span:nth-child(2){border-right:0}.networkFooter span:nth-child(n+3){border-top:1px solid rgba(255,255,255,.06)} }
+@media (max-width:600px) { .networkTopline{align-items:flex-start;flex-direction:column}.halvingProgressLabels,.halvingScale{align-items:flex-start;flex-direction:column;gap:8px}.networkFooter{grid-template-columns:1fr}.networkFooter span{border-right:0}.networkFooter span+span{border-top:1px solid rgba(255,255,255,.06)} }
