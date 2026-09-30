@@ -14,7 +14,7 @@ export default function Home() {
           <Link
             className="brand-lockup"
             href="/"
-            aria-label="Neil Hamson home"
+            aria-label="Hamson Software home"
           >
             <BrandReveal />
           </Link>
@@ -34,7 +34,8 @@ export default function Home() {
             </nav>
 
           <Link className="header-contact" href="/contact-us">
-            CONTACT
+            <span>CONTACT</span>
+            <small aria-hidden="true">↗</small>
           </Link>
 
           <details className="mobile-navigation">
@@ -83,13 +84,13 @@ export default function Home() {
 
           <div className="closing-system-grid">
             <div className="closing-system-copy">
-              <p className="eyebrow">HAMSON SOFTWARE / NEIL HAMSON</p>
+              <p className="eyebrow">HAMSON SOFTWARE / ACTIVE SYSTEMS</p>
 
               <h2 id="closing-title">SOFTWARE BUILT TO BE USED.</h2>
 
               <p className="closing-copy">
-                Explore live software, Bitcoin tools and the systems Neil Hamson
-                is building through Hamson Software.
+                Explore active Hamson Software products, Hamson Bitcoin and
+                Machine Intelligence systems under continuing development.
               </p>
 
               <div className="closing-system-actions">
@@ -120,8 +121,8 @@ export default function Home() {
               </Link>
 
               <Link href="/bitcoin">
-                <span>02 / UK BITCOIN</span>
-                <strong>LIVE TOOLS + GUIDES</strong>
+                <span>02 / HAMSON BITCOIN</span>
+                <strong>BITCOIN PLATFORM</strong>
                 <small>OPEN →</small>
               </Link>
 
@@ -142,7 +143,7 @@ export default function Home() {
       </section>
 
       <footer className="site-footer">
-        <span>© 2026 Neil Hamson</span>
+        <span>© 2026 Hamson Software</span>
         <span>Human direction. Machine intelligence. Shared construction.</span>
         <span>Developed by Dr Neil Hamson</span>
       </footer>
