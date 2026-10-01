@@ -23,6 +23,14 @@ type NetworkResponse = {
   halvingProgressPercent?: number;
 };
 
+type BuySessionResponse = {
+  ok?: boolean;
+  widgetUrl?: string;
+  stage?: string;
+  error?: string;
+  status?: number;
+};
+
 const REFRESH_MS = 60_000;
 
 function sterling(value: number | null) {
@@ -138,9 +146,11 @@ export default function BitcoinHomeDashboard() {
   const [gbpAmount, setGbpAmount] =
     useState("100");
 
-
   const [checkoutMessage, setCheckoutMessage] =
     useState("");
+
+  const [checkoutPending, setCheckoutPending] =
+    useState(false);
 
   useEffect(() => {
     let active = true;
@@ -336,8 +346,8 @@ export default function BitcoinHomeDashboard() {
   const canContinue =
     pounds > 0 &&
     estimatedBtc !== null &&
-    marketAvailable;
-
+    marketAvailable &&
+    !checkoutPending;
 
   function openBuy() {
     setCheckoutMessage("");
@@ -353,6 +363,10 @@ export default function BitcoinHomeDashboard() {
   }
 
   function closeBuy() {
+    if (checkoutPending) {
+      return;
+    }
+
     setBuyOpen(false);
     setCheckoutMessage("");
 
@@ -366,10 +380,80 @@ export default function BitcoinHomeDashboard() {
     }
   }
 
-  function continueCheckout() {
+  async function continueCheckout() {
+    if (!canContinue) {
+      return;
+    }
+
+    setCheckoutPending(true);
     setCheckoutMessage(
-      "PURCHASE CHECKOUT IS NOT YET AVAILABLE. FINAL PROVIDER INTEGRATION IS PENDING.",
+      "CREATING SECURE CHECKOUT…",
     );
+
+    try {
+      const response = await fetch(
+        "/api/bitcoin/buy/session",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            amount: pounds,
+          }),
+          cache: "no-store",
+        },
+      );
+
+      let payload: BuySessionResponse;
+
+      try {
+        payload =
+          (await response.json()) as BuySessionResponse;
+      } catch {
+        setCheckoutMessage(
+          "SECURE CHECKOUT COULD NOT BE STARTED. INVALID SERVER RESPONSE.",
+        );
+        return;
+      }
+
+      if (
+        !response.ok ||
+        payload.ok !== true ||
+        typeof payload.widgetUrl !== "string" ||
+        payload.widgetUrl.length === 0
+      ) {
+        setCheckoutMessage(
+          "SECURE CHECKOUT COULD NOT BE STARTED. PLEASE TRY AGAIN.",
+        );
+        return;
+      }
+
+      const checkoutWindow =
+        window.open(
+          payload.widgetUrl,
+          "_blank",
+        );
+
+      if (!checkoutWindow) {
+        setCheckoutMessage(
+          "THE SECURE CHECKOUT WINDOW WAS BLOCKED BY YOUR BROWSER. ALLOW POP-UPS AND TRY AGAIN.",
+        );
+        return;
+      }
+
+      checkoutWindow.opener = null;
+
+      setCheckoutMessage(
+        "SECURE CHECKOUT OPENED.",
+      );
+    } catch {
+      setCheckoutMessage(
+        "SECURE CHECKOUT COULD NOT BE STARTED. PLEASE TRY AGAIN.",
+      );
+    } finally {
+      setCheckoutPending(false);
+    }
   }
 
   return (
@@ -541,6 +625,7 @@ export default function BitcoinHomeDashboard() {
                 type="button"
                 onClick={closeBuy}
                 aria-label="Close Buy Bitcoin"
+                disabled={checkoutPending}
               >
                 ×
               </button>
@@ -562,6 +647,7 @@ export default function BitcoinHomeDashboard() {
                     step="1"
                     inputMode="decimal"
                     value={gbpAmount}
+                    disabled={checkoutPending}
                     onChange={(event) => {
                       setGbpAmount(event.target.value);
                       setCheckoutMessage("");
@@ -574,6 +660,7 @@ export default function BitcoinHomeDashboard() {
                     <button
                       type="button"
                       key={amount}
+                      disabled={checkoutPending}
                       className={
                         gbpAmount === String(amount)
                           ? styles.buyQuickAmountActive
@@ -638,13 +725,16 @@ export default function BitcoinHomeDashboard() {
                 disabled={!canContinue}
                 onClick={continueCheckout}
               >
-                CONTINUE
+                {checkoutPending
+                  ? "CONNECTING…"
+                  : "CONTINUE"}
               </button>
 
               {checkoutMessage ? (
                 <div
                   className={styles.buyCheckoutMessage}
                   role="status"
+                  aria-live="polite"
                 >
                   {checkoutMessage}
                 </div>
