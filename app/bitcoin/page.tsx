@@ -217,29 +217,31 @@ export default function BitcoinPage() {
         aria-labelledby="bitcoin-development-title"
       >
         <div className={styles.homeDevelopmentInner}>
-          <span>PLATFORM DEVELOPMENT</span>
+          <span>HAMSON BITCOIN / PRODUCT DEVELOPMENT</span>
 
           <div>
             <strong id="bitcoin-development-title">
-              BUY + WALLET SERVICES
+              BITCOIN ACCOUNT SYSTEM
             </strong>
 
             <p>
-              Hamson Bitcoin is being developed beyond its current live
-              information tools. Bitcoin purchasing and operational wallet
-              services are future product capabilities and are not currently
-              available.
+              Hamson Software is developing an integrated Bitcoin purchase
+              and wallet system for Hamson Bitcoin. The target is one
+              interface for buying Bitcoin in pounds, viewing Bitcoin
+              balances, receiving and sending Bitcoin, and reviewing
+              transaction activity across the web, mobile browser and a
+              future dedicated application.
             </p>
           </div>
 
           <div className={styles.homeDevelopmentStatus}>
-            <span>BUY</span>
-            <strong>IN DEVELOPMENT</strong>
+            <span>BUY BITCOIN</span>
+            <strong>BUILDING / GBP → BTC</strong>
           </div>
 
           <div className={styles.homeDevelopmentStatus}>
-            <span>WALLET SERVICE</span>
-            <strong>IN DEVELOPMENT</strong>
+            <span>HAMSON WALLET</span>
+            <strong>BUILDING / RECEIVE · SEND · BALANCE</strong>
           </div>
         </div>
       </section>
@@ -251,10 +253,11 @@ export default function BitcoinPage() {
           </span>
 
           <p>
-            Live market and network information, wallet guidance and
-            educational tools are available now. Bitcoin purchase and
-            operational wallet functions shown as in development are not
-            currently available services.
+            Live BTC/GBP market data, Bitcoin network information, wallet
+            guidance and educational tools are available now. Hamson
+            Software's Bitcoin purchase system and Hamson Wallet are
+            currently in development and are not yet available as live
+            financial services.
           </p>
         </div>
       </section>
