@@ -7,6 +7,7 @@ import {
   useState,
   type FormEvent,
 } from "react";
+import { usePathname } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -27,6 +28,8 @@ import styles from "./SiteChatLauncher.module.css";
 const quickPrompts = productConfig.launcher.prompts;
 
 export default function SiteChatLauncher() {
+  const pathname = usePathname();
+  const bitcoinProductRoute = pathname.startsWith("/bitcoin");
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [footerVisible, setFooterVisible] = useState(false);
@@ -302,7 +305,7 @@ export default function SiteChatLauncher() {
 
   return (
     <div
-      className={`${styles.root} ${footerVisible ? styles.rootFooterVisible : ""}`}
+      className={`${styles.root} ${footerVisible ? styles.rootFooterVisible : ""} ${bitcoinProductRoute ? styles.bitcoinProductRoute : ""}`}
     >
       {open && (
         <section

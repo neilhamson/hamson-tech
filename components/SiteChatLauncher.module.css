@@ -750,3 +750,19 @@
   .launcher,
   .projectDockFill { transition: none; }
 }
+
+/* === BITCOIN MOBILE APP MODE === */
+
+/*
+ * Hamson Bitcoin mobile is treated as an application surface.
+ * The global site chat remains available on desktop and all
+ * non-Bitcoin pages, but does not cover Bitcoin controls on phones.
+ */
+
+@media (max-width: 700px) {
+  .bitcoinProductRoute {
+    display: none;
+  }
+}
+
+/* === END BITCOIN MOBILE APP MODE === */

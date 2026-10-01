@@ -2242,3 +2242,1159 @@
     white-space: nowrap;
   }
 }
+
+/* === PHASE 6 / BITCOIN PRODUCT IA === */
+
+/*
+ * Product-level information architecture:
+ * HOME · MARKET · BUY · WALLET · NETWORK · LEARN
+ */
+
+.productNav {
+  position: relative;
+  z-index: 20;
+  padding:
+    72px
+    clamp(34px, 7vw, 120px)
+    0;
+  border-bottom: 1px solid rgba(0, 220, 255, 0.10);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(23, 92, 255, 0.035),
+      transparent 60%
+    ),
+    rgba(2, 4, 10, 0.97);
+}
+
+.productNavInner {
+  width: min(1380px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns:
+    repeat(6, minmax(0, 1fr));
+  border-left: 1px solid rgba(255, 255, 255, 0.07);
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.productNavInner > a {
+  position: relative;
+  min-width: 0;
+  min-height: 68px;
+  padding: 13px 15px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "index state"
+    "name name";
+  gap: 5px 10px;
+  align-content: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.006);
+  transition:
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.productNavInner > a:last-child {
+  border-right: 0;
+}
+
+.productNavInner > a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: transparent;
+}
+
+.productNavInner span {
+  grid-area: index;
+  color: #536176;
+  font-family: monospace;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.productNavInner strong {
+  grid-area: name;
+  color: #dce5ef;
+  font-family:
+    "D-DIN",
+    "Arial Narrow",
+    Arial,
+    sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.055em;
+}
+
+.productNavInner small {
+  grid-area: state;
+  justify-self: end;
+  color: #657389;
+  font-family: monospace;
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.productNavInner > a:nth-child(2) small,
+.productNavInner > a:nth-child(5) small {
+  color: var(--btc-cyan);
+}
+
+.productNavInner > a:nth-child(3) small {
+  color: var(--btc-gold);
+}
+
+.productNavInner > a:hover,
+.productNavInner > a:focus-visible {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 220, 255, 0.055),
+      transparent
+    );
+  box-shadow:
+    inset 0 -1px 0 var(--btc-cyan);
+  outline: none;
+}
+
+.productNavActive {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(23, 92, 255, 0.10),
+      transparent
+    ) !important;
+  box-shadow:
+    inset 0 -2px 0 var(--btc-cyan);
+}
+
+.productNavActive strong,
+.productNavActive small {
+  color: var(--btc-cyan);
+}
+
+.productNavActive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 24px;
+  height: 1px;
+  background: var(--btc-gold);
+}
+
+/*
+ * Header height is now handled by the product navigation,
+ * so the home hero begins directly beneath the navigation rail.
+ */
+
+.homeHero {
+  padding-top:
+    clamp(54px, 5vw, 76px);
+}
+
+/*
+ * Dashboard cells now all behave as functional routes.
+ */
+
+.homeActionGrid > a {
+  cursor: pointer;
+}
+
+.homeActionGrid > a:nth-child(3) span {
+  color: var(--btc-gold);
+}
+
+.homeActionGrid > a:nth-child(4) span {
+  color: var(--btc-cyan);
+}
+
+/*
+ * Five live telemetry cells rather than four.
+ */
+
+.homeNetworkRail {
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+}
+
+/*
+ * Product-development anchor should land below the
+ * fixed visual header area rather than at the viewport edge.
+ */
+
+#buy-development {
+  scroll-margin-top: 100px;
+}
+
+/* Tablet */
+
+@media (max-width: 1050px) {
+  .productNav {
+    overflow-x: auto;
+    padding-left: 0;
+    padding-right: 0;
+    scrollbar-width: thin;
+    scrollbar-color:
+      rgba(0, 220, 255, 0.28)
+      transparent;
+  }
+
+  .productNavInner {
+    width: max-content;
+    min-width: 100%;
+    grid-template-columns:
+      repeat(6, minmax(132px, 1fr));
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .homeNetworkRail {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .homeNetworkRail span:nth-child(3) {
+    border-right: 0;
+  }
+
+  .homeNetworkRail span:nth-child(n + 4) {
+    border-top:
+      1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .productNav {
+    padding-top: 64px;
+  }
+
+  .productNavInner {
+    grid-template-columns:
+      repeat(6, 118px);
+  }
+
+  .productNavInner > a {
+    min-height: 60px;
+    padding: 10px 12px;
+  }
+
+  .productNavInner strong {
+    font-size: 11px;
+  }
+
+  .homeHero {
+    padding-top: 42px;
+  }
+
+  .homeNetworkRail {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .homeNetworkRail span:nth-child(3) {
+    border-right:
+      1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .homeNetworkRail span:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .homeNetworkRail span:nth-child(n + 3) {
+    border-top:
+      1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .homeNetworkRail span:last-child {
+    grid-column: 1 / -1;
+    border-right: 0;
+  }
+}
+
+/* === END PHASE 6 / BITCOIN PRODUCT IA === */
+
+/* === PHASE 6 FINAL / APP-LIKE BITCOIN INTERFACE === */
+
+/*
+ * The Bitcoin home is treated as a live product console.
+ * The chart is instrumentation inside the dashboard rather
+ * than a separate conventional website section.
+ */
+
+.homeEmbeddedChart {
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(23, 92, 255, 0.035),
+      transparent 55%
+    ),
+    rgba(1, 5, 12, 0.68);
+}
+
+.homeEmbeddedChartHeader {
+  min-height: 48px;
+  padding: 11px 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.homeEmbeddedChartHeader > div {
+  display: grid;
+  gap: 5px;
+}
+
+.homeEmbeddedChartHeader span {
+  color: var(--btc-cyan);
+  font-family: monospace;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.homeEmbeddedChartHeader strong {
+  color: var(--btc-white);
+  font-family:
+    "D-DIN",
+    "Arial Narrow",
+    Arial,
+    sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+}
+
+.homeEmbeddedChartHeader a {
+  color: #66758b;
+  font-family: monospace;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.homeEmbeddedChartHeader a:hover,
+.homeEmbeddedChartHeader a:focus-visible {
+  color: var(--btc-cyan);
+  outline: none;
+}
+
+/*
+ * Reuse the existing production chart, but reduce it from a
+ * standalone feature section to compact dashboard telemetry.
+ */
+
+.homeEmbeddedChart .marketTerminal {
+  border: 0;
+  box-shadow: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3, 8, 17, 0.88),
+      rgba(2, 6, 13, 0.96)
+    );
+}
+
+.homeEmbeddedChart .marketTerminal::before {
+  width: 52px;
+}
+
+.homeEmbeddedChart .marketTopline {
+  min-height: 52px;
+  padding: 12px 17px;
+}
+
+.homeEmbeddedChart .marketTopline strong {
+  font-size: 16px;
+}
+
+.homeEmbeddedChart .marketSummary {
+  min-height: 104px;
+  grid-template-columns:
+    minmax(220px, 0.62fr)
+    minmax(0, 1.38fr);
+}
+
+.homeEmbeddedChart .marketPriceBlock,
+.homeEmbeddedChart .marketRangeBlock {
+  padding: 17px 19px;
+}
+
+.homeEmbeddedChart .marketPriceBlock > strong {
+  margin-top: 8px;
+  font-size: clamp(28px, 2.8vw, 42px);
+}
+
+.homeEmbeddedChart .marketPriceBlock em {
+  margin-top: 8px;
+  font-size: 9px;
+}
+
+.homeEmbeddedChart .marketRangeBlock strong {
+  margin-top: 7px;
+  font-size: clamp(18px, 1.6vw, 24px);
+}
+
+.homeEmbeddedChart .marketChartShell {
+  min-height: 252px;
+  padding: 11px 17px 34px;
+  background-size: 52px 52px;
+}
+
+.homeEmbeddedChart .marketChart {
+  height: 205px;
+}
+
+.homeEmbeddedChart .marketTooltip {
+  top: 10px;
+}
+
+.homeEmbeddedChart .marketTimeAxis {
+  left: 17px;
+  right: 17px;
+  bottom: 11px;
+}
+
+.homeEmbeddedChart .marketFooter {
+  min-height: 40px;
+}
+
+.homeEmbeddedChart .marketFooter span,
+.homeEmbeddedChart .marketFooter a {
+  padding: 11px 13px;
+  font-size: 7px;
+}
+
+/*
+ * Desktop console density.
+ */
+
+@media (min-width: 701px) {
+  .homeHero {
+    align-items: start;
+  }
+
+  .homeDashboard {
+    align-self: start;
+  }
+}
+
+/*
+ * MOBILE APP-LIKE EXPERIENCE
+ *
+ * Treat this as the first browser prototype of the future
+ * Hamson Bitcoin mobile application rather than stacked desktop.
+ */
+
+@media (max-width: 700px) {
+  .productNav {
+    padding-top: 64px;
+    border-bottom-color: rgba(0, 220, 255, 0.16);
+  }
+
+  .productNavInner {
+    grid-template-columns:
+      repeat(6, 96px);
+  }
+
+  .productNavInner > a {
+    min-height: 52px;
+    padding: 8px 9px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "name"
+      "state";
+    gap: 5px;
+  }
+
+  .productNavInner span {
+    display: none;
+  }
+
+  .productNavInner strong {
+    font-size: 10px;
+    letter-spacing: 0.045em;
+  }
+
+  .productNavInner small {
+    justify-self: start;
+    font-size: 5px;
+  }
+
+  .productNavActive::before {
+    left: 9px;
+    width: 18px;
+  }
+
+  /*
+   * Brand identity remains prominent, but does not occupy the
+   * majority of the first mobile viewport.
+   */
+
+  .homeHero {
+    padding:
+      30px
+      14px
+      30px;
+    gap: 25px;
+  }
+
+  .homeHeroCopy {
+    padding-left: 13px;
+  }
+
+  .homeHeroCopy::before {
+    opacity: 0.72;
+  }
+
+  .homeHero .kicker {
+    margin-bottom: 14px;
+    font-size: 7px;
+    line-height: 1.5;
+    letter-spacing: 0.12em;
+  }
+
+  .homeHero h1 {
+    font-size: clamp(43px, 13vw, 60px);
+    line-height: 0.86;
+  }
+
+  .homeHero h1 span {
+    margin-top: 6px;
+  }
+
+  .homeHeroLead {
+    max-width: 34rem;
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.48;
+  }
+
+  .homeHeroActions {
+    margin-top: 16px;
+  }
+
+  .homeHeroActions a {
+    min-height: 38px;
+    padding: 0 12px;
+    font-size: 7px;
+  }
+
+  /*
+   * Main product interface.
+   */
+
+  .homeDashboard {
+    border-left: 1px solid rgba(0, 220, 255, 0.24);
+    border-right: 1px solid rgba(0, 220, 255, 0.24);
+  }
+
+  .homeDashboardTop {
+    padding: 11px 12px;
+    gap: 8px;
+  }
+
+  .homeDashboardTop > div {
+    gap: 4px;
+  }
+
+  .homeDashboardTop > div > strong {
+    font-size: 15px;
+  }
+
+  .homeSystemCode,
+  .homeSystemStatus {
+    font-size: 6px;
+  }
+
+  .homePrimary {
+    display: block;
+  }
+
+  .homePrice {
+    padding: 16px 13px;
+  }
+
+  .homePrice > span {
+    font-size: 7px;
+  }
+
+  .homePrice > strong {
+    margin-top: 7px;
+    font-size: clamp(35px, 11vw, 46px);
+  }
+
+  .homePrice > em {
+    margin-top: 7px;
+    font-size: 8px;
+  }
+
+  /*
+   * Four primary product modes form the mobile control matrix.
+   */
+
+  .homeActionGrid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .homeActionGrid > a,
+  .homeActionDevelopment {
+    min-height: 72px;
+    padding: 11px 12px;
+  }
+
+  .homeActionGrid span {
+    font-size: 6px;
+  }
+
+  .homeActionGrid strong {
+    margin-top: 5px;
+    font-size: 17px;
+  }
+
+  .homeActionGrid em {
+    margin-top: 4px;
+    font-size: 6px;
+    line-height: 1.35;
+  }
+
+  /*
+   * Embedded market instrument.
+   */
+
+  .homeEmbeddedChartHeader {
+    min-height: 42px;
+    padding: 9px 11px;
+  }
+
+  .homeEmbeddedChartHeader span {
+    font-size: 6px;
+  }
+
+  .homeEmbeddedChartHeader strong {
+    font-size: 13px;
+  }
+
+  .homeEmbeddedChartHeader a {
+    font-size: 6px;
+  }
+
+  .homeEmbeddedChart .marketTerminal {
+    clip-path: none;
+  }
+
+  /*
+   * On mobile the dashboard already displays the live BTC price.
+   * The chart therefore prioritises range, movement and graph
+   * rather than repeating large desktop market summary panels.
+   */
+
+  .homeEmbeddedChart .marketSummary {
+    min-height: 0;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .homeEmbeddedChart .marketPriceBlock,
+  .homeEmbeddedChart .marketRangeBlock {
+    padding: 11px 12px;
+  }
+
+  .homeEmbeddedChart .marketPriceBlock > strong {
+    font-size: 22px;
+  }
+
+  .homeEmbeddedChart .marketPriceBlock em {
+    font-size: 7px;
+  }
+
+  .homeEmbeddedChart .marketRangeBlock {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .homeEmbeddedChart .marketRangeBlock strong {
+    font-size: 16px;
+  }
+
+  .homeEmbeddedChart .marketRangeTrack {
+    display: none;
+  }
+
+  .homeEmbeddedChart .marketTopline {
+    min-height: 0;
+    padding: 9px 11px;
+    gap: 8px;
+  }
+
+  .homeEmbeddedChart .marketTopline > div:first-child {
+    display: none;
+  }
+
+  .homeEmbeddedChart .marketTopControls {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .homeEmbeddedChart .marketRangeSelector {
+    width: 100%;
+  }
+
+  .homeEmbeddedChart .marketRangeSelector button {
+    min-width: 0;
+    height: 29px;
+    padding: 0 6px;
+    flex: 1;
+    font-size: 7px;
+  }
+
+  .homeEmbeddedChart .marketStatus {
+    display: none;
+  }
+
+  .homeEmbeddedChart .marketChartShell {
+    min-height: 205px;
+    padding: 7px 8px 28px;
+    background-size: 42px 42px;
+  }
+
+  .homeEmbeddedChart .marketChart {
+    height: 170px;
+  }
+
+  .homeEmbeddedChart .marketTooltip {
+    top: 7px;
+    min-width: 96px;
+    padding: 7px 8px;
+  }
+
+  .homeEmbeddedChart .marketTooltip strong {
+    font-size: 14px;
+  }
+
+  .homeEmbeddedChart .marketTooltip span {
+    font-size: 7px;
+  }
+
+  .homeEmbeddedChart .marketTimeAxis {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    font-size: 6px;
+  }
+
+  /*
+   * Detailed source/interval metadata is useful on desktop but
+   * unnecessarily consumes the phone interface.
+   */
+
+  .homeEmbeddedChart .marketFooter {
+    grid-template-columns: 1fr;
+  }
+
+  .homeEmbeddedChart .marketFooter span {
+    display: none;
+  }
+
+  .homeEmbeddedChart .marketFooter a {
+    min-height: 36px;
+    padding: 10px 12px;
+    border-top: 0;
+    font-size: 7px;
+  }
+
+  /*
+   * Keep learning and chain telemetry compact.
+   */
+
+  .homeLearnBar a {
+    min-height: 55px;
+    padding: 10px 12px;
+    gap: 5px 10px;
+  }
+
+  .homeLearnBar span {
+    font-size: 6px;
+  }
+
+  .homeLearnBar strong {
+    font-size: 15px;
+  }
+
+  .homeLearnBar em {
+    font-size: 6px;
+  }
+
+  .homeNetworkRail {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .homeNetworkRail span {
+    min-height: 42px;
+    padding: 8px 9px;
+    font-size: 6px;
+  }
+
+  .homeNetworkRail span strong {
+    display: block;
+    margin-top: 3px;
+  }
+
+  .homeNetworkRail span:last-child {
+    grid-column: 1 / -1;
+  }
+
+  /*
+   * Development state remains visible but secondary to the
+   * working product.
+   */
+
+  .homeDevelopment {
+    padding: 22px 14px;
+  }
+
+  .homeDevelopmentInner {
+    gap: 14px 10px;
+  }
+
+  .homeDevelopmentInner > div:nth-child(2) p {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .homeDevelopmentStatus {
+    padding-left: 9px;
+  }
+
+  .homeDevelopmentStatus span {
+    font-size: 6px;
+  }
+
+  .homeDevelopmentStatus strong {
+    font-size: 7px;
+  }
+}
+
+/* === END PHASE 6 FINAL / APP-LIKE BITCOIN INTERFACE === */
+
+/* === PHASE 6 MOBILE FINAL CONSOLIDATION === */
+
+/*
+ * Final phone treatment.
+ * Desktop is intentionally left unchanged.
+ */
+
+@media (max-width: 700px) {
+
+  /* -----------------------------------------------
+     GLOBAL BRAND FOOTPRINT
+  ------------------------------------------------ */
+
+  .page :global(.site-header) {
+    height: 56px;
+  }
+
+  .page :global(.header-inner) {
+    width: calc(100% - 24px);
+  }
+
+  .page :global(.brand-lockup) {
+    width: min(158px, 46vw);
+    height: 17px;
+  }
+
+  /* -----------------------------------------------
+     BITCOIN MODE RAIL
+  ------------------------------------------------ */
+
+  .productNav {
+    padding-top: 56px;
+  }
+
+  .productNavInner {
+    grid-template-columns: repeat(6, 88px);
+  }
+
+  .productNavInner > a {
+    min-height: 48px;
+    padding: 7px 8px;
+  }
+
+  .productNavInner strong {
+    font-size: 9px;
+  }
+
+  .productNavInner small {
+    font-size: 5px;
+    letter-spacing: 0.06em;
+  }
+
+  /* -----------------------------------------------
+     PRODUCT IDENTITY
+  ------------------------------------------------ */
+
+  .homeHero {
+    padding:
+      24px
+      12px
+      24px;
+    gap: 20px;
+  }
+
+  .homeHeroCopy {
+    padding-left: 11px;
+  }
+
+  .homeHero .kicker {
+    margin-bottom: 11px;
+    font-size: 6px;
+    letter-spacing: 0.105em;
+  }
+
+  .homeHero h1 {
+    font-size: clamp(39px, 11.8vw, 54px);
+  }
+
+  .homeHeroLead {
+    margin-top: 13px;
+    font-size: 13px;
+    line-height: 1.43;
+  }
+
+  .homeHeroActions {
+    margin-top: 13px;
+    gap: 7px;
+  }
+
+  .homeHeroActions a {
+    min-height: 35px;
+    padding: 0 10px;
+  }
+
+  /* -----------------------------------------------
+     LIVE SYSTEM HEADER + PRICE
+  ------------------------------------------------ */
+
+  .homeDashboardTop {
+    min-height: 0;
+    padding: 9px 10px;
+  }
+
+  .homeDashboardTop > div > strong {
+    font-size: 14px;
+  }
+
+  .homePrice {
+    padding: 13px 11px;
+  }
+
+  .homePrice > strong {
+    font-size: clamp(32px, 10vw, 42px);
+  }
+
+  /* -----------------------------------------------
+     PRIMARY 2 × 2 APP CONTROLS
+  ------------------------------------------------ */
+
+  .homeActionGrid > a,
+  .homeActionDevelopment {
+    min-height: 66px;
+    padding: 9px 10px;
+  }
+
+  .homeActionGrid strong {
+    font-size: 16px;
+  }
+
+  .homeActionGrid em {
+    max-width: 18ch;
+  }
+
+  /* -----------------------------------------------
+     EMBEDDED MARKET INSTRUMENT
+  ------------------------------------------------ */
+
+  .homeEmbeddedChartHeader {
+    min-height: 38px;
+    padding: 8px 10px;
+  }
+
+  .homeEmbeddedChartHeader strong {
+    font-size: 12px;
+  }
+
+  /*
+   * The large price above already supplies the current market
+   * value. Keep the chart summary deliberately compact.
+   */
+
+  .homeEmbeddedChart .marketSummary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .homeEmbeddedChart .marketPriceBlock,
+  .homeEmbeddedChart .marketRangeBlock {
+    min-width: 0;
+    padding: 9px 10px;
+  }
+
+  .homeEmbeddedChart .marketPriceBlock > span,
+  .homeEmbeddedChart .marketRangeBlock span {
+    font-size: 6px;
+  }
+
+  .homeEmbeddedChart .marketPriceBlock > strong {
+    margin-top: 5px;
+    font-size: 19px;
+  }
+
+  .homeEmbeddedChart .marketPriceBlock em {
+    margin-top: 5px;
+    font-size: 6px;
+  }
+
+  .homeEmbeddedChart .marketRangeBlock strong {
+    margin-top: 4px;
+    font-size: 14px;
+  }
+
+  .homeEmbeddedChart .marketTopline {
+    padding: 7px 9px;
+  }
+
+  .homeEmbeddedChart .marketRangeSelector button {
+    height: 27px;
+    font-size: 6px;
+  }
+
+  /*
+   * Chart remains visually important but does not become
+   * a full-screen phone feature.
+   */
+
+  .homeEmbeddedChart .marketChartShell {
+    min-height: 184px;
+    padding:
+      6px
+      7px
+      25px;
+    background-size: 38px 38px;
+  }
+
+  .homeEmbeddedChart .marketChart {
+    height: 152px;
+  }
+
+  .homeEmbeddedChart .marketTimeAxis {
+    font-size: 5px;
+  }
+
+  .homeEmbeddedChart .marketFooter a {
+    min-height: 32px;
+    padding: 8px 10px;
+  }
+
+  /* -----------------------------------------------
+     LEARN
+  ------------------------------------------------ */
+
+  .homeLearnBar a {
+    min-height: 50px;
+    padding: 9px 10px;
+  }
+
+  .homeLearnBar strong {
+    font-size: 14px;
+  }
+
+  /* -----------------------------------------------
+     BLOCKCHAIN TELEMETRY
+  ------------------------------------------------ */
+
+  .homeNetworkRail {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .homeNetworkRail span {
+    min-width: 0;
+    min-height: 38px;
+    padding: 7px 8px;
+    overflow: hidden;
+    font-size: 5px;
+    letter-spacing: 0.075em;
+  }
+
+  .homeNetworkRail strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .homeNetworkRail span:last-child {
+    min-height: 32px;
+  }
+
+  /* -----------------------------------------------
+     DEVELOPMENT STATE
+  ------------------------------------------------ */
+
+  .homeDevelopment {
+    padding:
+      18px
+      12px;
+  }
+
+  .homeDevelopmentInner {
+    gap: 11px 8px;
+  }
+
+  .homeDevelopmentInner > div:nth-child(2) p {
+    margin-top: 5px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .homeDevelopmentStatus {
+    padding-left: 8px;
+  }
+
+  /* -----------------------------------------------
+     CURRENT-SERVICE NOTICE
+  ------------------------------------------------ */
+
+  .disclaimer {
+    padding:
+      17px
+      12px;
+  }
+
+  .disclaimerInner {
+    gap: 8px;
+  }
+
+  .disclaimerCode {
+    font-size: 7px;
+  }
+
+  .disclaimer p {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+}
+
+/* === END PHASE 6 MOBILE FINAL CONSOLIDATION === */

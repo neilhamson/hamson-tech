@@ -6,8 +6,8 @@ import BitcoinHomeDashboard from "./BitcoinHomeDashboard";
 import styles from "./bitcoin.module.css";
 
 export const metadata = pageMetadata(
-  "Bitcoin UK — Bitcoin in Pounds, Wallets & Beginner Guides",
-  "Bitcoin explained in plain English for people in Britain. Understand Bitcoin fractions and satoshis, convert pounds to Bitcoin using a live BTC/GBP tool, and learn about wallets, use and mining.",
+  "Hamson Bitcoin — Bitcoin Market, Network, Wallets & Guides UK",
+  "Hamson Bitcoin is a UK-focused Bitcoin platform with live BTC/GBP market data, network information, wallet guidance and beginner tools.",
   "/bitcoin",
 );
 
@@ -18,7 +18,7 @@ function Header() {
         <Link
           className="brand-lockup"
           href="/"
-          aria-label="Neil Hamson home"
+          aria-label="Hamson Software home"
         >
           <span
             className="brand-reveal-shell"
@@ -39,6 +39,14 @@ function Header() {
           className="navigation"
           aria-label="Main navigation"
         >
+          <Link href="/services">
+            SOFTWARE
+          </Link>
+
+          <Link href="/bitcoin">
+            BITCOIN
+          </Link>
+
           <Link
             href="/machine-intelligence"
             aria-label="MI1 — Machine Intelligence"
@@ -46,17 +54,13 @@ function Header() {
             MI1
           </Link>
 
-          <Link href="/bitcoin">BITCOIN</Link>
-
-          <Link href="/services">
-            SOFTWARE
-          </Link>
-
           <Link href="/about-us">
             ABOUT
           </Link>
 
-          <Link href="/contact-us">CONTACT</Link>
+          <Link href="/contact-us">
+            CONTACT
+          </Link>
         </nav>
 
         <details className="mobile-navigation">
@@ -66,6 +70,14 @@ function Header() {
           </summary>
 
           <nav aria-label="Mobile navigation">
+            <Link href="/services">
+              SOFTWARE
+            </Link>
+
+            <Link href="/bitcoin">
+              BITCOIN
+            </Link>
+
             <Link
               href="/machine-intelligence"
               aria-label="MI1 — Machine Intelligence"
@@ -73,18 +85,9 @@ function Header() {
               MI1
             </Link>
 
-            <Link href="/bitcoin">
-              BITCOIN
-            </Link>
-
-            <Link href="/services">
-              SOFTWARE
-            </Link>
-
             <Link href="/about-us">
               ABOUT
             </Link>
-
 
             <Link href="/contact-us">
               CONTACT
@@ -96,14 +99,64 @@ function Header() {
   );
 }
 
+function BitcoinProductNav() {
+  return (
+    <nav
+      className={styles.productNav}
+      aria-label="Hamson Bitcoin"
+    >
+      <div className={styles.productNavInner}>
+        <Link
+          href="/bitcoin"
+          className={styles.productNavActive}
+          aria-current="page"
+        >
+          <span>01</span>
+          <strong>HOME</strong>
+          <small>LIVE</small>
+        </Link>
+
+        <Link href="/bitcoin/gbp">
+          <span>02</span>
+          <strong>MARKET</strong>
+          <small>LIVE</small>
+        </Link>
+
+        <a href="#buy-development">
+          <span>03</span>
+          <strong>BUY</strong>
+          <small>DEVELOPMENT</small>
+        </a>
+
+        <Link href="/bitcoin/wallets">
+          <span>04</span>
+          <strong>WALLET</strong>
+          <small>GUIDE</small>
+        </Link>
+
+        <Link href="/bitcoin/fees">
+          <span>05</span>
+          <strong>NETWORK</strong>
+          <small>LIVE</small>
+        </Link>
+
+        <Link href="/bitcoin/fractions-satoshis">
+          <span>06</span>
+          <strong>LEARN</strong>
+          <small>GUIDES</small>
+        </Link>
+      </div>
+    </nav>
+  );
+}
+
 function Footer() {
   return (
     <footer className="site-footer">
-      <span>© 2026 Neil Hamson</span>
+      <span>© 2026 Hamson Software</span>
 
       <span>
-        Human direction. Machine intelligence.
-        Shared construction.
+        Hamson Bitcoin / UK Bitcoin platform
       </span>
 
       <span>
@@ -122,10 +175,15 @@ export default function BitcoinPage() {
 
       <Header />
 
-      <section className={styles.homeHero} id="main-content">
+      <BitcoinProductNav />
+
+      <section
+        className={styles.homeHero}
+        id="main-content"
+      >
         <div className={styles.homeHeroCopy}>
           <p className={styles.kicker}>
-            HAMSON BITCOIN / MARKET · NETWORK · WALLET · LEARN
+            HAMSON BITCOIN / HOME · MARKET · BUY · WALLET · NETWORK · LEARN
           </p>
 
           <h1>
@@ -134,29 +192,43 @@ export default function BitcoinPage() {
           </h1>
 
           <p className={styles.homeHeroLead}>
-            A focused Bitcoin platform from Hamson Software.
-            Live market and network data now, with buying and
-            wallet services developing as the platform evolves.
+            A focused UK Bitcoin platform from Hamson Software.
+            Live BTC/GBP market and network data are available now,
+            alongside wallet information and practical learning tools.
           </p>
 
           <div className={styles.homeHeroActions}>
-            <Link href="/bitcoin/gbp">OPEN MARKET</Link>
-            <Link href="/bitcoin/fees">VIEW NETWORK</Link>
+            <Link href="/bitcoin/gbp">
+              OPEN MARKET
+            </Link>
+
+            <Link href="/bitcoin/fees">
+              VIEW NETWORK
+            </Link>
           </div>
         </div>
 
         <BitcoinHomeDashboard />
       </section>
 
-      <section className={styles.homeDevelopment}>
+      <section
+        className={styles.homeDevelopment}
+        id="buy-development"
+        aria-labelledby="bitcoin-development-title"
+      >
         <div className={styles.homeDevelopmentInner}>
           <span>PLATFORM DEVELOPMENT</span>
 
           <div>
-            <strong>BUY + WALLET</strong>
+            <strong id="bitcoin-development-title">
+              BUY + WALLET SERVICES
+            </strong>
+
             <p>
-              Hamson Bitcoin is being developed beyond information
-              tools into a broader Bitcoin service platform.
+              Hamson Bitcoin is being developed beyond its current live
+              information tools. Bitcoin purchasing and operational wallet
+              services are future product capabilities and are not currently
+              available.
             </p>
           </div>
 
@@ -166,7 +238,7 @@ export default function BitcoinPage() {
           </div>
 
           <div className={styles.homeDevelopmentStatus}>
-            <span>WALLET</span>
+            <span>WALLET SERVICE</span>
             <strong>IN DEVELOPMENT</strong>
           </div>
         </div>
@@ -179,10 +251,10 @@ export default function BitcoinPage() {
           </span>
 
           <p>
-            Current Hamson Bitcoin services provide live market,
-            network and educational information. Buy and wallet
-            functions shown as in development are not currently
-            operational services.
+            Live market and network information, wallet guidance and
+            educational tools are available now. Bitcoin purchase and
+            operational wallet functions shown as in development are not
+            currently available services.
           </p>
         </div>
       </section>

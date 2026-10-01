@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
+import BitcoinPriceChart from "./BitcoinPriceChart";
 import styles from "./bitcoin.module.css";
 
 type PriceResponse = {
@@ -45,7 +46,10 @@ function blockAge(timestamp: number | null, now: number) {
     return "—";
   }
 
-  const seconds = Math.max(0, Math.floor(now / 1000 - timestamp));
+  const seconds = Math.max(
+    0,
+    Math.floor(now / 1000 - timestamp),
+  );
 
   if (seconds < 60) {
     return `${seconds}s`;
@@ -60,18 +64,25 @@ function blockAge(timestamp: number | null, now: number) {
   const hours = Math.floor(minutes / 60);
   const remaining = minutes % 60;
 
-  return remaining ? `${hours}h ${remaining}m` : `${hours}h`;
+  return remaining
+    ? `${hours}h ${remaining}m`
+    : `${hours}h`;
 }
 
 export default function BitcoinHomeDashboard() {
   const [price, setPrice] = useState<number | null>(null);
   const [change24h, setChange24h] = useState<number | null>(null);
   const [height, setHeight] = useState<number | null>(null);
+
   const [latestBlockTimestamp, setLatestBlockTimestamp] =
     useState<number | null>(null);
+
   const [blocksUntilHalving, setBlocksUntilHalving] =
     useState<number | null>(null);
-  const [halvingProgress, setHalvingProgress] = useState<number | null>(null);
+
+  const [halvingProgress, setHalvingProgress] =
+    useState<number | null>(null);
+
   const [marketAvailable, setMarketAvailable] = useState(true);
   const [networkAvailable, setNetworkAvailable] = useState(true);
   const [now, setNow] = useState(() => Date.now());
@@ -80,10 +91,15 @@ export default function BitcoinHomeDashboard() {
     let active = true;
 
     async function load() {
-      const [priceResult, networkResult] = await Promise.allSettled([
-        fetch("/api/bitcoin/price", { cache: "no-store" }),
-        fetch("/api/bitcoin/network", { cache: "no-store" }),
-      ]);
+      const [priceResult, networkResult] =
+        await Promise.allSettled([
+          fetch("/api/bitcoin/price", {
+            cache: "no-store",
+          }),
+          fetch("/api/bitcoin/network", {
+            cache: "no-store",
+          }),
+        ]);
 
       if (!active) {
         return;
@@ -94,15 +110,18 @@ export default function BitcoinHomeDashboard() {
         priceResult.value.ok
       ) {
         try {
-          const payload = (await priceResult.value.json()) as PriceResponse;
+          const payload =
+            (await priceResult.value.json()) as PriceResponse;
 
           if (typeof payload.price === "number") {
             setPrice(payload.price);
+
             setChange24h(
               typeof payload.percentChange24h === "number"
                 ? payload.percentChange24h
                 : null,
             );
+
             setMarketAvailable(true);
           } else {
             setMarketAvailable(false);
@@ -119,25 +138,30 @@ export default function BitcoinHomeDashboard() {
         networkResult.value.ok
       ) {
         try {
-          const payload = (await networkResult.value.json()) as NetworkResponse;
+          const payload =
+            (await networkResult.value.json()) as NetworkResponse;
 
           if (typeof payload.height === "number") {
             setHeight(payload.height);
+
             setLatestBlockTimestamp(
               typeof payload.latestBlockTimestamp === "number"
                 ? payload.latestBlockTimestamp
                 : null,
             );
+
             setBlocksUntilHalving(
               typeof payload.blocksUntilHalving === "number"
                 ? payload.blocksUntilHalving
                 : null,
             );
+
             setHalvingProgress(
               typeof payload.halvingProgressPercent === "number"
                 ? payload.halvingProgressPercent
                 : null,
             );
+
             setNetworkAvailable(true);
           } else {
             setNetworkAvailable(false);
@@ -154,8 +178,17 @@ export default function BitcoinHomeDashboard() {
 
     void load();
 
-    const refreshTimer = window.setInterval(() => void load(), REFRESH_MS);
-    const clockTimer = window.setInterval(() => setNow(Date.now()), 30_000);
+    const refreshTimer =
+      window.setInterval(
+        () => void load(),
+        REFRESH_MS,
+      );
+
+    const clockTimer =
+      window.setInterval(
+        () => setNow(Date.now()),
+        30_000,
+      );
 
     return () => {
       active = false;
@@ -175,17 +208,24 @@ export default function BitcoinHomeDashboard() {
   }, [change24h]);
 
   return (
-    <section className={styles.homeDashboard} aria-label="Hamson Bitcoin dashboard">
+    <section
+      className={styles.homeDashboard}
+      aria-label="Hamson Bitcoin live interface"
+    >
       <div className={styles.homeDashboardTop}>
         <div>
           <span className={styles.homeSystemCode}>
             HAMSON BITCOIN / LIVE SYSTEM
           </span>
-          <strong>BITCOIN. WITHOUT THE NOISE.</strong>
+
+          <strong>
+            BITCOIN. WITHOUT THE NOISE.
+          </strong>
         </div>
 
         <span className={styles.homeSystemStatus}>
           <i aria-hidden="true" />
+
           {marketAvailable && networkAvailable
             ? "LIVE DATA"
             : "PARTIAL DATA"}
@@ -195,7 +235,11 @@ export default function BitcoinHomeDashboard() {
       <div className={styles.homePrimary}>
         <div className={styles.homePrice}>
           <span>BTC / GBP</span>
-          <strong>{sterling(price)}</strong>
+
+          <strong>
+            {sterling(price)}
+          </strong>
+
           <em className={changeClass}>
             {change24h === null
               ? "24H —"
@@ -216,43 +260,84 @@ export default function BitcoinHomeDashboard() {
             <em>Blocks · fees · halving</em>
           </Link>
 
-          <div className={styles.homeActionDevelopment}>
+          <a href="#buy-development">
             <span>IN DEVELOPMENT</span>
             <strong>BUY</strong>
-            <em>Purchase Bitcoin</em>
+            <em>Product development state</em>
+          </a>
+
+          <Link href="/bitcoin/wallets">
+            <span>GUIDE / CURRENT</span>
+            <strong>WALLET</strong>
+            <em>Storage · custody · choosing a wallet</em>
+          </Link>
+        </div>
+      </div>
+
+      <div
+        className={styles.homeEmbeddedChart}
+        aria-label="Live Bitcoin market chart"
+      >
+        <div className={styles.homeEmbeddedChartHeader}>
+          <div>
+            <span>MARKET / BTC · GBP</span>
+            <strong>LIVE PRICE HISTORY</strong>
           </div>
 
-          <div className={styles.homeActionDevelopment}>
-            <span>IN DEVELOPMENT</span>
-            <strong>WALLET</strong>
-            <em>Send · receive · hold</em>
-          </div>
+          <Link href="/bitcoin/gbp">
+            FULL MARKET →
+          </Link>
         </div>
+
+        <BitcoinPriceChart />
       </div>
 
       <div className={styles.homeLearnBar}>
         <Link href="/bitcoin/fractions-satoshis">
           <span>LEARN</span>
           <strong>NEW TO BITCOIN?</strong>
-          <em>Fractions · wallets · mining · use →</em>
+          <em>
+            Fractions · wallets · mining · use →
+          </em>
         </Link>
       </div>
 
       <div className={styles.homeNetworkRail}>
         <span>
-          BLOCK HEIGHT <strong>{integer(height)}</strong>
+          BLOCK HEIGHT{" "}
+          <strong>
+            {integer(height)}
+          </strong>
         </span>
+
+        <span>
+          LATEST BLOCK{" "}
+          <strong>
+            {blockAge(latestBlockTimestamp, now)}
+          </strong>
+        </span>
+
         <span>
           HALVING{" "}
           <strong>
-            {halvingProgress === null ? "—" : `${halvingProgress.toFixed(2)}%`}
+            {halvingProgress === null
+              ? "—"
+              : `${halvingProgress.toFixed(2)}%`}
           </strong>
         </span>
+
         <span>
-          BLOCKS REMAINING <strong>{integer(blocksUntilHalving)}</strong>
+          BLOCKS REMAINING{" "}
+          <strong>
+            {integer(blocksUntilHalving)}
+          </strong>
         </span>
+
         <span>
-          DATA <strong>LIVE / 60S</strong>
+          DATA{" "}
+          <strong>
+            LIVE / 60S
+          </strong>
         </span>
       </div>
     </section>
