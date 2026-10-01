@@ -20,6 +20,10 @@ export default function Home() {
           </Link>
 
           <nav className="navigation" aria-label="Main navigation">
+            <Link href="/services">SOFTWARE</Link>
+
+            <Link href="/bitcoin">BITCOIN</Link>
+
             <Link
               href="/machine-intelligence"
               aria-label="MI1 — Machine Intelligence"
@@ -27,11 +31,8 @@ export default function Home() {
               MI1
             </Link>
 
-            <Link href="/bitcoin">BITCOIN</Link>
-
-            <Link href="/services">SOFTWARE</Link>
             <Link href="/about-us">ABOUT</Link>
-            </nav>
+          </nav>
 
           <Link className="header-contact" href="/contact-us">
             <span>CONTACT</span>
@@ -45,16 +46,18 @@ export default function Home() {
             </summary>
 
             <nav aria-label="Mobile navigation">
+              <Link href="/services">SOFTWARE</Link>
+              <Link href="/bitcoin">BITCOIN</Link>
+
               <Link
                 href="/machine-intelligence"
                 aria-label="MI1 — Machine Intelligence"
               >
                 MI1
               </Link>
-              <Link href="/bitcoin">BITCOIN</Link>
-              <Link href="/services">SOFTWARE</Link>
+
               <Link href="/about-us">ABOUT</Link>
-                  <Link href="/contact-us">CONTACT</Link>
+              <Link href="/contact-us">CONTACT</Link>
             </nav>
           </details>
         </div>
@@ -63,7 +66,7 @@ export default function Home() {
       <section
         className="development machine-intelligence-home"
         id="main-content"
-        aria-label="Machine Intelligence development"
+        aria-label="Hamson Software live systems"
       >
         <MachineIntelligenceExperience />
       </section>
@@ -86,26 +89,26 @@ export default function Home() {
             <div className="closing-system-copy">
               <p className="eyebrow">HAMSON SOFTWARE / ACTIVE SYSTEMS</p>
 
-              <h2 id="closing-title">SOFTWARE BUILT TO BE USED.</h2>
+              <h2 id="closing-title">SYSTEMS YOU CAN USE.</h2>
 
               <p className="closing-copy">
-                Explore active Hamson Software products, Hamson Bitcoin and
-                Machine Intelligence systems under continuing development.
+                Open the live Hamson Technical Interface, explore Hamson Bitcoin,
+                or review the private MI1 research programme and investor information.
               </p>
 
               <div className="closing-system-actions">
                 <Link
                   className="brand-button brand-button-primary"
-                  href="/services"
+                  href="#technical-interface"
                 >
-                  EXPLORE HAMSON SOFTWARE
+                  OPEN LIVE INTERFACE
                 </Link>
 
                 <Link
                   className="brand-button brand-button-secondary"
                   href="/contact-us"
                 >
-                  COMMERCIAL ENQUIRIES
+                  PRODUCT / INVESTOR CONTACT
                 </Link>
               </div>
             </div>
@@ -114,9 +117,9 @@ export default function Home() {
               className="closing-route-grid"
               aria-label="Hamson Software systems"
             >
-              <Link href="/services">
-                <span>01 / LIVE SOFTWARE</span>
-                <strong>HAMSON SOFTWARE</strong>
+              <Link href="#technical-interface">
+                <span>01 / LIVE INTERFACE</span>
+                <strong>HAMSON TECHNICAL INTERFACE</strong>
                 <small>OPEN →</small>
               </Link>
 
@@ -127,14 +130,14 @@ export default function Home() {
               </Link>
 
               <Link href="/machine-intelligence">
-                <span>03 / MI1</span>
-                <strong>PRIVATE / ACTIVE</strong>
+                <span>03 / PRIVATE R&amp;D</span>
+                <strong>MI1 / INVESTOR PROJECT</strong>
                 <small>VIEW →</small>
               </Link>
 
               <Link href="/contact-us">
                 <span>04 / DIRECT CHANNEL</span>
-                <strong>COMMERCIAL CONTACT</strong>
+                <strong>PRODUCT / INVESTOR CONTACT</strong>
                 <small>OPEN →</small>
               </Link>
             </nav>

@@ -1,72 +1,74 @@
-import CodeReviewSandbox from "./CodeReviewSandbox";
+import BitcoinLiveStrip from "../app/bitcoin/BitcoinLiveStrip";
 import TechnicalInterface from "./TechnicalInterface";
 
 export default function MachineIntelligenceExperience() {
   return (
     <div className="machine-intelligence-experience">
       <div className="machine-intelligence-system-index" aria-hidden="true">
-        <span>HS / MI1</span>
-        <span>PRIVATE DEVELOPMENT SYSTEM</span>
-        <span>HUMAN AUTHORITY / ACTIVE</span>
+        <span>HS / SOFTWARE</span>
+        <span>LIVE PRODUCT SYSTEMS</span>
+        <span>PUBLIC INTERFACE / ACTIVE</span>
       </div>
 
       <div className="machine-intelligence-experience-heading">
         <div>
-          <p className="eyebrow">MI1 / PRIVATE MACHINE INTELLIGENCE PROTOTYPE</p>
+          <p className="eyebrow">HAMSON SOFTWARE / LIVE SYSTEMS</p>
 
           <h1>
-            BUILDING
+            SOFTWARE
             <br />
-            <span>MI1.</span>
+            <span>BUILT TO BE USED.</span>
           </h1>
         </div>
 
         <div className="machine-intelligence-experience-intro">
           <p>
-            Neil Hamson is engineering MI1: private software designed to prepare
-            code changes for human review, then validate changes after approval.
-            A complete controlled development cycle has now been demonstrated on
-            an external repository; repeatability is still being developed.
+            Hamson Software builds focused software products and live digital
+            systems. Explore the Hamson Technical Interface and Hamson Bitcoin,
+            both developed as active products rather than static demonstrations.
           </p>
 
           <div className="machine-intelligence-home-actions">
-            <a className="machine-intelligence-hire-link" href="/services">
-              HAMSON SOFTWARE →
+            <a
+              className="machine-intelligence-hire-link"
+              href="#technical-interface"
+            >
+              OPEN LIVE INTERFACE →
             </a>
 
             <a
               className="brand-button brand-button-secondary"
-              href="/machine-intelligence"
+              href="/bitcoin"
             >
-              EXPLORE MI1
+              EXPLORE HAMSON BITCOIN
             </a>
           </div>
 
           <div
             className="machine-intelligence-stage-summary"
-            aria-label="Current Machine Intelligence system state"
+            aria-label="Current Hamson Software product state"
           >
             <div>
-              <span>SYSTEM</span>
-              <strong>MI1</strong>
+              <span>COMPANY</span>
+              <strong>HAMSON SOFTWARE</strong>
             </div>
 
             <div>
               <span>STATE</span>
               <strong className="machine-intelligence-stage-active">
                 <i aria-hidden="true" />
-                DEVELOPMENT ACTIVE
+                ACTIVE DEVELOPMENT
               </strong>
             </div>
 
             <div>
-              <span>CURRENT FOCUS</span>
-              <strong>HUMAN-REVIEWED CODE CHANGES</strong>
+              <span>PUBLIC PRODUCTS</span>
+              <strong>INTERFACE / BITCOIN</strong>
             </div>
 
             <div>
-              <span>AUTHORITY</span>
-              <strong>HUMAN APPROVAL</strong>
+              <span>PRIVATE R&amp;D</span>
+              <strong>MI1</strong>
             </div>
           </div>
         </div>
@@ -75,147 +77,106 @@ export default function MachineIntelligenceExperience() {
       <TechnicalInterface />
 
       <section
-        className="machine-intelligence-progression"
-        aria-labelledby="machine-intelligence-progression-title"
+        className="machine-intelligence-progression machine-intelligence-bitcoin-section"
+        aria-labelledby="hamson-bitcoin-home-title"
       >
         <div className="machine-intelligence-progression-heading">
           <div>
             <span className="machine-intelligence-panel-label">
-              HS / MI1 / BUILD STATUS / 01
+              HS / HAMSON BITCOIN / LIVE PRODUCT / 02
             </span>
 
-            <h2 id="machine-intelligence-progression-title">
-              BUILT, TESTED, STILL BEING PROVED.
+            <h2 id="hamson-bitcoin-home-title">
+              BITCOIN, LIVE IN POUNDS.
             </h2>
           </div>
 
           <div className="machine-intelligence-section-readout">
             <div>
-              <span>CONTROLLED CYCLE</span>
-              <strong>VERIFIED</strong>
+              <span>MARKET</span>
+              <strong>BTC / GBP</strong>
             </div>
 
             <div>
-              <span>REPEATABILITY</span>
-              <strong>IN DEVELOPMENT</strong>
+              <span>STATE</span>
+              <strong>LIVE DATA</strong>
             </div>
 
             <p>
-              The private prototype includes saved project state, bounded tools
-              and an approval-based development loop. Recovery after an interruption
-              has now been demonstrated, and one complete controlled cycle has been
-              verified; broader repeatability still needs further evidence. The
-              browser-only review sandbox lower on this page illustrates the human
-              review boundary; it is not MI1 itself.
+              Live Bitcoin market information, network state and practical
+              tools for UK users. Market, network and learning systems are
+              available now through Hamson Bitcoin.
             </p>
           </div>
         </div>
 
+        <div className="machine-intelligence-bitcoin-console">
+          <div className="machine-intelligence-bitcoin-console-top">
+            <span>HS / BITCOIN / LIVE TELEMETRY</span>
+
+            <span className="machine-intelligence-bitcoin-console-state">
+              <i aria-hidden="true" />
+              LIVE
+            </span>
+          </div>
+
+          <div className="machine-intelligence-bitcoin-live">
+            <BitcoinLiveStrip />
+          </div>
+
+          <nav
+            className="machine-intelligence-bitcoin-routes"
+            aria-label="Hamson Bitcoin live systems"
+          >
+            <a href="/bitcoin/gbp">
+              <span>01 / LIVE</span>
+              <strong>MARKET</strong>
+              <small>PRICE · CHART · GBP →</small>
+            </a>
+
+            <a href="/bitcoin/fees">
+              <span>02 / LIVE</span>
+              <strong>NETWORK</strong>
+              <small>BLOCKS · FEES · STATE →</small>
+            </a>
+
+            <a href="/bitcoin/fractions-satoshis">
+              <span>03 / GUIDE</span>
+              <strong>LEARN</strong>
+              <small>SATS · WALLETS · MINING →</small>
+            </a>
+          </nav>
+        </div>
+
         <a
-          className="brand-button brand-button-secondary machine-intelligence-record-link"
-          href="/machine-intelligence"
+          className="brand-button brand-button-primary machine-intelligence-record-link"
+          href="/bitcoin"
         >
-          SEE THE DEVELOPMENT DETAILS
+          OPEN HAMSON BITCOIN
         </a>
       </section>
 
       <div className="machine-intelligence-investor-strip">
         <div>
           <span className="machine-intelligence-panel-label">
-            MODEL EXPERIMENT / 01 / SEPARATE SYSTEM
+            HS / MI1 / PRIVATE R&amp;D / FUNDING
           </span>
 
           <p>
-            Local inference with Qwen3-14B has been demonstrated through llama.cpp.
-            It is separate from the MI1 development tool and does not establish
-            that the full workflow runs reliably on a local model.
+            MI1 is Hamson Software's private Machine Intelligence R&amp;D
+            programme, developed internally by Neil Hamson. It is not a
+            commercial product; public progress supports technical review
+            and potential funding discussions.
           </p>
         </div>
 
         <a
-          className="brand-button brand-button-primary"
+          className="brand-button brand-button-secondary"
           href="/machine-intelligence"
         >
-          DEVELOPMENT DETAILS
+          VIEW MI1 R&amp;D
         </a>
       </div>
-
-      <section
-        className="machine-intelligence-review-section"
-        aria-labelledby="public-review-sandbox-title"
-      >
-        <div className="machine-intelligence-review-heading">
-          <div>
-            <span className="machine-intelligence-panel-label">
-              HS / REVIEW BOUNDARY / 02
-            </span>
-
-            <h2 id="public-review-sandbox-title">REVIEW THE BOUNDARY.</h2>
-          </div>
-
-          <div className="machine-intelligence-section-readout">
-            <div>
-              <span>AUTHORITY</span>
-              <strong>HUMAN APPROVAL</strong>
-            </div>
-
-            <div>
-              <span>EXECUTION</span>
-              <strong>BROWSER ONLY</strong>
-            </div>
-
-            <p>
-              This sandbox remains available as an illustrative browser-only review
-              tool. It can later be upgraded to replay verified MI1 development
-              trajectories without exposing the private MI1 core.
-            </p>
-          </div>
-        </div>
-
-        <div className="machine-intelligence-interaction-grid">
-          <div className="machine-intelligence-ask-panel">
-            <CodeReviewSandbox />
-          </div>
-
-          <aside
-            className="machine-intelligence-status-panel"
-            id="machine-intelligence-status"
-            aria-label="Machine Intelligence development status"
-          >
-            <div className="machine-intelligence-status-heading">
-              <span className="machine-intelligence-panel-label">
-                CURRENT SYSTEM STATE
-              </span>
-
-              <span className="machine-intelligence-active-indicator">
-                <span aria-hidden="true" />
-                DEVELOPMENT ACTIVE
-              </span>
-            </div>
-
-            <h3>WHY THE REVIEW MATTERS</h3>
-
-            <p className="machine-intelligence-status-explainer">
-              A code suggestion should be visible before anyone applies it.
-              The developer decides whether to approve it; validation then checks
-              the changed project. MI1 is being built around that boundary.
-            </p>
-
-            <ol className="machine-intelligence-status-steps">
-              <li><span>01</span> Inspect the task and source</li>
-              <li><span>02</span> Prepare a change for review</li>
-              <li><span>03</span> Ask before applying it</li>
-              <li><span>04</span> Validate and report the result</li>
-            </ol>
-
-            <p className="machine-intelligence-status-note">
-              MI1 is private and under development. The sandbox beside this
-              explanation compares text in your browser; it does not connect to
-              MI1, execute code or write to a repository.
-            </p>
-          </aside>
-        </div>
-      </section>
     </div>
   );
 }

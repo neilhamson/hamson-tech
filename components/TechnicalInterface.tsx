@@ -16,6 +16,7 @@ import type { ConversationState } from "@/lib/conversationState";
 import {
   productConfig,
   projectMailtoHref,
+  type ProductPrompt,
   type WorkflowMode,
 } from "@/lib/productConfig";
 import { MAX_CHAT_MESSAGES, MAX_INPUT_CHARS } from "@/lib/interfaceLimits";
@@ -158,7 +159,7 @@ export default function TechnicalInterface() {
     })();
   }, [messages, status, workflowMode]);
 
-  function selectPrompt(prompt: (typeof prompts)[number]) {
+  function selectPrompt(prompt: ProductPrompt) {
     setInput(prompt.text);
     setWorkflowMode(prompt.mode);
 
