@@ -3398,3 +3398,576 @@
 }
 
 /* === END PHASE 6 MOBILE FINAL CONSOLIDATION === */
+
+
+/* === PHASE 7.2 / BUY APP INTERFACE === */
+
+.homeActionBuy {
+  position: relative;
+  min-width: 0;
+  min-height: inherit;
+  padding: inherit;
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  color: inherit;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.homeActionBuy:hover,
+.homeActionBuy:focus-visible {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 220, 255, 0.07),
+      transparent 72%
+    );
+  outline: none;
+}
+
+.homeActionBuy span {
+  color: var(--btc-cyan);
+}
+
+.buyOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 2, 8, 0.84);
+  backdrop-filter: blur(14px);
+}
+
+.buyPanel {
+  position: relative;
+  width: min(680px, 100%);
+  overflow: hidden;
+  border: 1px solid rgba(0, 220, 255, 0.34);
+  background:
+    radial-gradient(
+      circle at 92% 0%,
+      rgba(23, 92, 255, 0.10),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(4, 10, 20, 0.995),
+      rgba(1, 5, 11, 1)
+    );
+  box-shadow:
+    0 34px 110px rgba(0, 0, 0, 0.72),
+    0 0 54px rgba(0, 220, 255, 0.045);
+}
+
+.buyPanel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 76px;
+  height: 1px;
+  background: var(--btc-cyan);
+}
+
+.buyPanelTop {
+  min-height: 74px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.buyPanelTop > div {
+  display: grid;
+  gap: 5px;
+}
+
+.buyPanelTop span {
+  color: var(--btc-cyan);
+  font-family: monospace;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.buyPanelTop strong {
+  color: var(--btc-white);
+  font-family: "D-DIN", "Arial Narrow", Arial, sans-serif;
+  font-size: 27px;
+  letter-spacing: 0.015em;
+}
+
+.buyPanelTop button {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  color: #8996aa;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.buyPanelTop button:hover,
+.buyPanelTop button:focus-visible {
+  border-color: var(--btc-cyan);
+  color: var(--btc-white);
+  outline: none;
+}
+
+.buyBody {
+  min-width: 0;
+}
+
+.buyAmountSection {
+  padding: 22px 20px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.buyAmountSection > label {
+  display: block;
+  margin-bottom: 10px;
+  color: #7e8ba0;
+  font-family: monospace;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.buyAmountInput {
+  min-height: 72px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  border: 1px solid rgba(0, 220, 255, 0.25);
+  background: rgba(0, 4, 10, 0.78);
+}
+
+.buyAmountInput:focus-within {
+  border-color: var(--btc-cyan);
+  box-shadow: inset 0 -1px 0 rgba(0, 220, 255, 0.8);
+}
+
+.buyAmountInput span {
+  padding-left: 17px;
+  color: var(--btc-cyan);
+  font-family: "D-DIN", monospace;
+  font-size: 29px;
+}
+
+.buyAmountInput input {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 16px 10px 8px;
+  border: 0;
+  outline: 0;
+  color: var(--btc-white);
+  background: transparent;
+  font-family: "D-DIN", monospace;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.buyQuickAmounts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.buyQuickAmounts button {
+  min-height: 38px;
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  color: #78869a;
+  background: rgba(255, 255, 255, 0.01);
+  font-family: monospace;
+  font-size: 8px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.buyQuickAmounts button:last-child {
+  border-right: 0;
+}
+
+.buyQuickAmounts button:hover,
+.buyQuickAmounts button:focus-visible,
+.buyQuickAmountActive {
+  color: var(--btc-cyan) !important;
+  background: rgba(0, 220, 255, 0.06) !important;
+  box-shadow: inset 0 -1px 0 var(--btc-cyan);
+  outline: none;
+}
+
+.buyQuoteGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.buyQuoteGrid > div {
+  min-width: 0;
+  padding: 19px 20px;
+}
+
+.buyQuoteGrid > div + div {
+  border-left: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.buyQuoteGrid span,
+.buyQuoteGrid small {
+  display: block;
+  font-family: monospace;
+  letter-spacing: 0.1em;
+}
+
+.buyQuoteGrid span {
+  color: #6e7c91;
+  font-size: 7px;
+  font-weight: 800;
+}
+
+.buyQuoteGrid strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--btc-white);
+  font-family: "D-DIN", monospace;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.buyReceiveBlock small {
+  margin-top: 7px;
+  color: var(--btc-cyan);
+  font-size: 7px;
+  font-weight: 800;
+}
+
+.buyMarketBlock small {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--btc-cyan);
+  font-size: 7px;
+  font-weight: 800;
+}
+
+.buyMarketBlock small i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--btc-cyan);
+  box-shadow: 0 0 8px rgba(0, 220, 255, 0.65);
+}
+
+.buyNotice {
+  padding: 11px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+  background: rgba(23, 92, 255, 0.018);
+}
+
+.buyNotice span {
+  flex: 0 0 auto;
+  color: var(--btc-cyan);
+  font-family: monospace;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.buyNotice p {
+  margin: 0;
+  color: #7d8a9e;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.buyActionArea {
+  padding: 16px 20px 18px;
+}
+
+.buyContinue {
+  width: 100%;
+  min-height: 49px;
+  border: 1px solid rgba(0, 220, 255, 0.4);
+  color: var(--btc-cyan);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 220, 255, 0.075),
+      rgba(23, 92, 255, 0.035)
+    );
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  cursor: pointer;
+}
+
+.buyContinue:hover,
+.buyContinue:focus-visible {
+  border-color: var(--btc-cyan);
+  color: white;
+  background: rgba(0, 220, 255, 0.10);
+  outline: none;
+}
+
+.buyContinue:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.buyCheckoutMessage {
+  margin-top: 10px;
+  padding: 10px 11px;
+  border-left: 2px solid var(--btc-cyan);
+  color: var(--btc-cyan);
+  background: rgba(0, 220, 255, 0.04);
+  font-family: monospace;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.075em;
+  line-height: 1.45;
+}
+
+/* MOBILE / APP-SURFACE MODE */
+
+@media (max-width: 700px) {
+  .homeActionBuy {
+    min-height: 66px;
+    padding: 9px 10px;
+  }
+
+  .buyOverlay {
+    display: block;
+    min-height: 100dvh;
+    padding: 0;
+    background:
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(23, 92, 255, 0.085),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 18% 78%,
+        rgba(0, 220, 255, 0.035),
+        transparent 26%
+      ),
+      linear-gradient(
+        rgba(0, 220, 255, 0.018) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(0, 220, 255, 0.018) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0, 220, 255, 0.012) 68%,
+        rgba(23, 92, 255, 0.018) 100%
+      ),
+      #02050b;
+    background-size:
+      auto,
+      auto,
+      32px 32px,
+      32px 32px,
+      auto,
+      auto;
+    backdrop-filter: none;
+  }
+
+  .buyPanel {
+    width: 100%;
+    min-height: 0;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 220, 255, 0.14);
+    box-shadow: none;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 8, 16, 0.995),
+        rgba(2, 6, 13, 0.995)
+      );
+  }
+
+  .buyPanelTop {
+    flex: 0 0 auto;
+    min-height: 60px;
+    padding:
+      max(10px, env(safe-area-inset-top))
+      14px
+      9px;
+  }
+
+  .buyPanelTop > div {
+    gap: 2px;
+  }
+
+  .buyPanelTop span {
+    font-size: 6px;
+    letter-spacing: 0.13em;
+  }
+
+  .buyPanelTop strong {
+    font-size: 20px;
+  }
+
+  .buyPanelTop button {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+
+  .buyBody {
+    flex: 0 0 auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .buyAmountSection {
+    padding: 15px 14px 12px;
+  }
+
+  .buyAmountSection > label {
+    margin-bottom: 6px;
+    font-size: 6px;
+  }
+
+  .buyAmountInput {
+    min-height: 54px;
+  }
+
+  .buyAmountInput span {
+    padding-left: 12px;
+    font-size: 23px;
+  }
+
+  .buyAmountInput input {
+    padding: 7px 11px 6px 7px;
+    font-size: 31px;
+  }
+
+  .buyQuickAmounts {
+    margin-top: 6px;
+  }
+
+  .buyQuickAmounts button {
+    min-height: 34px;
+    font-size: 7px;
+  }
+
+  .buyQuoteGrid {
+    grid-template-columns: minmax(0, 1.28fr) minmax(0, 0.72fr);
+  }
+
+  .buyQuoteGrid > div {
+    padding: 14px 14px 13px;
+  }
+
+  .buyQuoteGrid strong {
+    margin-top: 6px;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .buyQuoteGrid span,
+  .buyQuoteGrid small,
+  .buyReceiveBlock small,
+  .buyMarketBlock small {
+    font-size: 5px;
+  }
+
+  .buyNotice {
+    padding: 10px 14px 11px;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .buyNotice span {
+    margin-top: 1px;
+    font-size: 5px;
+  }
+
+  .buyNotice p {
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .buyActionArea {
+    position: relative;
+    flex: 0 0 auto;
+    padding:
+      14px
+      14px
+      max(14px, env(safe-area-inset-bottom));
+    border-top: 0;
+    background: transparent;
+  }
+
+  .buyActionArea::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: -20px;
+    height: 1px;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 220, 255, 0.18),
+        rgba(0, 220, 255, 0.03) 38%,
+        transparent 72%
+      );
+  }
+
+  .buyContinue {
+    min-height: 47px;
+    font-size: 8px;
+  }
+
+  .buyCheckoutMessage {
+    margin-top: 8px;
+    font-size: 6px;
+  }
+
+  /*
+   * On unusually short phone viewports, keep the primary action
+   * reachable without turning the normal layout into a bottom-pinned modal.
+   */
+  @media (max-height: 640px) {
+    .buyPanel {
+      overflow-y: auto;
+    }
+
+    .buyActionArea {
+      position: sticky;
+      bottom: 0;
+      z-index: 3;
+      border-top: 1px solid rgba(255, 255, 255, 0.075);
+      background: rgba(2, 6, 13, 0.985);
+    }
+  }
+}
+
+/* === END PHASE 7.2 / BUY APP INTERFACE === */

@@ -122,10 +122,10 @@ function BitcoinProductNav() {
           <small>LIVE</small>
         </Link>
 
-        <a href="#buy-development">
+        <a href="#buy-bitcoin">
           <span>03</span>
           <strong>BUY</strong>
-          <small>DEVELOPMENT</small>
+          <small>BUILDING</small>
         </a>
 
         <Link href="/bitcoin/wallets">

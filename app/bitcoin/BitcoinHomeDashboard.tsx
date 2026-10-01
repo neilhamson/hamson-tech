@@ -1,7 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import BitcoinPriceChart from "./BitcoinPriceChart";
 import styles from "./bitcoin.module.css";
@@ -69,6 +73,42 @@ function blockAge(timestamp: number | null, now: number) {
     : `${hours}h`;
 }
 
+function bitcoinAmount(
+  pounds: number,
+  price: number | null,
+) {
+  if (
+    price === null ||
+    !Number.isFinite(price) ||
+    price <= 0 ||
+    !Number.isFinite(pounds) ||
+    pounds <= 0
+  ) {
+    return null;
+  }
+
+  return pounds / price;
+}
+
+function btcDisplay(value: number | null) {
+  if (value === null) {
+    return "—";
+  }
+
+  return value.toLocaleString("en-GB", {
+    minimumFractionDigits: 8,
+    maximumFractionDigits: 8,
+  });
+}
+
+function satoshis(value: number | null) {
+  if (value === null) {
+    return null;
+  }
+
+  return Math.round(value * 100_000_000);
+}
+
 export default function BitcoinHomeDashboard() {
   const [price, setPrice] = useState<number | null>(null);
   const [change24h, setChange24h] = useState<number | null>(null);
@@ -83,9 +123,24 @@ export default function BitcoinHomeDashboard() {
   const [halvingProgress, setHalvingProgress] =
     useState<number | null>(null);
 
-  const [marketAvailable, setMarketAvailable] = useState(true);
-  const [networkAvailable, setNetworkAvailable] = useState(true);
-  const [now, setNow] = useState(() => Date.now());
+  const [marketAvailable, setMarketAvailable] =
+    useState(true);
+
+  const [networkAvailable, setNetworkAvailable] =
+    useState(true);
+
+  const [now, setNow] =
+    useState(() => Date.now());
+
+  const [buyOpen, setBuyOpen] =
+    useState(false);
+
+  const [gbpAmount, setGbpAmount] =
+    useState("100");
+
+
+  const [checkoutMessage, setCheckoutMessage] =
+    useState("");
 
   useEffect(() => {
     let active = true;
@@ -197,6 +252,57 @@ export default function BitcoinHomeDashboard() {
     };
   }, []);
 
+  useEffect(() => {
+    function syncBuyHash() {
+      if (window.location.hash === "#buy-bitcoin") {
+        setBuyOpen(true);
+      }
+    }
+
+    syncBuyHash();
+
+    window.addEventListener(
+      "hashchange",
+      syncBuyHash,
+    );
+
+    return () => {
+      window.removeEventListener(
+        "hashchange",
+        syncBuyHash,
+      );
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!buyOpen) {
+      return;
+    }
+
+    const previousOverflow =
+      document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    function handleKey(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setBuyOpen(false);
+      }
+    }
+
+    window.addEventListener("keydown", handleKey);
+
+    return () => {
+      document.body.style.overflow =
+        previousOverflow;
+
+      window.removeEventListener(
+        "keydown",
+        handleKey,
+      );
+    };
+  }, [buyOpen]);
+
   const changeClass = useMemo(() => {
     if (change24h === null) {
       return "";
@@ -207,139 +313,346 @@ export default function BitcoinHomeDashboard() {
       : styles.homeChangeNegative;
   }, [change24h]);
 
+  const pounds = useMemo(() => {
+    const parsed = Number(gbpAmount);
+
+    if (!Number.isFinite(parsed) || parsed <= 0) {
+      return 0;
+    }
+
+    return parsed;
+  }, [gbpAmount]);
+
+  const estimatedBtc = useMemo(
+    () => bitcoinAmount(pounds, price),
+    [pounds, price],
+  );
+
+  const estimatedSats = useMemo(
+    () => satoshis(estimatedBtc),
+    [estimatedBtc],
+  );
+
+  const canContinue =
+    pounds > 0 &&
+    estimatedBtc !== null &&
+    marketAvailable;
+
+
+  function openBuy() {
+    setCheckoutMessage("");
+    setBuyOpen(true);
+
+    if (window.location.hash !== "#buy-bitcoin") {
+      window.history.replaceState(
+        null,
+        "",
+        "#buy-bitcoin",
+      );
+    }
+  }
+
+  function closeBuy() {
+    setBuyOpen(false);
+    setCheckoutMessage("");
+
+    if (window.location.hash === "#buy-bitcoin") {
+      window.history.replaceState(
+        null,
+        "",
+        window.location.pathname +
+          window.location.search,
+      );
+    }
+  }
+
+  function continueCheckout() {
+    setCheckoutMessage(
+      "PURCHASE CHECKOUT IS NOT YET AVAILABLE. FINAL PROVIDER INTEGRATION IS PENDING.",
+    );
+  }
+
   return (
-    <section
-      className={styles.homeDashboard}
-      aria-label="Hamson Bitcoin live interface"
-    >
-      <div className={styles.homeDashboardTop}>
-        <div>
-          <span className={styles.homeSystemCode}>
-            HAMSON BITCOIN / LIVE SYSTEM
-          </span>
-
-          <strong>
-            BITCOIN. WITHOUT THE NOISE.
-          </strong>
-        </div>
-
-        <span className={styles.homeSystemStatus}>
-          <i aria-hidden="true" />
-
-          {marketAvailable && networkAvailable
-            ? "LIVE DATA"
-            : "PARTIAL DATA"}
-        </span>
-      </div>
-
-      <div className={styles.homePrimary}>
-        <div className={styles.homePrice}>
-          <span>BTC / GBP</span>
-
-          <strong>
-            {sterling(price)}
-          </strong>
-
-          <em className={changeClass}>
-            {change24h === null
-              ? "24H —"
-              : `${change24h >= 0 ? "+" : ""}${change24h.toFixed(2)}% / 24H`}
-          </em>
-        </div>
-
-        <div className={styles.homeActionGrid}>
-          <Link href="/bitcoin/gbp">
-            <span>LIVE</span>
-            <strong>MARKET</strong>
-            <em>Price · chart · convert</em>
-          </Link>
-
-          <Link href="/bitcoin/fees">
-            <span>LIVE</span>
-            <strong>NETWORK</strong>
-            <em>Blocks · fees · halving</em>
-          </Link>
-
-          <a href="#buy-development">
-            <span>IN DEVELOPMENT</span>
-            <strong>BUY</strong>
-            <em>Product development state</em>
-          </a>
-
-          <Link href="/bitcoin/wallets">
-            <span>GUIDE / CURRENT</span>
-            <strong>WALLET</strong>
-            <em>Storage · custody · choosing a wallet</em>
-          </Link>
-        </div>
-      </div>
-
-      <div
-        className={styles.homeEmbeddedChart}
-        aria-label="Live Bitcoin market chart"
+    <>
+      <section
+        className={styles.homeDashboard}
+        aria-label="Hamson Bitcoin live interface"
       >
-        <div className={styles.homeEmbeddedChartHeader}>
+        <div className={styles.homeDashboardTop}>
           <div>
-            <span>MARKET / BTC · GBP</span>
-            <strong>LIVE PRICE HISTORY</strong>
+            <span className={styles.homeSystemCode}>
+              HAMSON BITCOIN / LIVE SYSTEM
+            </span>
+
+            <strong>
+              BITCOIN. WITHOUT THE NOISE.
+            </strong>
           </div>
 
-          <Link href="/bitcoin/gbp">
-            FULL MARKET →
+          <span className={styles.homeSystemStatus}>
+            <i aria-hidden="true" />
+
+            {marketAvailable && networkAvailable
+              ? "LIVE DATA"
+              : "PARTIAL DATA"}
+          </span>
+        </div>
+
+        <div className={styles.homePrimary}>
+          <div className={styles.homePrice}>
+            <span>BTC / GBP</span>
+
+            <strong>
+              {sterling(price)}
+            </strong>
+
+            <em className={changeClass}>
+              {change24h === null
+                ? "24H —"
+                : `${change24h >= 0 ? "+" : ""}${change24h.toFixed(2)}% / 24H`}
+            </em>
+          </div>
+
+          <div className={styles.homeActionGrid}>
+            <Link href="/bitcoin/gbp">
+              <span>LIVE</span>
+              <strong>MARKET</strong>
+              <em>Price · chart · convert</em>
+            </Link>
+
+            <Link href="/bitcoin/fees">
+              <span>LIVE</span>
+              <strong>NETWORK</strong>
+              <em>Blocks · fees · halving</em>
+            </Link>
+
+            <button
+              type="button"
+              className={styles.homeActionBuy}
+              onClick={openBuy}
+            >
+              <span>BUILDING / INTERACTIVE</span>
+              <strong>BUY</strong>
+              <em>GBP → BTC purchase interface</em>
+            </button>
+
+            <Link href="/bitcoin/wallets">
+              <span>GUIDE / CURRENT</span>
+              <strong>WALLET</strong>
+              <em>Storage · custody · choosing a wallet</em>
+            </Link>
+          </div>
+        </div>
+
+        <div
+          className={styles.homeEmbeddedChart}
+          aria-label="Live Bitcoin market chart"
+        >
+          <div className={styles.homeEmbeddedChartHeader}>
+            <div>
+              <span>MARKET / BTC · GBP</span>
+              <strong>LIVE PRICE HISTORY</strong>
+            </div>
+
+            <Link href="/bitcoin/gbp">
+              FULL MARKET →
+            </Link>
+          </div>
+
+          <BitcoinPriceChart />
+        </div>
+
+        <div className={styles.homeLearnBar}>
+          <Link href="/bitcoin/fractions-satoshis">
+            <span>LEARN</span>
+            <strong>NEW TO BITCOIN?</strong>
+            <em>
+              Fractions · wallets · mining · use →
+            </em>
           </Link>
         </div>
 
-        <BitcoinPriceChart />
-      </div>
+        <div className={styles.homeNetworkRail}>
+          <span>
+            BLOCK HEIGHT{" "}
+            <strong>
+              {integer(height)}
+            </strong>
+          </span>
 
-      <div className={styles.homeLearnBar}>
-        <Link href="/bitcoin/fractions-satoshis">
-          <span>LEARN</span>
-          <strong>NEW TO BITCOIN?</strong>
-          <em>
-            Fractions · wallets · mining · use →
-          </em>
-        </Link>
-      </div>
+          <span>
+            LATEST BLOCK{" "}
+            <strong>
+              {blockAge(latestBlockTimestamp, now)}
+            </strong>
+          </span>
 
-      <div className={styles.homeNetworkRail}>
-        <span>
-          BLOCK HEIGHT{" "}
-          <strong>
-            {integer(height)}
-          </strong>
-        </span>
+          <span>
+            HALVING{" "}
+            <strong>
+              {halvingProgress === null
+                ? "—"
+                : `${halvingProgress.toFixed(2)}%`}
+            </strong>
+          </span>
 
-        <span>
-          LATEST BLOCK{" "}
-          <strong>
-            {blockAge(latestBlockTimestamp, now)}
-          </strong>
-        </span>
+          <span>
+            BLOCKS REMAINING{" "}
+            <strong>
+              {integer(blocksUntilHalving)}
+            </strong>
+          </span>
 
-        <span>
-          HALVING{" "}
-          <strong>
-            {halvingProgress === null
-              ? "—"
-              : `${halvingProgress.toFixed(2)}%`}
-          </strong>
-        </span>
+          <span>
+            DATA{" "}
+            <strong>
+              LIVE / 60S
+            </strong>
+          </span>
+        </div>
+      </section>
 
-        <span>
-          BLOCKS REMAINING{" "}
-          <strong>
-            {integer(blocksUntilHalving)}
-          </strong>
-        </span>
+      {buyOpen ? (
+        <div
+          className={styles.buyOverlay}
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.currentTarget === event.target) {
+              closeBuy();
+            }
+          }}
+        >
+          <section
+            id="buy-bitcoin"
+            className={styles.buyPanel}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="buy-panel-title"
+          >
+            <div className={styles.buyPanelTop}>
+              <div>
+                <span>HAMSON BITCOIN / BUY</span>
+                <strong id="buy-panel-title">
+                  BUY BITCOIN
+                </strong>
+              </div>
 
-        <span>
-          DATA{" "}
-          <strong>
-            LIVE / 60S
-          </strong>
-        </span>
-      </div>
-    </section>
+              <button
+                type="button"
+                onClick={closeBuy}
+                aria-label="Close Buy Bitcoin"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className={styles.buyBody}>
+              <div className={styles.buyAmountSection}>
+                <label htmlFor="buy-gbp-amount">
+                  YOU PAY
+                </label>
+
+                <div className={styles.buyAmountInput}>
+                  <span>£</span>
+
+                  <input
+                    id="buy-gbp-amount"
+                    type="number"
+                    min="1"
+                    step="1"
+                    inputMode="decimal"
+                    value={gbpAmount}
+                    onChange={(event) => {
+                      setGbpAmount(event.target.value);
+                      setCheckoutMessage("");
+                    }}
+                  />
+                </div>
+
+                <div className={styles.buyQuickAmounts}>
+                  {[25, 50, 100, 250].map((amount) => (
+                    <button
+                      type="button"
+                      key={amount}
+                      className={
+                        gbpAmount === String(amount)
+                          ? styles.buyQuickAmountActive
+                          : ""
+                      }
+                      onClick={() => {
+                        setGbpAmount(String(amount));
+                        setCheckoutMessage("");
+                      }}
+                    >
+                      £{amount}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className={styles.buyQuoteGrid}>
+                <div className={styles.buyReceiveBlock}>
+                  <span>ESTIMATED RECEIVE</span>
+
+                  <strong>
+                    {btcDisplay(estimatedBtc)} BTC
+                  </strong>
+
+                  <small>
+                    {estimatedSats === null
+                      ? "— SATS"
+                      : `${integer(estimatedSats)} SATS`}
+                  </small>
+                </div>
+
+                <div className={styles.buyMarketBlock}>
+                  <span>BTC / GBP</span>
+
+                  <strong>
+                    {sterling(price)}
+                  </strong>
+
+                  <small>
+                    <i aria-hidden="true" />
+                    {marketAvailable
+                      ? "LIVE MARKET"
+                      : "MARKET UNAVAILABLE"}
+                  </small>
+                </div>
+              </div>
+
+              <div className={styles.buyNotice}>
+                <span>ESTIMATE ONLY</span>
+
+                <p>
+                  Final quote, fees and Bitcoin amount are shown
+                  by the regulated checkout provider before purchase.
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.buyActionArea}>
+              <button
+                type="button"
+                className={styles.buyContinue}
+                disabled={!canContinue}
+                onClick={continueCheckout}
+              >
+                CONTINUE
+              </button>
+
+              {checkoutMessage ? (
+                <div
+                  className={styles.buyCheckoutMessage}
+                  role="status"
+                >
+                  {checkoutMessage}
+                </div>
+              ) : null}
+            </div>
+          </section>
+        </div>
+      ) : null}
+    </>
   );
 }
