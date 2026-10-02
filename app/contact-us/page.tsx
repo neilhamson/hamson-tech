@@ -95,9 +95,15 @@ function Header() {
           <Link href="/about-us">ABOUT</Link>
         </nav>
 
-        <Link className="header-contact" href="/contact-us">
-          CONTACT
-        </Link>
+        <div className="header-actions">
+          <Link className="header-buy" href="/bitcoin#buy-bitcoin">
+            BUY BITCOIN
+          </Link>
+
+          <Link className="header-contact" href="/contact-us">
+            CONTACT
+          </Link>
+        </div>
 
         <details className="mobile-navigation">
           <summary aria-label="Open navigation">

@@ -34,10 +34,16 @@ export default function Home() {
             <Link href="/about-us">ABOUT</Link>
           </nav>
 
-          <Link className="header-contact" href="/contact-us">
-            <span>CONTACT</span>
-            <small aria-hidden="true">↗</small>
-          </Link>
+          <div className="header-actions">
+            <Link className="header-buy" href="/bitcoin#buy-bitcoin">
+              BUY BITCOIN
+            </Link>
+
+            <Link className="header-contact" href="/contact-us">
+              <span>CONTACT</span>
+              <small aria-hidden="true">↗</small>
+            </Link>
+          </div>
 
           <details className="mobile-navigation">
             <summary aria-label="Open navigation">
