@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { transakBuyProvider } from "@/app/lib/bitcoin/providers/transak";
+import { getBitcoinBuyProvider } from "@/app/lib/bitcoin/providers";
 
 type BuySessionRequest = {
   amount?: unknown;
@@ -133,8 +133,11 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const provider =
+      getBitcoinBuyProvider();
+
     const session =
-      await transakBuyProvider.createSession({
+      await provider.createSession({
         fiatAmount: amount,
         fiatCurrency: "GBP",
         cryptoCurrency: "BTC",
