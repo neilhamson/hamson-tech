@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { getBitcoinBuyProvider } from "@/app/lib/bitcoin/providers";
+import { createBitcoinBuySession } from "@/app/lib/bitcoin/buy";
 
 type BuySessionRequest = {
   amount?: unknown;
@@ -133,21 +133,16 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const provider =
-      getBitcoinBuyProvider();
-
     const session =
-      await provider.createSession({
+      await createBitcoinBuySession({
         fiatAmount: amount,
-        fiatCurrency: "GBP",
-        cryptoCurrency: "BTC",
-        network: "bitcoin",
         userIp,
         referrerDomain,
       });
 
     return NextResponse.json({
       ok: true,
+      orderId: session.orderId,
       provider: session.provider,
       widgetUrl: session.checkoutUrl,
     });
