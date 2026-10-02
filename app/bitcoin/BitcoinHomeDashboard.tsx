@@ -517,7 +517,7 @@ export default function BitcoinHomeDashboard() {
             >
               <span>BUILDING / INTERACTIVE</span>
               <strong>BUY</strong>
-              <em>GBP → BTC purchase interface</em>
+              <em>GBP → BTC · Bitcoin wallet required</em>
             </button>
 
             <Link href="/bitcoin/wallets">
@@ -706,6 +706,16 @@ export default function BitcoinHomeDashboard() {
                       : "MARKET UNAVAILABLE"}
                   </small>
                 </div>
+              </div>
+
+              <div className={styles.buyNotice}>
+                <span>BITCOIN WALLET REQUIRED</span>
+
+                <p>
+                  Have your Bitcoin receiving address ready. If you
+                  do not have a wallet yet, set one up before
+                  continuing. Hamson Wallet is in development.
+                </p>
               </div>
 
               <div className={styles.buyNotice}>
