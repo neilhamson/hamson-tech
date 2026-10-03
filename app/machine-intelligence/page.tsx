@@ -1,74 +1,346 @@
 import Link from "next/link";
 
-import { Actions, PageShell, Section, pageMetadata } from "../_components/SubpageShell";
+import { PageShell, pageMetadata } from "../_components/SubpageShell";
 import styles from "./machine-intelligence.module.css";
 
 export const metadata = pageMetadata(
-  "MI1: Machine Intelligence Development Tool | Neil Hamson",
-  "MI1 is Neil Hamson's private Machine Intelligence software prototype for human-reviewed code changes. See how its development loop works, what exists and what remains to be verified.",
+  "MI1: Private Machine Intelligence System | Neil Hamson",
+  "MI1 is Neil Hamson's private Machine Intelligence development system: persistent state, bounded tools, human-controlled code changes and verified local model experiments.",
   "/machine-intelligence",
 );
 
-const workflow = [
-  ["01", "INSPECT", "Read the approved repository and the task before preparing a change."],
-  ["02", "PROPOSE", "Present a bounded change set for human review."],
-  ["03", "APPROVE TO APPLY", "The developer reviews the proposed changes and explicitly authorises application."],
-  ["04", "VALIDATE", "Apply the approved change, run bounded validation, and report the result. The loop supports one repair attempt or rollback after failure."],
-  ["05", "APPROVE TO COMMIT", "A separate human decision authorises a local Git commit. The loop has no autonomous push authority."],
+const loop = [
+  ["01", "INSPECT", "SYSTEM"],
+  ["02", "PROPOSE", "SYSTEM"],
+  ["03", "APPROVE", "HUMAN GATE"],
+  ["04", "VALIDATE", "BOUNDED"],
+  ["05", "COMMIT", "HUMAN GATE"],
+] as const;
+
+const evidence = [
+  [
+    "47 AUTOMATED TESTS",
+    "PASS",
+    "Verified after the bounded local-repository development work on the Windows development machine.",
+  ],
+  [
+    "PYTHON COMPILATION",
+    "PASS",
+    "The recorded development run completed Python compilation checks without errors.",
+  ],
+  [
+    "GIT DIFF INTEGRITY",
+    "PASS",
+    "The recorded development run completed git diff --check without errors.",
+  ],
+  [
+    "QWEN3-14B / LLAMA.CPP",
+    "VERIFIED",
+    "Local Qwen3-14B Q4_K_M inference generated output on CPU. This does not establish a proprietary MI1 model.",
+  ],
+  [
+    "MODEL-GENERATED FULL CYCLE",
+    "OPEN",
+    "A complete MI1-generated proposal through approved application, validation and approved local commit is not yet evidenced.",
+  ],
+] as const;
+
+const authority = [
+  ["INSPECT REPOSITORY", "ALLOWED"],
+  ["PROPOSE CHANGE", "BOUNDED"],
+  ["APPLY CHANGE", "HUMAN APPROVAL"],
+  ["LOCAL COMMIT", "SEPARATE APPROVAL"],
+  ["REMOTE PUSH", "NOT AUTHORISED"],
+  ["ARBITRARY SHELL", "NOT GRANTED"],
 ] as const;
 
 export default function MachineIntelligencePage() {
   return (
     <PageShell
-      eyebrow="MI1 / PRIVATE SOFTWARE PROTOTYPE"
-      title="MI1: REVIEW THE CHANGE BEFORE IT LANDS."
-      lede={<p>MI1 is software Neil Hamson is developing to inspect a codebase, propose a limited change, and put a person in control of applying and committing it. The development loop is implemented in a private environment; a dependable complete cycle and recovery after interruption remain to be verified.</p>}
+      eyebrow="MI1 / PRIVATE MACHINE INTELLIGENCE"
+      title={<span className={styles.heroTitle}>CONTROLLED SOFTWARE DEVELOPMENT.</span>}
+      lede={
+        <p className={styles.heroLede}>
+          A private development system combining persistent project state,
+          model reasoning and bounded tools with explicit human authority.
+        </p>
+      }
       compactHero
       accent="blue"
     >
-      <Section
-        id="workflow"
-        label="HOW THE DEVELOPMENT LOOP WORKS"
-        title="TWO DECISIONS. ONE REVIEWABLE CHANGE."
-        intro={<p>These are the stages of the private Development Loop v1.0. Approval to apply a proposal and approval to make a local commit are separate decisions.</p>}
-      >
-        <ol className={styles.workflow}>
-          {workflow.map(([number, title, description]) => (
-            <li key={number}><span>{number}</span><div><h3>{title}</h3><p>{description}</p></div></li>
-          ))}
-        </ol>
-        <p className={styles.note}>The homepage sandbox illustrates the review step in your browser. It is not connected to MI1, does not execute code and cannot approve a real change.</p>
-      </Section>
+      <main className={styles.interface}>
+        <nav className={styles.controlBus} aria-label="MI1 control bus">
+          <div className={styles.busIdentity}>
+            <span>MI1 / CONTROL BUS</span>
+            <strong>SIGNAL / HARDWARE / AUTHORITY</strong>
+          </div>
 
-      <Section
-        label="IMPLEMENTED AND UNRESOLVED"
-        title="CURRENT ENGINEERING STATE"
-        intro={<p>Persistent project state, memory records, bounded tools and the development loop exist in the private prototype. The following distinction matters more than a list of component names.</p>}
-      >
-        <div className={styles.record}>
-          <div><span>IMPLEMENTED</span><p>Source inspection, structured proposals, human approval gates, bounded validation, one repair attempt or rollback, and a controlled local commit path.</p></div>
-          <div><span>STILL TO VERIFY</span><p>Reliable restart with a previously approved proposal when the working tree already contains that exact change; a documented complete cycle from proposal through local commit.</p></div>
-          <div><span>AUTHORITY LIMIT</span><p>No arbitrary shell access or autonomous push authority is granted to the development loop.</p></div>
-          <div><span>PUBLIC EVIDENCE</span><p>The source and operational records are private. This page does not present a public end-to-end demonstration or performance benchmark.</p></div>
-        </div>
-      </Section>
+          <a className={styles.busActive} href="#console">
+            <span>01 / CONSOLE</span>
+            <strong>SYSTEM ACTIVE</strong>
+          </a>
 
-      <Section
-        label="TERMINOLOGY AND MODEL INFRASTRUCTURE"
-        title="WHY MACHINE INTELLIGENCE?"
-        intro={<p>Artificial intelligence (AI) is the widely used term for this field. I use <strong>Machine Intelligence</strong> to name the engineering direction of MI1: persistent software, model reasoning and tools working within defined human authority. It is a choice of emphasis, not a claim that MI1 falls outside AI or is a new proprietary language model.</p>}
-      >
-        <p className={styles.note}>Separately, local inference with Qwen3-14B through llama.cpp has been demonstrated on a CPU. External models still provide the primary reasoning layer. That model experiment does not establish that MI1’s full development workflow runs reliably on a local model.</p>
-      </Section>
+          <a href="#evidence">
+            <span>02 / EVIDENCE</span>
+            <strong>47 TESTS / PASS</strong>
+          </a>
 
-      <Section
-        label="TECHNICAL ENQUIRIES"
-        title="DISCUSS MI1 WITH NEIL HAMSON"
-        intro={<p>MI1 is private and has no public release date. For a technical discussion about the development work, funding or strategic collaboration, contact Neil directly.</p>}
-        narrow
-      >
-        <Actions><Link className="brand-button brand-button-primary" href="/contact-us">CONTACT NEIL</Link></Actions>
-      </Section>
+          <a className={styles.busAuthority} href="#authority">
+            <span>03 / AUTHORITY</span>
+            <strong>HUMAN CONTROL</strong>
+          </a>
+
+          <a className={styles.busCopper} href="#model">
+            <span>04 / MODEL</span>
+            <strong>QWEN3-14B</strong>
+          </a>
+
+          <Link href="/contact-us">
+            <span>05 / CONTACT</span>
+            <strong>OPEN CHANNEL →</strong>
+          </Link>
+        </nav>
+
+        <section className={styles.console} id="console" aria-labelledby="console-title">
+          <header className={styles.consoleHeader}>
+            <div>
+              <span className={styles.micro}>MI1 / DEVELOPMENT CONTROL SURFACE</span>
+              <h2 id="console-title">SYSTEM ACTIVE</h2>
+            </div>
+
+            <div className={styles.live}>
+              <i aria-hidden="true" />
+              PRIVATE / ACTIVE DEVELOPMENT
+            </div>
+          </header>
+
+          <div className={styles.consoleBody}>
+            <div className={styles.primaryState}>
+              <div className={styles.stateBlock}>
+                <span className={styles.label}>CURRENT MODE</span>
+                <strong>BOUNDED REPOSITORY DEVELOPMENT</strong>
+                <p>
+                  MI1 can select and inspect a local Git repository while
+                  preserving restricted write authority, separate approval
+                  gates and no autonomous push.
+                </p>
+              </div>
+
+              <div className={styles.telemetry}>
+                <div>
+                  <span>LOOP</span>
+                  <strong>v1.0</strong>
+                  <small>IMPLEMENTED</small>
+                </div>
+                <div>
+                  <span>TESTS</span>
+                  <strong>47</strong>
+                  <small>PASSING</small>
+                </div>
+                <div>
+                  <span>MEMORY</span>
+                  <strong>v1</strong>
+                  <small>IMPLEMENTED</small>
+                </div>
+                <div>
+                  <span>LOCAL MODEL</span>
+                  <strong>14B</strong>
+                  <small>DEMONSTRATED</small>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.taskStrip}>
+              <span>CURRENT EVIDENCE GATE</span>
+              <strong>COMPLETE MODEL-GENERATED DEVELOPMENT CYCLE</strong>
+              <p>
+                Proposal → approval → application → validation → separate
+                commit approval → local commit.
+              </p>
+            </div>
+
+            <div className={styles.loop} aria-label="MI1 Development Loop v1.0">
+              {loop.map(([number, title, type], index) => (
+                <div className={styles.loopStep} key={number}>
+                  <div className={styles.stepTop}>
+                    <span>{number}</span>
+                    <small className={type === "HUMAN GATE" ? styles.human : ""}>
+                      {type}
+                    </small>
+                  </div>
+                  <strong>{title}</strong>
+                  {index < loop.length - 1 ? <i aria-hidden="true">→</i> : null}
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.consoleFooter}>
+              <span>REMOTE PUSH / DISABLED</span>
+              <span>ARBITRARY SHELL / NOT GRANTED</span>
+              <span>PUBLIC BENCHMARK / NONE CLAIMED</span>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.lowerSection} id="evidence" aria-labelledby="evidence-title">
+          <div className={styles.desktopLower}>
+            <div className={styles.evidencePanel}>
+              <header className={styles.sectionHeader}>
+                <div>
+                  <span className={styles.micro}>ENGINEERING RECORD</span>
+                  <h2 id="evidence-title">VERIFIED EVIDENCE</h2>
+                </div>
+                <span>CLICK A ROW FOR DETAIL</span>
+              </header>
+
+              <div className={styles.evidenceRows}>
+                {evidence.map(([name, state, detail]) => (
+                  <details key={name}>
+                    <summary>
+                      <span>{name}</span>
+                      <strong data-state={state}>{state}</strong>
+                      <small>DETAILS +</small>
+                    </summary>
+                    <p>{detail}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <details className={`${styles.mobileDisclosure} ${styles.mobileEvidence}`}>
+            <summary>
+              <div>
+                <span>ENGINEERING STATUS</span>
+                <strong>4 VERIFIED / 1 OPEN</strong>
+              </div>
+              <small>OPEN +</small>
+            </summary>
+            <div className={styles.mobileDisclosureBody}>
+              {evidence.map(([name, state, detail]) => (
+                <div className={styles.mobileRecord} key={name}>
+                  <div>
+                    <span>{name}</span>
+                    <strong data-state={state}>{state}</strong>
+                  </div>
+                  <p>{detail}</p>
+                </div>
+              ))}
+            </div>
+          </details>
+        </section>
+
+        <section className={styles.dualPanel}>
+          <div className={styles.lowerSlot} id="authority">
+            <div className={`${styles.authority} ${styles.desktopLower}`}>
+              <header className={styles.sectionHeader}>
+                <div>
+                  <span className={styles.micro}>AUTHORITY BOUNDARY</span>
+                  <h2>HUMAN CONTROL</h2>
+                </div>
+              </header>
+
+              <div className={styles.authorityRows}>
+                {authority.map(([action, rule]) => (
+                  <div key={action}>
+                    <span>{action}</span>
+                    <strong>{rule}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <details className={`${styles.mobileDisclosure} ${styles.mobileAuthority}`}>
+              <summary>
+                <div>
+                  <span>CONTROL</span>
+                  <strong>HUMAN CONTROL</strong>
+                </div>
+                <small>OPEN +</small>
+              </summary>
+              <div className={styles.mobileDisclosureBody}>
+                {authority.map(([action, rule]) => (
+                  <div className={styles.mobilePair} key={action}>
+                    <span>{action}</span>
+                    <strong>{rule}</strong>
+                  </div>
+                ))}
+              </div>
+            </details>
+          </div>
+
+          <div className={styles.lowerSlot} id="model">
+            <div className={`${styles.model} ${styles.desktopLower}`}>
+              <header className={styles.sectionHeader}>
+                <div>
+                  <span className={styles.micro}>MODEL INFRASTRUCTURE</span>
+                  <h2>REASONING LAYER</h2>
+                </div>
+              </header>
+
+              <div className={styles.modelBody}>
+                <div>
+                  <span>PRIMARY REASONING</span>
+                  <strong>EXTERNAL MODELS</strong>
+                </div>
+                <div>
+                  <span>LOCAL INFERENCE</span>
+                  <strong>QWEN3-14B / LLAMA.CPP</strong>
+                </div>
+                <div>
+                  <span>FULL LOCAL WORKFLOW</span>
+                  <strong>NOT ESTABLISHED</strong>
+                </div>
+                <div>
+                  <span>PROPRIETARY MODEL</span>
+                  <strong>NOT CLAIMED</strong>
+                </div>
+              </div>
+            </div>
+
+            <details className={`${styles.mobileDisclosure} ${styles.mobileModel}`}>
+              <summary>
+                <div>
+                  <span>MODEL</span>
+                  <strong>QWEN3-14B / LOCAL DEMONSTRATED</strong>
+                </div>
+                <small>OPEN +</small>
+              </summary>
+              <div className={styles.mobileDisclosureBody}>
+                <div className={styles.mobilePair}>
+                  <span>PRIMARY REASONING</span>
+                  <strong>EXTERNAL MODELS</strong>
+                </div>
+                <div className={styles.mobilePair}>
+                  <span>LOCAL INFERENCE</span>
+                  <strong>QWEN3-14B / LLAMA.CPP</strong>
+                </div>
+                <div className={styles.mobilePair}>
+                  <span>FULL LOCAL WORKFLOW</span>
+                  <strong>NOT ESTABLISHED</strong>
+                </div>
+                <div className={styles.mobilePair}>
+                  <span>PROPRIETARY MODEL</span>
+                  <strong>NOT CLAIMED</strong>
+                </div>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section className={styles.closeout}>
+          <div>
+            <span className={styles.micro}>MI1 / CURRENT POSITION</span>
+            <strong>PRIVATE. CONTROLLED. UNDER ACTIVE DEVELOPMENT.</strong>
+          </div>
+          <p>
+            The next material proof point is the complete model-driven cycle.
+            Until it is verified, MI1 is presented as an active private
+            development system rather than a finished autonomous product.
+          </p>
+          <Link href="/contact-us">DISCUSS MI1</Link>
+        </section>
+      </main>
     </PageShell>
   );
 }
