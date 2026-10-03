@@ -26,7 +26,8 @@ import {
   type ProjectEnquiry,
 } from "@/lib/projectEnquiry";
 
-const prompts = productConfig.technicalInterface.prompts;
+const prompts: readonly ProductPrompt[] =
+  productConfig.technicalInterface.prompts;
 
 function StateList({
   title,
@@ -159,7 +160,7 @@ export default function TechnicalInterface() {
     })();
   }, [messages, status, workflowMode]);
 
-  function selectPrompt(prompt: ProductPrompt) {
+  function selectPrompt(prompt: (typeof prompts)[number]) {
     setInput(prompt.text);
     setWorkflowMode(prompt.mode);
 
@@ -241,24 +242,24 @@ export default function TechnicalInterface() {
   return (
     <section
       id="technical-interface"
-      className={styles.interface}
+      className={`${styles.interface} home-technical-interface`}
       aria-label={productConfig.technicalInterface.ariaLabel}
     >
       <div className={styles.shell}>
         <section className={styles.content}>
           <div className={styles.fullWidth}>
-            <div className={styles.compactIntro}>
+            <div className={`${styles.compactIntro} home-technical-intro`}>
               <div>
                 <div className={styles.kicker}>
                   <span>TECHNICAL INTERFACE</span>
                   <span className={styles.kickerLine} aria-hidden="true" />
                 </div>
 
-                <h2 className={styles.title}>
+                <h2 className={`${styles.title} home-technical-title`}>
                   {productConfig.technicalInterface.title}
                 </h2>
 
-                <p className={styles.intro}>
+                <p className={`${styles.intro} home-technical-copy`}>
                   {productConfig.technicalInterface.intro}
                 </p>
               </div>
@@ -270,19 +271,19 @@ export default function TechnicalInterface() {
             </div>
 
             {messages.length === 0 && (
-              <div className={styles.promptGrid}>
+              <div className={`${styles.promptGrid} home-technical-prompt-grid`}>
                 {prompts.map((prompt) => (
                   <button
                     key={prompt.label}
                     type="button"
                     onClick={() => selectPrompt(prompt)}
-                    className={styles.promptButton}
+                    className={`${styles.promptButton} home-technical-prompt-button`}
                   >
-                    <div className={styles.promptLabel}>
+                    <div className={`${styles.promptLabel} home-technical-prompt-label`}>
                       {prompt.label}
                     </div>
 
-                    <div className={styles.promptText}>
+                    <div className={`${styles.promptText} home-technical-prompt-text`}>
                       {prompt.text}
                     </div>
                   </button>

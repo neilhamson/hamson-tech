@@ -1487,7 +1487,8 @@
   gap: 10px;
 }
 
-.homeHeroActions a {
+.homeHeroActions a,
+.homeHeroActions button {
   min-height: 44px;
   padding: 0 17px;
   display: inline-flex;
@@ -1507,10 +1508,46 @@
 }
 
 .homeHeroActions a:hover,
-.homeHeroActions a:focus-visible {
+.homeHeroActions a:focus-visible,
+.homeHeroActions button:hover,
+.homeHeroActions button:focus-visible {
   color: white;
   background: rgba(0, 220, 255, 0.07);
   outline: none;
+}
+
+.homeInstallButton {
+  cursor: pointer;
+}
+
+.homeInstallButton:disabled {
+  cursor: default;
+  opacity: 0.62;
+}
+
+.homeInstallHelp {
+  flex-basis: 100%;
+  max-width: 620px;
+  padding: 12px 14px;
+  border: 1px solid rgba(245, 185, 66, 0.28);
+  background:
+    linear-gradient(90deg, rgba(245, 185, 66, 0.055), transparent 72%),
+    rgba(3, 8, 16, 0.9);
+}
+
+.homeInstallHelp strong {
+  display: block;
+  color: var(--btc-gold);
+  font-family: monospace;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+}
+
+.homeInstallHelp p {
+  margin: 7px 0 0;
+  color: #9aa8bc;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .homeDashboard {
@@ -2521,6 +2558,23 @@
   }
 }
 
+
+@media (max-width: 700px) {
+  .homeInstallHelp {
+    padding: 10px 11px;
+  }
+
+  .homeInstallHelp strong {
+    font-size: 7px;
+  }
+
+  .homeInstallHelp p {
+    margin-top: 6px;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+}
+
 /* === END PHASE 6 / BITCOIN PRODUCT IA === */
 
 /* === PHASE 6 FINAL / APP-LIKE BITCOIN INTERFACE === */
@@ -2787,7 +2841,8 @@
     margin-top: 16px;
   }
 
-  .homeHeroActions a {
+  .homeHeroActions a,
+.homeHeroActions button {
     min-height: 38px;
     padding: 0 12px;
     font-size: 7px;
@@ -3180,7 +3235,8 @@
     gap: 7px;
   }
 
-  .homeHeroActions a {
+  .homeHeroActions a,
+.homeHeroActions button {
     min-height: 35px;
     padding: 0 10px;
   }

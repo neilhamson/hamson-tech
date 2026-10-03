@@ -721,10 +721,12 @@
   }
 
   .launcher {
-    min-width: 0;
+    width: 58px;
+    min-width: 58px;
     min-height: 44px;
-    padding: 8px 11px;
-    gap: 9px;
+    padding: 8px 9px;
+    justify-content: center;
+    gap: 7px;
   }
 
   .launcherDot {
@@ -733,12 +735,22 @@
   }
 
   .launcherText {
-    gap: 0;
+    display: block;
+    min-width: 0;
   }
 
   .launcherText strong {
-    font-size: 9px;
-    letter-spacing: 0.11em;
+    display: block;
+    font-size: 0;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .launcherText strong::after {
+    content: "ASK";
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
   }
 
   .launcherText span {

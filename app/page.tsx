@@ -45,6 +45,14 @@ export default function Home() {
             </Link>
           </div>
 
+          <Link
+            className="mobile-header-buy"
+            href="/bitcoin#buy-bitcoin"
+            aria-label="Buy Bitcoin"
+          >
+            BUY BITCOIN
+          </Link>
+
           <details className="mobile-navigation">
             <summary aria-label="Open navigation">
               <span />

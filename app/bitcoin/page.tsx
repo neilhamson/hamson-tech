@@ -3,13 +3,33 @@ import Link from "next/link";
 
 import { pageMetadata } from "../_components/SubpageShell";
 import BitcoinHomeDashboard from "./BitcoinHomeDashboard";
+import HamsonBitcoinInstall from "./HamsonBitcoinInstall";
 import styles from "./bitcoin.module.css";
 
-export const metadata = pageMetadata(
+const bitcoinPageMetadata = pageMetadata(
   "Hamson Bitcoin — Bitcoin Market, Network, Wallets & Guides UK",
   "Hamson Bitcoin is a UK-focused Bitcoin platform with live BTC/GBP market data, network information, wallet guidance and beginner tools.",
   "/bitcoin",
 );
+
+export const metadata = {
+  ...bitcoinPageMetadata,
+  manifest: "/bitcoin/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "Hamson Bitcoin",
+    statusBarStyle: "black-translucent" as const,
+  },
+  icons: {
+    apple: [
+      {
+        url: "/hamson-bitcoin/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
+};
 
 function Header() {
   return (
@@ -205,6 +225,8 @@ export default function BitcoinPage() {
             <Link href="/bitcoin/fees">
               VIEW NETWORK
             </Link>
+
+            <HamsonBitcoinInstall />
           </div>
         </div>
 
