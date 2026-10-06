@@ -239,31 +239,45 @@ export default function BitcoinPage() {
         aria-labelledby="bitcoin-development-title"
       >
         <div className={styles.homeDevelopmentInner}>
-          <span>HAMSON BITCOIN / PRODUCT DEVELOPMENT</span>
+          <span>HAMSON BITCOIN / LIVE WALLET DEVELOPMENT</span>
 
           <div>
             <strong id="bitcoin-development-title">
-              BITCOIN ACCOUNT SYSTEM
+              HAMSON BITCOIN WALLET
             </strong>
 
             <p>
-              Hamson Software is developing an integrated Bitcoin purchase
-              and wallet system for Hamson Bitcoin. The target is one
-              interface for buying Bitcoin in pounds, viewing Bitcoin
-              balances, receiving and sending Bitcoin, and reviewing
-              transaction activity across the web, mobile browser and a
-              future dedicated application.
+              Hamson Software is developing a non-custodial Bitcoin wallet in
+              public. The current build runs exclusively on Bitcoin Signet and
+              demonstrates local wallet recovery, BDK synchronization, UTXO
+              discovery and unsigned PSBT construction. Visitors can open the
+              working development system now and follow the product as signing,
+              broadcast, persistence and further security work are completed.
             </p>
+
+            <div className={styles.homeHeroActions}>
+              <a
+                href="https://wallet.hamson.tech"
+                target="_blank"
+                rel="noreferrer"
+              >
+                OPEN LIVE WALLET
+              </a>
+
+              <Link href="/bitcoin/wallets">
+                WALLET GUIDE
+              </Link>
+            </div>
           </div>
 
           <div className={styles.homeDevelopmentStatus}>
-            <span>BUY BITCOIN</span>
-            <strong>BUILDING / GBP → BTC</strong>
+            <span>PUBLIC DEVELOPMENT BUILD</span>
+            <strong>OPERATIONAL / BITCOIN SIGNET</strong>
           </div>
 
           <div className={styles.homeDevelopmentStatus}>
-            <span>HAMSON WALLET</span>
-            <strong>BUILDING / RECEIVE · SEND · BALANCE</strong>
+            <span>VERIFIED CAPABILITIES</span>
+            <strong>RECOVERY · SYNC · UTXO · PSBT</strong>
           </div>
         </div>
       </section>
@@ -276,10 +290,11 @@ export default function BitcoinPage() {
 
           <p>
             Live BTC/GBP market data, Bitcoin network information, wallet
-            guidance and educational tools are available now. Hamson
-            Software's Bitcoin purchase system and Hamson Wallet are
-            currently in development and are not yet available as live
-            financial services.
+            guidance and educational tools are available now. The Hamson
+            Bitcoin Wallet is also available as a public Bitcoin Signet
+            development build for demonstration and testing. It is not a
+            Mainnet wallet or live financial service. Hamson Software's
+            Bitcoin purchase system remains in development.
           </p>
         </div>
       </section>

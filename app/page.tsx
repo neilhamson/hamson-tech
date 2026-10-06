@@ -106,23 +106,26 @@ export default function Home() {
               <h2 id="closing-title">SYSTEMS YOU CAN USE.</h2>
 
               <p className="closing-copy">
-                Open the live Hamson Technical Interface, explore Hamson Bitcoin,
-                or review the private MI1 research programme and investor information.
+                Open the live Hamson Bitcoin Wallet development build, use the
+                Hamson Technical Interface, explore Hamson Bitcoin, or review
+                the private MI1 research programme.
               </p>
 
               <div className="closing-system-actions">
-                <Link
+                <a
                   className="brand-button brand-button-primary"
-                  href="#technical-interface"
+                  href="https://wallet.hamson.tech"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  OPEN LIVE INTERFACE
-                </Link>
+                  OPEN LIVE BITCOIN WALLET
+                </a>
 
                 <Link
                   className="brand-button brand-button-secondary"
-                  href="/contact-us"
+                  href="#technical-interface"
                 >
-                  PRODUCT / INVESTOR CONTACT
+                  OPEN LIVE INTERFACE
                 </Link>
               </div>
             </div>
@@ -131,26 +134,36 @@ export default function Home() {
               className="closing-route-grid"
               aria-label="Hamson Software systems"
             >
+              <a
+                href="https://wallet.hamson.tech"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>01 / LIVE DEVELOPMENT</span>
+                <strong>HAMSON BITCOIN WALLET</strong>
+                <small>SIGNET / OPEN →</small>
+              </a>
+
               <Link href="#technical-interface">
-                <span>01 / LIVE INTERFACE</span>
+                <span>02 / LIVE INTERFACE</span>
                 <strong>HAMSON TECHNICAL INTERFACE</strong>
                 <small>OPEN →</small>
               </Link>
 
               <Link href="/bitcoin">
-                <span>02 / HAMSON BITCOIN</span>
+                <span>03 / HAMSON BITCOIN</span>
                 <strong>BITCOIN PLATFORM</strong>
                 <small>OPEN →</small>
               </Link>
 
               <Link href="/machine-intelligence">
-                <span>03 / PRIVATE R&amp;D</span>
+                <span>04 / PRIVATE R&amp;D</span>
                 <strong>MI1 / INVESTOR PROJECT</strong>
                 <small>VIEW →</small>
               </Link>
 
               <Link href="/contact-us">
-                <span>04 / DIRECT CHANNEL</span>
+                <span>05 / DIRECT CHANNEL</span>
                 <strong>PRODUCT / INVESTOR CONTACT</strong>
                 <small>OPEN →</small>
               </Link>
