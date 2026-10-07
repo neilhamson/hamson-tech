@@ -160,10 +160,10 @@ function BitcoinProductNav() {
           <small>LIVE</small>
         </Link>
 
-        <Link href="/bitcoin/fractions-satoshis">
+        <Link href="/bitcoin/learn">
           <span>06</span>
           <strong>LEARN</strong>
-          <small>GUIDES</small>
+          <small>START HERE</small>
         </Link>
       </div>
     </nav>

@@ -202,29 +202,40 @@ export default function BitcoinWalletsPage() {
           <div className={styles.grid3}>
             <article className={styles.panel}>
               <span className={styles.panelNumber}>SEE</span>
-              <h3>SHOWS BITCOIN</h3>
+              <h3>WHERE IS THE BITCOIN?</h3>
               <p>
-                A wallet can show addresses, transaction history and the
-                Bitcoin associated with the keys it manages.
+                A wallet does not contain digital coins. It reads Bitcoin
+                network data and identifies spendable outputs controlled by
+                the wallet&apos;s keys.
               </p>
+              <Link href="/bitcoin/learn/wallets">
+                PHYSICAL WALLET VS BITCOIN WALLET →
+              </Link>
             </article>
 
             <article className={styles.panel}>
               <span className={styles.panelNumber}>CONTROL</span>
-              <h3>MANAGES KEYS</h3>
+              <h3>WHAT ARE THE KEYS?</h3>
               <p>
-                The keys are what allow a wallet to authorise transactions
-                involving the Bitcoin they control.
+                Private keys provide the cryptographic authority needed to
+                sign a valid spend. Recovery information can recreate wallet
+                key material and must remain secret.
               </p>
+              <Link href="/bitcoin/learn/keys-and-recovery">
+                KEYS, ADDRESSES &amp; RECOVERY →
+              </Link>
             </article>
 
             <article className={styles.panel}>
               <span className={styles.panelNumber}>USE</span>
-              <h3>SENDS &amp; RECEIVES</h3>
+              <h3>WHAT HAPPENS WHEN I SEND?</h3>
               <p>
-                The wallet provides the interface for receiving Bitcoin and
-                creating payments to other Bitcoin addresses.
+                Follow a Bitcoin payment through transaction construction,
+                local signing, broadcast to the network and confirmation in a block.
               </p>
+              <Link href="/bitcoin/learn/transactions">
+                FOLLOW A BITCOIN TRANSACTION →
+              </Link>
             </article>
           </div>
         </div>
