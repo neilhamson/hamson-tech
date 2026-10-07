@@ -4132,3 +4132,70 @@
 }
 
 /* === END HAMSON BITCOIN PRODUCT NAV REFINEMENT === */
+
+/* -------------------------------------------------
+   HAMSON BITCOIN / MOBILE HERO + INSTALL CONTROL FIX
+   Final override: intentionally placed at end of file.
+------------------------------------------------- */
+
+.homeInstallButton {
+  min-height: 44px;
+  padding: 0 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 220, 255, 0.34);
+  color: var(--btc-cyan);
+  background: rgba(3, 8, 16, 0.76);
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.homeInstallButton:hover,
+.homeInstallButton:focus-visible {
+  color: var(--btc-white);
+  border-color: var(--btc-cyan);
+  background: rgba(0, 220, 255, 0.07);
+  outline: none;
+}
+
+.homeInstallButton:disabled {
+  color: #718096;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(3, 8, 16, 0.62);
+  cursor: default;
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  .homeHero h1 {
+    font-size: clamp(38px, 11vw, 50px);
+    line-height: 0.88;
+  }
+
+  .homeHero h1 span {
+    margin-top: 5px;
+  }
+
+  .homeHeroLead {
+    margin-top: 15px;
+  }
+
+  .homeHeroActions {
+    margin-top: 15px;
+    gap: 8px;
+  }
+
+  .homeHeroActions a,
+  .homeInstallButton {
+    min-height: 38px;
+    padding: 0 12px;
+    font-size: 7px;
+    letter-spacing: 0.1em;
+  }
+}
+
