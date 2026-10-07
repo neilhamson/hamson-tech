@@ -17,10 +17,16 @@ export const learnSteps: LearnStep[] = [
   { number: "04", title: "KEYS, ADDRESSES & RECOVERY", href: "/bitcoin/learn/keys-and-recovery" },
   { number: "05", title: "HOW A TRANSACTION WORKS", href: "/bitcoin/learn/transactions" },
   { number: "06", title: "FRACTIONS & SATOSHIS", href: "/bitcoin/fractions-satoshis" },
-  { number: "07", title: "MINING & BLOCKS", href: "/bitcoin/mining" },
-  { number: "08", title: "FEES & CONFIRMATIONS", href: "/bitcoin/fees" },
-  { number: "09", title: "SELF-CUSTODY & SAFETY", href: "/bitcoin/learn/security" },
-  { number: "10", title: "BITCOIN IN POUNDS", href: "/bitcoin/gbp" },
+  { number: "07", title: "WHY DOES BITCOIN HAVE VALUE?", href: "/bitcoin/learn/value" },
+  { number: "08", title: "WHY ONLY 21 MILLION?", href: "/bitcoin/learn/supply" },
+  { number: "09", title: "BITCOIN VS CRYPTOCURRENCY", href: "/bitcoin/learn/bitcoin-vs-cryptocurrency" },
+  { number: "10", title: "MINING & BLOCKS", href: "/bitcoin/mining" },
+  { number: "11", title: "FEES & CONFIRMATIONS", href: "/bitcoin/fees" },
+  { number: "12", title: "SELF-CUSTODY & SAFETY", href: "/bitcoin/learn/security" },
+  { number: "13", title: "RISKS, MISTAKES & SCAMS", href: "/bitcoin/learn/risks-scams" },
+  { number: "14", title: "BITCOIN IN POUNDS", href: "/bitcoin/gbp" },
+  { number: "15", title: "HOW BUYING BITCOIN WORKS", href: "/bitcoin/learn/how-to-buy" },
+  { number: "16", title: "READY TO BUY?", href: "/bitcoin/learn/ready-to-buy" },
 ];
 
 export function SiteHeader() {
@@ -125,12 +131,14 @@ export function LearnFooter() {
 
 export function SourcePanel() {
   return (
-    <aside className={styles.sourcePanel} aria-label="Primary Bitcoin references">
-      <span>PRIMARY REFERENCES</span>
+    <aside className={styles.sourcePanel} aria-label="Bitcoin learning references">
+      <span>REFERENCE MATERIAL</span>
       <p>
-        Hamson Bitcoin explains these concepts in plain English. The underlying
-        technical material is cross-checked against the Bitcoin white paper,
-        Bitcoin.org and the Bitcoin developer documentation.
+        Hamson Bitcoin explains the material in its own plain-English learning
+        structure. Bitcoin-specific claims are cross-checked against the
+        original Bitcoin paper, Bitcoin.org and the Bitcoin developer
+        documentation. Oracle material is used only as additional context for
+        general blockchain terminology and enterprise blockchain concepts.
       </p>
       <div>
         <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noreferrer">
@@ -140,7 +148,10 @@ export function SourcePanel() {
           BITCOIN.ORG ↗
         </a>
         <a href="https://developer.bitcoin.org/devguide/" target="_blank" rel="noreferrer">
-          DEVELOPER GUIDE ↗
+          BITCOIN DEVELOPER GUIDE ↗
+        </a>
+        <a href="https://www.oracle.com/blockchain/what-is-blockchain/" target="_blank" rel="noreferrer">
+          ORACLE BLOCKCHAIN OVERVIEW ↗
         </a>
       </div>
     </aside>

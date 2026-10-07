@@ -25,7 +25,7 @@ export default function SecurityPage() {
 
       <section className={styles.hero} id="main-content">
         <div>
-          <p className={styles.eyebrow}>BEGINNER PATH / 09</p>
+          <p className={styles.eyebrow}>BEGINNER PATH / 12</p>
           <h1>SELF-CUSTODY <span>&amp; SAFETY.</span></h1>
           <p className={styles.lead}>
             Self-custody removes reliance on another company to authorize your
@@ -91,7 +91,7 @@ export default function SecurityPage() {
       <SourcePanel />
       <StepFooter
         previous={{ href: "/bitcoin/fees", label: "FEES & CONFIRMATIONS" }}
-        next={{ href: "/bitcoin/gbp", label: "BITCOIN IN POUNDS" }}
+        next={{ href: "/bitcoin/learn/risks-scams", label: "RISKS, MISTAKES & SCAMS" }}
       />
       <LearnFooter />
     </main>
