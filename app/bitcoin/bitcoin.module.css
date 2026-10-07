@@ -1487,8 +1487,7 @@
   gap: 10px;
 }
 
-.homeHeroActions a,
-.homeHeroActions button {
+.homeHeroActions a {
   min-height: 44px;
   padding: 0 17px;
   display: inline-flex;
@@ -1508,46 +1507,10 @@
 }
 
 .homeHeroActions a:hover,
-.homeHeroActions a:focus-visible,
-.homeHeroActions button:hover,
-.homeHeroActions button:focus-visible {
+.homeHeroActions a:focus-visible {
   color: white;
   background: rgba(0, 220, 255, 0.07);
   outline: none;
-}
-
-.homeInstallButton {
-  cursor: pointer;
-}
-
-.homeInstallButton:disabled {
-  cursor: default;
-  opacity: 0.62;
-}
-
-.homeInstallHelp {
-  flex-basis: 100%;
-  max-width: 620px;
-  padding: 12px 14px;
-  border: 1px solid rgba(245, 185, 66, 0.28);
-  background:
-    linear-gradient(90deg, rgba(245, 185, 66, 0.055), transparent 72%),
-    rgba(3, 8, 16, 0.9);
-}
-
-.homeInstallHelp strong {
-  display: block;
-  color: var(--btc-gold);
-  font-family: monospace;
-  font-size: 8px;
-  letter-spacing: 0.14em;
-}
-
-.homeInstallHelp p {
-  margin: 7px 0 0;
-  color: #9aa8bc;
-  font-size: 12px;
-  line-height: 1.45;
 }
 
 .homeDashboard {
@@ -2558,23 +2521,6 @@
   }
 }
 
-
-@media (max-width: 700px) {
-  .homeInstallHelp {
-    padding: 10px 11px;
-  }
-
-  .homeInstallHelp strong {
-    font-size: 7px;
-  }
-
-  .homeInstallHelp p {
-    margin-top: 6px;
-    font-size: 10px;
-    line-height: 1.4;
-  }
-}
-
 /* === END PHASE 6 / BITCOIN PRODUCT IA === */
 
 /* === PHASE 6 FINAL / APP-LIKE BITCOIN INTERFACE === */
@@ -2841,8 +2787,7 @@
     margin-top: 16px;
   }
 
-  .homeHeroActions a,
-.homeHeroActions button {
+  .homeHeroActions a {
     min-height: 38px;
     padding: 0 12px;
     font-size: 7px;
@@ -3235,8 +3180,7 @@
     gap: 7px;
   }
 
-  .homeHeroActions a,
-.homeHeroActions button {
+  .homeHeroActions a {
     min-height: 35px;
     padding: 0 10px;
   }
@@ -4027,3 +3971,164 @@
 }
 
 /* === END PHASE 7.2 / BUY APP INTERFACE === */
+
+/* =================================================
+   HAMSON BITCOIN PRODUCT NAV / MOBILE 2×3 CONTROL GRID
+   Refined 2026-10-07
+   ================================================= */
+
+/*
+ * Keep the product rail visually unified while giving each destination a
+ * restrained Hamson-brand accent. The dark panel base remains common.
+ */
+.productNavInner > a {
+  --product-accent: #00dcff;
+  --product-tint: rgba(0, 220, 255, 0.035);
+  background:
+    linear-gradient(
+      180deg,
+      var(--product-tint),
+      rgba(255, 255, 255, 0.004) 70%
+    );
+}
+
+.productNavInner > a:nth-child(1) {
+  --product-accent: #00dcff;
+  --product-tint: rgba(0, 220, 255, 0.045);
+}
+
+.productNavInner > a:nth-child(2) {
+  --product-accent: #4f8cff;
+  --product-tint: rgba(79, 140, 255, 0.045);
+}
+
+.productNavInner > a:nth-child(3) {
+  --product-accent: #f5b942;
+  --product-tint: rgba(245, 185, 66, 0.050);
+}
+
+.productNavInner > a:nth-child(4) {
+  --product-accent: #d4aa55;
+  --product-tint: rgba(212, 170, 85, 0.040);
+}
+
+.productNavInner > a:nth-child(5) {
+  --product-accent: #28b8e6;
+  --product-tint: rgba(40, 184, 230, 0.040);
+}
+
+.productNavInner > a:nth-child(6) {
+  --product-accent: #e9d27a;
+  --product-tint: rgba(233, 210, 122, 0.052);
+}
+
+.productNavInner > a small {
+  color: var(--product-accent);
+}
+
+.productNavInner > a:hover,
+.productNavInner > a:focus-visible {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--product-accent) 9%, transparent),
+      rgba(255, 255, 255, 0.004) 72%
+    );
+  box-shadow:
+    inset 0 -1px 0 var(--product-accent);
+}
+
+.productNavInner > a.productNavActive {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--product-accent) 12%, transparent),
+      rgba(255, 255, 255, 0.006) 76%
+    ) !important;
+  box-shadow:
+    inset 0 -2px 0 var(--product-accent);
+}
+
+.productNavInner > a.productNavActive strong,
+.productNavInner > a.productNavActive small {
+  color: var(--product-accent);
+}
+
+.productNavInner > a.productNavActive::before {
+  background: var(--product-accent);
+}
+
+/*
+ * Mobile is a fixed 3-column × 2-row application control surface.
+ * No primary destination is hidden behind horizontal scrolling.
+ */
+@media (max-width: 700px) {
+  .productNav {
+    overflow-x: visible;
+    padding-top: 64px;
+    padding-left: 0;
+    padding-right: 0;
+    scrollbar-width: none;
+    border-bottom-color: rgba(0, 220, 255, 0.16);
+  }
+
+  .productNav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .productNavInner {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(58px, auto));
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .productNavInner > a {
+    min-width: 0;
+    min-height: 58px;
+    padding: 9px 10px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "name"
+      "state";
+    gap: 6px;
+    align-content: center;
+  }
+
+  .productNavInner > a:nth-child(3n) {
+    border-right: 0;
+  }
+
+  .productNavInner > a:nth-child(n + 4) {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .productNavInner span {
+    display: none;
+  }
+
+  .productNavInner strong {
+    overflow: hidden;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 0.045em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .productNavInner small {
+    justify-self: start;
+    font-size: 6px;
+    line-height: 1;
+    letter-spacing: 0.09em;
+  }
+
+  .productNavActive::before {
+    left: 10px;
+    width: 20px;
+  }
+}
+
+/* === END HAMSON BITCOIN PRODUCT NAV REFINEMENT === */
