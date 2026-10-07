@@ -12,7 +12,7 @@ import styles from "../learn.module.css";
 
 export const metadata = pageMetadata(
   "Why Does Bitcoin Have Value? — Hamson Bitcoin",
-  "A beginner explanation of Bitcoin value, price, scarcity, usefulness, monetary properties, adoption and why no future price is guaranteed.",
+  "Hamson Bitcoin explains Bitcoin value, price, scarcity, usefulness, monetary properties, adoption and why no future price is guaranteed.",
   "/bitcoin/learn/value",
 );
 
@@ -25,7 +25,7 @@ export default function BitcoinValuePage() {
 
       <section className={styles.hero} id="main-content">
         <div>
-          <p className={styles.eyebrow}>BEGINNER PATH / 07</p>
+          <p className={styles.eyebrow}>HAMSON BITCOIN / BEGINNER PATH / 07</p>
           <h1>WHY DOES BITCOIN <span>HAVE VALUE?</span></h1>
           <p className={styles.lead}>
             Bitcoin does not have a guaranteed price and no authority promises
@@ -60,14 +60,15 @@ export default function BitcoinValuePage() {
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
             <div>
-              <p className={styles.eyebrow}>MONETARY PROPERTIES / 08</p>
+              <p className={styles.eyebrow}>HAMSON BITCOIN / MONETARY PROPERTIES / 08</p>
               <h2>WHY PEOPLE MAY CHOOSE TO HOLD OR USE IT.</h2>
             </div>
             <div className={styles.sectionIntro}>
-              Bitcoin.org highlights properties commonly associated with money:
-              durability, portability, fungibility, scarcity, divisibility and
-              recognizability. Bitcoin expresses these through software,
-              cryptography and network rules rather than through a physical commodity.
+              Bitcoin can be examined through properties commonly associated
+              with money: durability, portability, fungibility, scarcity,
+              divisibility and recognizability. Bitcoin expresses these through
+              software, cryptography and network rules rather than through a
+              physical commodity.
             </div>
           </div>
 

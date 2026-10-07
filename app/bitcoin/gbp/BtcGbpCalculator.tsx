@@ -330,7 +330,7 @@ export default function BtcGbpCalculator() {
       <div className={styles.systemHeader}>
         <div>
           <span className={styles.systemCode}>
-            HAMSON SOFTWARE / BTC-GBP / UK-01
+            HAMSON BITCOIN / BTC-GBP / UK-01
           </span>
 
           <strong>BITCOIN IN POUNDS</strong>
@@ -365,21 +365,8 @@ export default function BtcGbpCalculator() {
           {marketState === "live" ||
           marketState === "stale" ? (
             <>
-              Updated{" "}
-              {formatMarketTime(lastUpdated)}.{" "}
-              <a
-                href="https://coinmarketcap.com/"
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  color: "inherit",
-                  textDecoration: "underline",
-                  textUnderlineOffset: "0.15em",
-                }}
-              >
-                Data provided by CoinMarketCap.com
-              </a>
-              .
+              Hamson Bitcoin market data updated{" "}
+              {formatMarketTime(lastUpdated)}.
             </>
           ) : marketState === "error" ? (
             "The live Bitcoin price is currently unavailable."
@@ -682,7 +669,7 @@ export default function BtcGbpCalculator() {
       <div className={styles.engineFooter}>
         <span>
           SYSTEM{" "}
-          <strong>HAMSON SOFTWARE</strong>
+          <strong>HAMSON BITCOIN</strong>
         </span>
 
         <span>

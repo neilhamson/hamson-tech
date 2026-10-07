@@ -208,8 +208,8 @@ export default function BitcoinFeeHeroConsole() {
         </div>
 
         <div className={bitcoinStyles.consoleRow}>
-          <span>SOURCE</span>
-          <strong>MEMPOOL.SPACE</strong>
+          <span>PLATFORM</span>
+          <strong>HAMSON BITCOIN</strong>
         </div>
 
         <div className={bitcoinStyles.consoleRow}>

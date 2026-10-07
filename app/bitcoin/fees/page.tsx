@@ -7,8 +7,8 @@ import BitcoinFeeHeroConsole from "./BitcoinFeeHeroConsole";
 import BitcoinFeeMonitor from "./BitcoinFeeMonitor";
 
 export const metadata = pageMetadata(
-  "Bitcoin Network Fees UK — Live sat/vB Fee Monitor",
-  "See current Bitcoin network fee rates, mempool activity and approximate transaction costs in satoshis and British pounds with Hamson Software.",
+  "Hamson Bitcoin Network Fees — Live sat/vB Fee Monitor",
+  "Hamson Bitcoin shows current Bitcoin network fee rates, mempool activity and approximate transaction costs in satoshis and British pounds.",
   "/bitcoin/fees",
 );
 
@@ -103,10 +103,9 @@ function Header() {
 function Footer() {
   return (
     <footer className="site-footer">
-      <span>© 2026 Neil Hamson</span>
+      <span>© 2026 Hamson Software</span>
       <span>
-        Human direction. Machine intelligence.
-        Shared construction.
+        Hamson Bitcoin / Live network tools.
       </span>
       <span>
         Developed by Dr Neil Hamson
@@ -135,7 +134,7 @@ export default function BitcoinFeesPage() {
       >
         <div className={bitcoinStyles.heroCopy}>
           <p className={bitcoinStyles.kicker}>
-            BITCOIN / NETWORK / LIVE FEES
+            HAMSON BITCOIN / NETWORK / LIVE FEES
           </p>
 
           <h1>
@@ -223,12 +222,11 @@ export default function BitcoinFeesPage() {
               }
             >
               Bitcoin transaction fees change with
-              network demand. Hamson Software reads
-              current recommended fee rates and
-              mempool statistics from
-              mempool.space, then combines them with
-              the existing BTC/GBP market reference
-              for an approximate sterling value.
+              network demand. Hamson Bitcoin combines
+              current recommended fee rates, mempool
+              activity and the Hamson Bitcoin BTC/GBP
+              market reference to provide an approximate
+              sterling value.
             </div>
           </div>
 
@@ -575,12 +573,11 @@ export default function BitcoinFeesPage() {
 
           <p>
             Fee rates and mempool statistics are
-            current network estimates supplied by
-            mempool.space. Sterling values use the
-            Hamson Software BTC/GBP market
-            reference. Values are approximate and
-            this page does not create or execute
-            Bitcoin transactions.
+            current network estimates presented through
+            Hamson Bitcoin. Sterling values use the
+            Hamson Bitcoin BTC/GBP market reference.
+            Values are approximate and this page does
+            not create or execute Bitcoin transactions.
           </p>
         </div>
       </section>

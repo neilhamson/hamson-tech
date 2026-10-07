@@ -94,7 +94,7 @@ export default function BitcoinNetworkPanel() {
   return (
     <div className={styles.networkTerminal}>
       <div className={styles.networkTopline}>
-        <div><span className={styles.networkCode}>HAMSON SOFTWARE / BITCOIN NETWORK</span><strong>NETWORK STATE</strong></div>
+        <div><span className={styles.networkCode}>HAMSON BITCOIN / NETWORK</span><strong>NETWORK STATE</strong></div>
         <span className={`${styles.networkStatus} ${available ? "" : styles.networkStatusError}`}>
           <i aria-hidden="true" />{available ? (height !== null ? "LIVE BLOCKCHAIN DATA" : "CONNECTING") : "DATA UNAVAILABLE"}
         </span>
@@ -115,7 +115,7 @@ export default function BitcoinNetworkPanel() {
         </div>
       </div>
 
-      <div className={styles.networkFooter}><span>REFRESH <strong>60 SECONDS</strong></span><span>BLOCK TARGET <strong>~10 MINUTES</strong></span><span>HALVING ESTIMATE <strong>10-MINUTE BLOCK MODEL</strong></span><span>SOURCE <strong>MEMPOOL.SPACE</strong></span></div>
+      <div className={styles.networkFooter}><span>REFRESH <strong>60 SECONDS</strong></span><span>BLOCK TARGET <strong>~10 MINUTES</strong></span><span>HALVING ESTIMATE <strong>10-MINUTE BLOCK MODEL</strong></span><span>PLATFORM <strong>HAMSON BITCOIN</strong></span></div>
     </div>
   );
 }

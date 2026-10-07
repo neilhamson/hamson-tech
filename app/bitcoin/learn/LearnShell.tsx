@@ -92,7 +92,7 @@ export function LearnNav({
   activeHref?: string;
 }) {
   return (
-    <nav className={styles.learnNav} aria-label="Bitcoin learning path">
+    <nav className={styles.learnNav} aria-label="Hamson Bitcoin learning path">
       <div className={styles.learnNavInner}>
         <Link
           href="/bitcoin/learn"
@@ -131,28 +131,17 @@ export function LearnFooter() {
 
 export function SourcePanel() {
   return (
-    <aside className={styles.sourcePanel} aria-label="Bitcoin learning references">
-      <span>REFERENCE MATERIAL</span>
+    <aside className={styles.sourcePanel} aria-label="Hamson Bitcoin learning">
+      <span>HAMSON BITCOIN LEARNING</span>
       <p>
-        Hamson Bitcoin explains the material in its own plain-English learning
-        structure. Bitcoin-specific claims are cross-checked against the
-        original Bitcoin paper, Bitcoin.org and the Bitcoin developer
-        documentation. Oracle material is used only as additional context for
-        general blockchain terminology and enterprise blockchain concepts.
+        Hamson Bitcoin is developed by Hamson Software to make Bitcoin easier
+        to understand, evaluate and use. Learning material is written and
+        maintained by Neil Hamson as part of the wider Hamson Bitcoin platform.
       </p>
       <div>
-        <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noreferrer">
-          BITCOIN WHITE PAPER ↗
-        </a>
-        <a href="https://bitcoin.org/en/how-it-works" target="_blank" rel="noreferrer">
-          BITCOIN.ORG ↗
-        </a>
-        <a href="https://developer.bitcoin.org/devguide/" target="_blank" rel="noreferrer">
-          BITCOIN DEVELOPER GUIDE ↗
-        </a>
-        <a href="https://www.oracle.com/blockchain/what-is-blockchain/" target="_blank" rel="noreferrer">
-          ORACLE BLOCKCHAIN OVERVIEW ↗
-        </a>
+        <Link href="/bitcoin/learn">HAMSON BITCOIN LEARN →</Link>
+        <Link href="/bitcoin">HAMSON BITCOIN →</Link>
+        <Link href="/about-us">ABOUT NEIL HAMSON →</Link>
       </div>
     </aside>
   );
@@ -166,7 +155,7 @@ export function StepFooter({
   next?: { href: string; label: string };
 }) {
   return (
-    <nav className={styles.stepFooter} aria-label="Continue Bitcoin learning">
+    <nav className={styles.stepFooter} aria-label="Continue Hamson Bitcoin learning">
       {previous ? (
         <Link href={previous.href}>
           <span>← PREVIOUS</span>

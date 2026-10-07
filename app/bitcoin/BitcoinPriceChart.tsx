@@ -422,7 +422,7 @@ export default function BitcoinPriceChart() {
     <div className={styles.marketTerminal}>
       <div className={styles.marketTopline}>
         <div>
-          <span className={styles.marketCode}>HAMSON SOFTWARE / BTC-GBP / {range}</span>
+          <span className={styles.marketCode}>HAMSON BITCOIN / BTC-GBP / {range}</span>
           <strong>BITCOIN / GBP</strong>
         </div>
 
@@ -642,7 +642,7 @@ export default function BitcoinPriceChart() {
           UPDATED <strong>{formatUpdated(lastUpdated)}</strong>
         </span>
         <span>
-          SOURCE <strong>COINMARKETCAP</strong>
+          PLATFORM <strong>HAMSON BITCOIN</strong>
         </span>
         <Link href="/bitcoin/gbp">OPEN BITCOIN IN POUNDS →</Link>
       </div>

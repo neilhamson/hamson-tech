@@ -271,21 +271,21 @@ export default function BitcoinFeeMonitor() {
       key: "high" as const,
       label: "HIGH PRIORITY",
       description:
-        "mempool.space fastest recommended fee rate.",
+        "Current high-priority network fee estimate.",
       value: fees?.high ?? null,
     },
     {
       key: "medium" as const,
       label: "MEDIUM",
       description:
-        "mempool.space half-hour recommendation.",
+        "Current medium-priority network fee estimate.",
       value: fees?.medium ?? null,
     },
     {
       key: "standard" as const,
       label: "STANDARD",
       description:
-        "mempool.space hour recommendation.",
+        "Current standard network fee estimate.",
       value: fees?.standard ?? null,
     },
     {
@@ -311,7 +311,7 @@ export default function BitcoinFeeMonitor() {
       <div className={styles.systemHeader}>
         <div>
           <span className={styles.systemCode}>
-            HAMSON SOFTWARE / BTC-FEES / UK-02
+            HAMSON BITCOIN / BTC-FEES / UK-02
           </span>
 
           <strong>BITCOIN NETWORK FEES</strong>
@@ -522,15 +522,15 @@ export default function BitcoinFeeMonitor() {
 
       <div className={styles.engineFooter}>
         <span>
-          SOURCE{" "}
-          <strong>MEMPOOL.SPACE</strong>
+          PLATFORM{" "}
+          <strong>HAMSON BITCOIN</strong>
         </span>
 
         <span>
           PRICE{" "}
           <strong>
             {btcGbp !== null
-              ? "COINMARKETCAP"
+              ? "BTC / GBP"
               : "UNAVAILABLE"}
           </strong>
         </span>

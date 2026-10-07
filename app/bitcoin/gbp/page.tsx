@@ -7,8 +7,8 @@ import bitcoinStyles from "../bitcoin.module.css";
 import styles from "./gbp.module.css";
 
 export const metadata = pageMetadata(
-  "Live Bitcoin Price in Pounds — BTC GBP Calculator UK",
-  "See a live Bitcoin market reference in British pounds. Convert GBP to Bitcoin and satoshis with a UK-focused Bitcoin calculator developed by Neil Hamson.",
+  "Hamson Bitcoin Price in Pounds — Live BTC GBP Calculator",
+  "Hamson Bitcoin shows a live Bitcoin market reference in British pounds. Convert GBP to Bitcoin and satoshis with a calculator developed by Hamson Software and Neil Hamson.",
   "/bitcoin/gbp",
 );
 
@@ -75,9 +75,9 @@ function Header() {
 function Footer() {
   return (
     <footer className="site-footer">
-      <span>© 2026 Neil Hamson</span>
+      <span>© 2026 Hamson Software</span>
       <span>
-        Human direction. Machine intelligence. Shared construction.
+        Hamson Bitcoin / Market tools and education.
       </span>
       <span>Developed by Dr Neil Hamson</span>
     </footer>
@@ -98,7 +98,7 @@ export default function BitcoinGbpPage() {
           <div className={styles.introGrid}>
             <div className={styles.introIdentity}>
               <p className={styles.introCode}>
-                NH / BTC-GBP / UNITED KINGDOM
+                HAMSON BITCOIN / BTC-GBP
               </p>
 
               <h1 className={styles.introTitle}>
@@ -213,10 +213,9 @@ export default function BitcoinGbpPage() {
             </div>
 
             <div className={bitcoinStyles.sectionIntro}>
-              The calculator uses a live BTC/GBP market reference
-              supplied by CoinMarketCap. Enter an amount in pounds or
-              Bitcoin to see the corresponding BTC, sterling and
-              satoshi values.
+              The Hamson Bitcoin calculator uses a live BTC/GBP market
+              reference. Enter an amount in pounds or Bitcoin to see the
+              corresponding BTC, sterling and satoshi values.
             </div>
           </div>
 
@@ -299,10 +298,9 @@ export default function BitcoinGbpPage() {
             </div>
 
             <div className={bitcoinStyles.sectionIntro}>
-              hamson.tech retrieves the BTC/GBP market reference from
-              CoinMarketCap through a server-side connection. The
-              conversion calculations are then performed locally in
-              the calculator.
+              Hamson Bitcoin retrieves the BTC/GBP market reference
+              through a server-side market-data connection. Conversion
+              calculations are then performed locally in the calculator.
             </div>
           </div>
 
@@ -315,9 +313,9 @@ export default function BitcoinGbpPage() {
               <h3>LIVE BTC / GBP</h3>
 
               <p>
-                The current Bitcoin market reference is supplied by
-                CoinMarketCap and refreshed periodically by
-                hamson.tech.
+                Hamson Bitcoin maintains a current BTC/GBP market
+                reference and refreshes it periodically for the
+                calculator and market tools.
               </p>
             </article>
 
@@ -342,9 +340,8 @@ export default function BitcoinGbpPage() {
               <h3>SOURCE &amp; TIME</h3>
 
               <p>
-                The calculator displays its market-data source, feed
-                status, 24-hour change and the source&apos;s latest
-                market-update time.
+                The calculator displays Hamson Bitcoin market status,
+                24-hour change and the latest market-update time.
               </p>
             </article>
           </div>
@@ -358,12 +355,11 @@ export default function BitcoinGbpPage() {
           </span>
 
           <p>
-            The BTC/GBP figure shown here is a market reference
-            supplied by CoinMarketCap. It may differ from the price
-            available from an exchange, wallet, payment provider or
-            other service at a particular moment. hamson.tech does not
-            execute Bitcoin purchases or sales through this
-            calculator.
+            The BTC/GBP figure shown here is a Hamson Bitcoin market
+            reference. It may differ from the price available from an
+            exchange, wallet, payment provider or other service at a
+            particular moment. Hamson Bitcoin does not execute Bitcoin
+            purchases or sales through this calculator.
           </p>
         </div>
       </section>
