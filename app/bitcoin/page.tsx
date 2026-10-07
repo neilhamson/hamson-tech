@@ -7,8 +7,8 @@ import HamsonBitcoinInstall from "./HamsonBitcoinInstall";
 import styles from "./bitcoin.module.css";
 
 const bitcoinPageMetadata = pageMetadata(
-  "Hamson Bitcoin — Bitcoin Market, Network, Wallets & Guides UK",
-  "Hamson Bitcoin is a UK-focused Bitcoin platform with live BTC/GBP market data, network information, wallet guidance and beginner tools.",
+  "Hamson Bitcoin — Bitcoin Market, Wallet Development & Guides UK",
+  "Hamson Bitcoin is a UK-focused Bitcoin platform with live BTC/GBP market data, network information, practical guides and a public Bitcoin-only wallet development build.",
   "/bitcoin",
 );
 
@@ -214,7 +214,8 @@ export default function BitcoinPage() {
           <p className={styles.homeHeroLead}>
             A focused UK Bitcoin platform from Hamson Software.
             Live BTC/GBP market and network data are available now,
-            alongside wallet information and practical learning tools.
+            alongside wallet information, practical learning tools and
+            the public development of Hamson Bitcoin Wallet.
           </p>
 
           <div className={styles.homeHeroActions}>
@@ -247,12 +248,14 @@ export default function BitcoinPage() {
             </strong>
 
             <p>
-              Hamson Software is developing a non-custodial Bitcoin wallet in
-              public. The current build runs exclusively on Bitcoin Signet and
-              demonstrates local wallet recovery, BDK synchronization, UTXO
-              discovery and unsigned PSBT construction. Visitors can open the
-              working development system now and follow the product as signing,
-              broadcast, persistence and further security work are completed.
+              Hamson Software is building a Bitcoin-only, non-custodial wallet
+              in public. The current development build now completes an
+              end-to-end Bitcoin Signet transaction cycle: deterministic wallet
+              recovery, BDK synchronization, transaction construction, explicit
+              review, local signing, broadcast and automatic wallet-state refresh.
+              Encrypted browser persistence is also operational, allowing a saved
+              wallet to return locked after reload and unlock locally without
+              re-entering the recovery phrase.
             </p>
 
             <div className={styles.homeHeroActions}>
@@ -276,8 +279,8 @@ export default function BitcoinPage() {
           </div>
 
           <div className={styles.homeDevelopmentStatus}>
-            <span>VERIFIED CAPABILITIES</span>
-            <strong>RECOVERY · SYNC · UTXO · PSBT</strong>
+            <span>VERIFIED MILESTONES</span>
+            <strong>RECOVERY · SYNC · LOCAL SIGNING · BROADCAST · ENCRYPTED VAULT</strong>
           </div>
         </div>
       </section>
@@ -290,11 +293,12 @@ export default function BitcoinPage() {
 
           <p>
             Live BTC/GBP market data, Bitcoin network information, wallet
-            guidance and educational tools are available now. The Hamson
-            Bitcoin Wallet is also available as a public Bitcoin Signet
-            development build for demonstration and testing. It is not a
-            Mainnet wallet or live financial service. Hamson Software's
-            Bitcoin purchase system remains in development.
+            guidance and educational tools are available now. Hamson Bitcoin
+            Wallet is available as a public Bitcoin Signet development build
+            for demonstration and testing, with local signing, Signet broadcast
+            and encrypted browser persistence now operational. Mainnet remains
+            disabled while usability and security validation continue. The
+            wallet is not yet a live Mainnet financial service.
           </p>
         </div>
       </section>

@@ -106,9 +106,10 @@ export default function Home() {
               <h2 id="closing-title">SYSTEMS YOU CAN USE.</h2>
 
               <p className="closing-copy">
-                Open the live Hamson Bitcoin Wallet development build, use the
-                Hamson Technical Interface, explore Hamson Bitcoin, or review
-                the private MI1 research programme.
+                Open the live Hamson Bitcoin Wallet — a Bitcoin-only,
+                non-custodial development build now demonstrating recovery,
+                synchronization, local signing, Signet broadcast and encrypted
+                browser persistence — or explore the wider Hamson Software systems.
               </p>
 
               <div className="closing-system-actions">
@@ -141,7 +142,7 @@ export default function Home() {
               >
                 <span>01 / LIVE DEVELOPMENT</span>
                 <strong>HAMSON BITCOIN WALLET</strong>
-                <small>SIGNET / OPEN →</small>
+                <small>SIGNET / LIVE →</small>
               </a>
 
               <Link href="#technical-interface">
