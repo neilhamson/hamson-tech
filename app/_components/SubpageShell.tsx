@@ -118,8 +118,8 @@ type PageShellProps = {
 };
 
 const accents = {
-  blue: "#013DF6",
-  gold: "#f2b84b",
+  blue: "#22D3EE",
+  gold: "#FFD84A",
 };
 
 export function PageShell({

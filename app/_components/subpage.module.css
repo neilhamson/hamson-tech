@@ -1,10 +1,10 @@
 .page {
-  --page-accent: #013DF6;
+  --page-accent: #22D3EE;
   min-height: 100vh;
   overflow: hidden;
   background:
     radial-gradient(circle at 88% 10%, color-mix(in srgb, var(--page-accent) 12%, transparent), transparent 24%),
-    #000;
+    #05070D;
 }
 
 .hero {
