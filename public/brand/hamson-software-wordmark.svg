@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1624 120" role="img" aria-labelledby="title">
+  <title id="title">HAMSON SOFTWARE</title>
+  <!-- Low-contrast technical grid, contained within the wordmark artwork. -->
+  <g fill="none" stroke="#00D9FF" stroke-width="1" opacity=".11">
+    <path d="M28 16H1580M28 60H1580M28 104H1580"/>
+    <path d="M138 12V108M330 12V108M522 12V108M714 12V108M906 12V108M1098 12V108M1290 12V108M1482 12V108"/>
+  </g>
+  <!-- Sparse signal-bus traces behind the lettering; not a subtitle. -->
+  <g fill="none" stroke-linejoin="round" stroke-linecap="square">
+    <path d="M28 110H260L274 96H402" stroke="#00D9FF" stroke-width="2" opacity=".27"/>
+    <path d="M1030 104H1260L1276 88H1504" stroke="#FF6B00" stroke-width="2" opacity=".32"/>
+    <path d="M1144 113H1410L1423 100H1584" stroke="#FF9A1A" stroke-width="1.5" opacity=".21"/>
+  </g>
+  <rect x="0" y="9" width="5" height="102" fill="#FF2038"/>
+  <rect x="11" y="9" width="5" height="102" fill="#00D9FF"/>
+  <!-- Font remains D-DIN; glow is a restrained amber highlight. -->
+  <text x="38" y="85" font-family="D-DIN, Arial, sans-serif" font-size="90" font-weight="700" letter-spacing="9">
+    <tspan fill="#00D9FF">HAMSON</tspan><tspan fill="#FF6B00"> SOFTWARE</tspan>
+  </text>
+  <path d="M666 94H990" stroke="#FF9A1A" stroke-width="1.5" opacity=".25"/>
+</svg>

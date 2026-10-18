@@ -1,0 +1,28 @@
+/* Hamson Bitcoin Wallet campaign - isolated styling; no global overrides */
+.panel { max-width: 1240px; margin: 3rem auto; padding: clamp(1.5rem, 4vw, 3.5rem); color: #F0F7FF; background: linear-gradient(145deg, #141B25 0%, #050508 82%); border: 1px solid #187BFF; border-left: 4px solid #FF6B00; border-radius: 4px; }
+.eyebrow { margin: 0 0 1rem; font-size: .82rem; letter-spacing: .14em; color: #00D9FF; font-weight: 700; }
+.heading { font-family: var(--hamson-display-font); overflow-wrap: anywhere; letter-spacing: -.015em; margin: 0 0 1.25rem; font-size: clamp(1.5rem, 3.2vw, 2.8rem); line-height: 1.2; color: #F0F7FF; }
+.lead { max-width: 72ch; font-size: clamp(1rem, 1.7vw, 1.2rem); line-height: 1.65; margin: 0 0 1.25rem; }
+.note { max-width: 85ch; color: #F0F7FF; line-height: 1.65; margin: 0 0 1.35rem; }
+.columns { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.3rem; margin: 1.8rem 0; }
+.detail { padding: 1.4rem; background: #050508; border: 1px solid #187BFF; }
+.detail h3 { font-size: 1rem; color: #00D9FF; margin: 0 0 1rem; }
+.detail ul { margin: 0; padding-left: 1.25rem; line-height: 1.65; }
+.detail li + li { margin-top: .6rem; }
+.warning { padding: 1.1rem; border-left: 3px solid #FF2038; background: #71101D; line-height: 1.65; margin: 1.5rem 0; }
+.subheading { margin: 2rem 0 1rem; font-size: clamp(1.1rem, 2.2vw, 1.6rem); color: #FF6B00; }
+.actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 1.5rem; }
+.primary,.secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: .85rem 1.2rem; font-weight: 700; text-decoration: none; letter-spacing: .025em; text-align: center; }
+.primary { background: #FF6B00; color: #050508; }
+.secondary { color: #F0F7FF; border: 1px solid #00D9FF; background: transparent; }
+.primary:hover,.primary:focus-visible { background: #F0F7FF; color: #050508; }
+.secondary:hover,.secondary:focus-visible { background: #141B25; }
+.primary:focus-visible,.secondary:focus-visible { outline: 3px solid #00D9FF; outline-offset: 3px; }
+@media (max-width: 700px) { .panel { margin: 1.5rem 1rem; } .columns { grid-template-columns: 1fr; } .actions > * { width: 100%; } }
+
+.primary,.secondary { border-radius: 4px; }
+
+/* Development-support panel integrated with the existing technical interface. */
+.panel { position: relative; overflow: hidden; font-family: "D-DIN", Arial, sans-serif; background-image: linear-gradient(90deg, rgba(0,217,255,.025) 1px, transparent 1px), linear-gradient(rgba(0,217,255,.02) 1px, transparent 1px), linear-gradient(145deg,#141B25 0%,#050508 82%); background-size: 52px 52px, 52px 52px, auto; }
+.panel::before { content:""; position:absolute; top:0; right:0; width:min(33%,220px); height:2px; background:linear-gradient(90deg,#00D9FF 0 55%,transparent 55% 62%,#FF6B00 62%); pointer-events:none; }
+.heading,.eyebrow,.detail h3,.subheading,.primary,.secondary { font-family: "D-DIN", Arial, sans-serif; }

@@ -5,6 +5,7 @@ import { pageMetadata } from "../_components/SubpageShell";
 import BitcoinHomeDashboard from "./BitcoinHomeDashboard";
 import HamsonBitcoinInstall from "./HamsonBitcoinInstall";
 import styles from "./bitcoin.module.css";
+import campaign from "../wallet-campaign.module.css";
 
 const bitcoinPageMetadata = pageMetadata(
   "Hamson Bitcoin — Bitcoin Market, Wallet Development & Guides UK",
@@ -46,7 +47,7 @@ function Header() {
           >
             <Image
               className="brand-reveal"
-              src="/brand/neil-hamson-wordmark.svg"
+              src="/brand/hamson-software-wordmark.svg"
               alt=""
               width={1624}
               height={88}
@@ -285,6 +286,39 @@ export default function BitcoinPage() {
         </div>
       </section>
 
+      <section id="wallet-development-status" className={campaign.panel} aria-labelledby="wallet-status-title">
+        <p className={campaign.eyebrow}>HAMSON BITCOIN WALLET / DEVELOPMENT RECORD / OCTOBER 2026</p>
+        <h2 id="wallet-status-title" className={campaign.heading}>INDEPENDENT BITCOIN WALLET DEVELOPMENT.</h2>
+        <p className={campaign.lead}>Hamson Software is developing a Bitcoin-only, non-custodial wallet. The public Signet test build and a separate Mainnet receive-only development path represent distinct stages; neither is approved for storing real funds.</p>
+        <div className={campaign.columns}>
+          <div className={campaign.detail}>
+            <h3>DOCUMENTED DEVELOPMENT MILESTONES</h3>
+            <ul>
+              <li>Signet test-network wallet: recovery, blockchain synchronisation, transaction review, local signing and broadcast demonstrated.</li>
+              <li>Mainnet receive-only development: genuine Bitcoin address derivation, encrypted vault persistence and synchronisation demonstrated.</li>
+              <li>Receiving history and validation implemented; deterministic checks and a Windows production build passed.</li>
+              <li>Published BIP84 address vectors independently checked against Hamson's compiled wallet core.</li>
+            </ul>
+          </div>
+          <div className={campaign.detail}>
+            <h3>WHAT REMAINS BEFORE RELEASE</h3>
+            <ul>
+              <li>End-to-end private-wallet recovery and a verified route to spend or recover funds.</li>
+              <li>Live incoming-payment detection and confirmation handling for a fresh private wallet.</li>
+              <li>Mainnet transaction creation, review, authorisation, signing and broadcasting.</li>
+              <li>Appropriate security assessment, usability checks and customer distribution readiness.</li>
+            </ul>
+          </div>
+        </div>
+        <p className={campaign.warning}><strong>TEST BUILD ONLY.</strong> The public wallet runs on Bitcoin Signet; test coins have no monetary value. The separate Mainnet receive-only development build is not approved for real funds. Do not send BTC to a development wallet.</p>
+        <h3 className={campaign.subheading}>SUPPORT THE NEXT DEVELOPMENT STAGE.</h3>
+        <p className={campaign.note}>Wallet development is currently paused while work continues on MI1. Commercial development sponsorship is the priority for funding further wallet engineering, recovery and transaction testing, independent security review and release preparation. Voluntary supporter interest is also welcome. Enquiries do not constitute an investment offer; this page does not accept payments, deposits or pre-orders. No release date is promised.</p>
+        <div className={campaign.actions}>
+          <Link href="/contact-us#wallet-interest" className={campaign.primary}>DISCUSS SPONSORSHIP / SUPPORT</Link>
+          <a href="https://wallet.hamson.tech" target="_blank" rel="noopener noreferrer" className={campaign.secondary}>VIEW SIGNET TEST BUILD</a>
+        </div>
+      </section>
+
       <section className={styles.disclaimer}>
         <div className={styles.disclaimerInner}>
           <span className={styles.disclaimerCode}>
@@ -296,9 +330,10 @@ export default function BitcoinPage() {
             guidance and educational tools are available now. Hamson Bitcoin
             Wallet is available as a public Bitcoin Signet development build
             for demonstration and testing, with local signing, Signet broadcast
-            and encrypted browser persistence now operational. Mainnet remains
-            disabled while usability and security validation continue. The
-            wallet is not yet a live Mainnet financial service.
+            and encrypted browser persistence now operational. Mainnet sending remains unavailable in the public build; a separate
+            Mainnet receive-only implementation is under development and is
+            not approved for real funds. Wallet development is currently
+            paused while MI1 work continues.
           </p>
         </div>
       </section>

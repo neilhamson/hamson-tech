@@ -1,15 +1,15 @@
-.page {
+﻿.page {
   --btc-bg: #02040a;
   --btc-panel: #050a13;
   --btc-panel-deep: #02060d;
   --btc-cyan: #00dcff;
   --btc-blue: #175cff;
-  --btc-gold: #f5b942;
+  --btc-gold: #FF6B00;
   --btc-white: #f4f6fa;
   --btc-muted: #8794aa;
   --btc-line: rgba(255, 255, 255, 0.09);
   --btc-cyan-line: rgba(0, 220, 255, 0.24);
-  --btc-gold-line: rgba(245, 185, 66, 0.34);
+  --btc-gold-line: rgba(255, 107, 0, 0.34);
 
   min-height: 100vh;
   overflow: hidden;
@@ -299,7 +299,7 @@
   height: 7px;
   border-radius: 50%;
   background: var(--btc-gold);
-  box-shadow: 0 0 13px rgba(245, 185, 66, 0.9);
+  box-shadow: 0 0 13px rgba(255, 107, 0, 0.9);
   animation: btcStatus 2.8s ease-in-out infinite;
 }
 
@@ -686,7 +686,7 @@
 
 .field {
   background:
-    linear-gradient(90deg, rgba(245, 185, 66, 0.025), transparent 34%),
+    linear-gradient(90deg, rgba(255, 107, 0, 0.025), transparent 34%),
     #03060c;
 }
 
@@ -708,7 +708,7 @@
   padding:
     clamp(24px, 2.5vw, 38px)
     clamp(34px, 7vw, 120px);
-  border-top: 1px solid rgba(245, 185, 66, 0.21);
+  border-top: 1px solid rgba(255, 107, 0, 0.21);
   background: #020409;
 }
 
@@ -744,12 +744,12 @@
   0%,
   100% {
     opacity: 0.55;
-    box-shadow: 0 0 7px rgba(245, 185, 66, 0.45);
+    box-shadow: 0 0 7px rgba(255, 107, 0, 0.45);
   }
 
   50% {
     opacity: 1;
-    box-shadow: 0 0 16px rgba(245, 185, 66, 0.95);
+    box-shadow: 0 0 16px rgba(255, 107, 0, 0.95);
   }
 }
 
@@ -986,7 +986,7 @@
   height: 7px;
   border-radius: 50%;
   background: var(--btc-gold);
-  box-shadow: 0 0 12px rgba(245, 185, 66, 0.8);
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.8);
 }
 
 .marketStatusError {
@@ -1147,7 +1147,7 @@
 }
 
 .marketCursorLine {
-  stroke: rgba(245, 185, 66, 0.5);
+  stroke: rgba(255, 107, 0, 0.5);
   stroke-width: 1;
   stroke-dasharray: 4 6;
 }
@@ -1156,7 +1156,7 @@
   fill: var(--btc-gold);
   stroke: #030710;
   stroke-width: 2;
-  filter: drop-shadow(0 0 7px rgba(245, 185, 66, 0.7));
+  filter: drop-shadow(0 0 7px rgba(255, 107, 0, 0.7));
 }
 
 .marketTooltip {
@@ -1165,7 +1165,7 @@
   z-index: 2;
   min-width: 118px;
   padding: 9px 11px;
-  border: 1px solid rgba(245, 185, 66, 0.38);
+  border: 1px solid rgba(255, 107, 0, 0.38);
   background: rgba(2, 6, 13, 0.94);
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
   pointer-events: none;
@@ -1358,8 +1358,8 @@
 /* -------------------------------------------------
    PHASE 4 / LIVE BITCOIN NETWORK
 ------------------------------------------------- */
-.networkSection { background: radial-gradient(circle at 18% 30%, rgba(245,185,66,.045), transparent 28%), linear-gradient(90deg, rgba(0,220,255,.02), transparent 48%), #020409; }
-.networkTerminal { position:relative; overflow:hidden; border:1px solid rgba(245,185,66,.24); background:linear-gradient(145deg, rgba(245,185,66,.035), transparent 36%),linear-gradient(315deg, rgba(0,220,255,.035), transparent 44%),#030710; box-shadow:0 28px 80px rgba(0,0,0,.34),0 0 44px rgba(245,185,66,.025); }
+.networkSection { background: radial-gradient(circle at 18% 30%, rgba(255,107,0,.045), transparent 28%), linear-gradient(90deg, rgba(0,220,255,.02), transparent 48%), #020409; }
+.networkTerminal { position:relative; overflow:hidden; border:1px solid rgba(255,107,0,.24); background:linear-gradient(145deg, rgba(255,107,0,.035), transparent 36%),linear-gradient(315deg, rgba(0,220,255,.035), transparent 44%),#030710; box-shadow:0 28px 80px rgba(0,0,0,.34),0 0 44px rgba(255,107,0,.025); }
 .networkTerminal::before { content:""; position:absolute; top:0; left:0; width:74px; height:1px; background:var(--btc-cyan); }
 .networkTopline { min-height:72px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid rgba(255,255,255,.08); }
 .networkTopline>div { display:grid; gap:7px; }
@@ -1502,7 +1502,7 @@
 }
 
 .homeHeroActions a:first-child {
-  border-color: rgba(245, 185, 66, 0.38);
+  border-color: rgba(255, 107, 0, 0.38);
   color: var(--btc-gold);
 }
 
@@ -1582,7 +1582,7 @@
   height: 6px;
   border-radius: 50%;
   background: var(--btc-gold);
-  box-shadow: 0 0 12px rgba(245, 185, 66, 0.78);
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.78);
 }
 
 .homePrimary {
@@ -1735,7 +1735,7 @@
 
 .homeSignal:hover,
 .homeSignal:focus-visible {
-  background: rgba(245, 185, 66, 0.025);
+  background: rgba(255, 107, 0, 0.025);
   outline: none;
 }
 
@@ -1870,9 +1870,9 @@
   padding:
     clamp(30px, 3.5vw, 48px)
     clamp(34px, 7vw, 120px);
-  border-bottom: 1px solid rgba(245, 185, 66, 0.16);
+  border-bottom: 1px solid rgba(255, 107, 0, 0.16);
   background:
-    linear-gradient(90deg, rgba(245, 185, 66, 0.025), transparent 44%),
+    linear-gradient(90deg, rgba(255, 107, 0, 0.025), transparent 44%),
     #020409;
 }
 
@@ -2093,7 +2093,7 @@
   align-items: center;
   gap: 18px;
   background:
-    linear-gradient(90deg, rgba(245, 185, 66, 0.025), transparent 50%),
+    linear-gradient(90deg, rgba(255, 107, 0, 0.025), transparent 50%),
     rgba(255, 255, 255, 0.008);
 }
 
@@ -2247,7 +2247,7 @@
 
 /*
  * Product-level information architecture:
- * HOME · MARKET · BUY · WALLET · NETWORK · LEARN
+ * HOME Â· MARKET Â· BUY Â· WALLET Â· NETWORK Â· LEARN
  */
 
 .productNav {
@@ -3207,7 +3207,7 @@
   }
 
   /* -----------------------------------------------
-     PRIMARY 2 × 2 APP CONTROLS
+     PRIMARY 2 Ã— 2 APP CONTROLS
   ------------------------------------------------ */
 
   .homeActionGrid > a,
@@ -3973,7 +3973,7 @@
 /* === END PHASE 7.2 / BUY APP INTERFACE === */
 
 /* =================================================
-   HAMSON BITCOIN PRODUCT NAV / MOBILE 2×3 CONTROL GRID
+   HAMSON BITCOIN PRODUCT NAV / MOBILE 2Ã—3 CONTROL GRID
    Refined 2026-10-07
    ================================================= */
 
@@ -4003,8 +4003,8 @@
 }
 
 .productNavInner > a:nth-child(3) {
-  --product-accent: #f5b942;
-  --product-tint: rgba(245, 185, 66, 0.050);
+  --product-accent: #FF6B00;
+  --product-tint: rgba(255, 107, 0, 0.050);
 }
 
 .productNavInner > a:nth-child(4) {
@@ -4059,7 +4059,7 @@
 }
 
 /*
- * Mobile is a fixed 3-column × 2-row application control surface.
+ * Mobile is a fixed 3-column Ã— 2-row application control surface.
  * No primary destination is hidden behind horizontal scrolling.
  */
 @media (max-width: 700px) {
@@ -4199,3 +4199,30 @@
   }
 }
 
+
+/* 2026-10-18 / approved brand refinement, preserving the live interface */
+.page { --btc-gold: #FF6B00; --btc-cyan: #00D9FF; }
+.homeDevelopment { position: relative; background-image: linear-gradient(90deg, rgba(0,217,255,.035) 1px, transparent 1px), linear-gradient(rgba(0,217,255,.025) 1px, transparent 1px); background-size: 48px 48px; }
+.homeDevelopment::before { content: ""; position: absolute; top: 0; left: 3%; width: min(28%, 260px); height: 2px; background: linear-gradient(90deg, #00D9FF 0 38%, transparent 38% 46%, #FF6B00 46% 100%); pointer-events: none; }
+.homeDevelopmentInner { position: relative; }
+.homeDevelopmentInner > span, .homeDevelopmentStatus strong { font-family: "D-DIN", Arial, sans-serif; }
+
+/* Approved Hamson cyan heading */
+.homeHero h1 { color: #00D9FF; }
+
+
+/* BUY tile alignment correction */
+.homeActionGrid > .homeActionBuy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 126px;
+  padding: 20px 21px;
+  gap: 0;
+}
+
+.homeActionBuy strong,
+.homeActionBuy em {
+  display: block;
+}
