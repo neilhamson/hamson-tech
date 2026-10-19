@@ -25,7 +25,7 @@ export default function Home() {
             <Link href="/bitcoin">BITCOIN</Link>
 
             <Link
-              href="/machine-intelligence"
+              href="/tron"
               aria-label="TRON — Machine Intelligence"
             >
               TRON
@@ -64,7 +64,7 @@ export default function Home() {
               <Link href="/bitcoin">BITCOIN</Link>
 
               <Link
-                href="/machine-intelligence"
+                href="/tron"
                 aria-label="TRON — Machine Intelligence"
               >
                 TRON
@@ -157,7 +157,7 @@ export default function Home() {
                 <small>OPEN →</small>
               </Link>
 
-              <Link href="/machine-intelligence">
+              <Link href="/tron">
                 <span>04 / PRIVATE R&amp;D</span>
                 <strong>TRON / PRIVATE R&D</strong>
                 <small>VIEW →</small>

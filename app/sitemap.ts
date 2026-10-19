@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${siteUrl}/machine-intelligence`,
+      url: `${siteUrl}/tron`,
       lastModified: "2026-09-14",
       changeFrequency: "weekly",
       priority: 0.9,

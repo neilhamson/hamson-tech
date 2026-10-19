@@ -54,7 +54,7 @@ export function SiteHeader() {
           <Link href="/services">SOFTWARE</Link>
           <Link href="/bitcoin">BITCOIN</Link>
           <Link
-            href="/machine-intelligence"
+            href="/tron"
             aria-label="TRON — Machine Intelligence"
           >
             TRON
@@ -72,7 +72,7 @@ export function SiteHeader() {
             <Link href="/services">SOFTWARE</Link>
             <Link href="/bitcoin">BITCOIN</Link>
             <Link
-              href="/machine-intelligence"
+              href="/tron"
               aria-label="TRON — Machine Intelligence"
             >
               TRON

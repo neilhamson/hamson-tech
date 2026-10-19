@@ -36,7 +36,7 @@ export default function DevelopmentRecord() {
         narrow
       >
         <Actions>
-          <Link className="brand-button brand-button-secondary" href="/machine-intelligence">
+          <Link className="brand-button brand-button-secondary" href="/tron">
             CURRENT SYSTEM DETAILS
           </Link>
           <Link className="machine-intelligence-hire-link" href="/services">

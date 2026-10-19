@@ -6,7 +6,7 @@ import styles from "./machine-intelligence.module.css";
 export const metadata = pageMetadata(
   "TRON: Private Machine Intelligence System | Neil Hamson",
   "TRON is Neil Hamson's private Machine Intelligence development system: persistent state, bounded tools, human-controlled code changes and verified local model experiments.",
-  "/machine-intelligence",
+  "/tron",
 );
 
 const loop = [

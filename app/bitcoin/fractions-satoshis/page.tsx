@@ -39,7 +39,7 @@ function Header() {
           aria-label="Main navigation"
         >
           <Link
-            href="/machine-intelligence"
+            href="/tron"
             aria-label="TRON — Machine Intelligence"
           >
             TRON
@@ -66,7 +66,7 @@ function Header() {
 
           <nav aria-label="Mobile navigation">
             <Link
-              href="/machine-intelligence"
+              href="/tron"
               aria-label="TRON — Machine Intelligence"
             >
               TRON

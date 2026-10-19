@@ -42,7 +42,7 @@ export default function MachineIntelligenceExperience() {
             <strong>HAMSON BITCOIN</strong>
             <small>OPEN SYSTEM →</small>
           </a>
-          <a href="/machine-intelligence">
+          <a href="/tron">
             <span>03 / PRIVATE R&amp;D</span>
             <strong>TRON</strong>
             <small>VIEW STATUS →</small>
@@ -85,7 +85,7 @@ export default function MachineIntelligenceExperience() {
             <strong>BITCOIN</strong>
             <small>LIVE →</small>
           </a>
-          <a href="/machine-intelligence">
+          <a href="/tron">
             <span>03</span>
             <strong>TRON</strong>
             <small>R&amp;D →</small>
@@ -261,7 +261,7 @@ export default function MachineIntelligenceExperience() {
 
         <a
           className="brand-button brand-button-secondary"
-          href="/machine-intelligence"
+          href="/tron"
         >
           VIEW TRON R&amp;D
         </a>

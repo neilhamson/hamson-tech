@@ -69,7 +69,7 @@ function Header() {
           </Link>
 
           <Link
-            href="/machine-intelligence"
+            href="/tron"
             aria-label="TRON — Machine Intelligence"
           >
             TRON
@@ -100,7 +100,7 @@ function Header() {
             </Link>
 
             <Link
-              href="/machine-intelligence"
+              href="/tron"
               aria-label="TRON — Machine Intelligence"
             >
               TRON

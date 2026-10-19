@@ -77,7 +77,7 @@ const systems = [
     state: "PRIVATE / ACTIVE",
     detail:
       "Private Machine Intelligence development focused on human-reviewed code changes.",
-    href: "/machine-intelligence",
+    href: "/tron",
     action: "EXPLORE TRON",
   },
   {
@@ -101,7 +101,7 @@ function Header() {
 
         <nav className="navigation" aria-label="Main navigation">
           <Link
-            href="/machine-intelligence"
+            href="/tron"
             aria-label="TRON — Machine Intelligence"
           >
             TRON
@@ -129,7 +129,7 @@ function Header() {
 
           <nav aria-label="Mobile navigation">
             <Link
-              href="/machine-intelligence"
+              href="/tron"
               aria-label="TRON — Machine Intelligence"
             >
               TRON

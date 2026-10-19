@@ -5,8 +5,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/machine-intelligence",
+        destination: "/tron",
+        permanent: true,
+      },
+      {
         source: "/opcode",
-        destination: "/machine-intelligence",
+        destination: "/tron",
         permanent: true,
       },
     ];

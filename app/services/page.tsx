@@ -30,7 +30,7 @@ function Header() {
 
         <nav className="navigation" aria-label="Main navigation">
           <Link
-            href="/machine-intelligence"
+            href="/tron"
             aria-label="TRON — Machine Intelligence"
           >
             TRON
@@ -57,7 +57,7 @@ function Header() {
           </summary>
           <nav aria-label="Mobile navigation">
             <Link
-              href="/machine-intelligence"
+              href="/tron"
               aria-label="TRON — Machine Intelligence"
             >
               TRON
@@ -316,7 +316,7 @@ export default function SoftwarePage() {
               human approval and validation rather than unrestricted autonomous
               action.
             </p>
-            <Link className="brand-button brand-button-secondary" href="/machine-intelligence">
+            <Link className="brand-button brand-button-secondary" href="/tron">
               EXPLORE TRON
             </Link>
           </div>
