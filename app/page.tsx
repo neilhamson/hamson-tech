@@ -26,9 +26,9 @@ export default function Home() {
 
             <Link
               href="/machine-intelligence"
-              aria-label="MI1 — Machine Intelligence"
+              aria-label="TRON — Machine Intelligence"
             >
-              MI1
+              TRON
             </Link>
 
             <Link href="/about-us">ABOUT</Link>
@@ -65,9 +65,9 @@ export default function Home() {
 
               <Link
                 href="/machine-intelligence"
-                aria-label="MI1 — Machine Intelligence"
+                aria-label="TRON — Machine Intelligence"
               >
-                MI1
+                TRON
               </Link>
 
               <Link href="/about-us">ABOUT</Link>
@@ -159,7 +159,7 @@ export default function Home() {
 
               <Link href="/machine-intelligence">
                 <span>04 / PRIVATE R&amp;D</span>
-                <strong>MI1 / INVESTOR PROJECT</strong>
+                <strong>TRON / PRIVATE R&D</strong>
                 <small>VIEW →</small>
               </Link>
 

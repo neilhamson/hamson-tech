@@ -23,7 +23,7 @@ export default function MachineIntelligenceExperience() {
           </div>
           <div>
             <span>PRIVATE</span>
-            <strong>MI1 R&amp;D</strong>
+            <strong>TRON R&amp;D</strong>
           </div>
           <div>
             <span>STATE</span>
@@ -44,7 +44,7 @@ export default function MachineIntelligenceExperience() {
           </a>
           <a href="/machine-intelligence">
             <span>03 / PRIVATE R&amp;D</span>
-            <strong>MI1</strong>
+            <strong>TRON</strong>
             <small>VIEW STATUS →</small>
           </a>
           <a href="/contact-us">
@@ -57,7 +57,7 @@ export default function MachineIntelligenceExperience() {
         <div className="mobile-hs-dashboard-footer">
           <span>INTERFACE READY</span>
           <span>BITCOIN LIVE</span>
-          <span>MI1 PRIVATE</span>
+          <span>TRON PRIVATE</span>
         </div>
       </section>
 
@@ -87,7 +87,7 @@ export default function MachineIntelligenceExperience() {
           </a>
           <a href="/machine-intelligence">
             <span>03</span>
-            <strong>MI1</strong>
+            <strong>TRON</strong>
             <small>R&amp;D →</small>
           </a>
           <a href="/contact-us">
@@ -156,7 +156,7 @@ export default function MachineIntelligenceExperience() {
 
             <div>
               <span>PRIVATE R&amp;D</span>
-              <strong>MI1</strong>
+              <strong>TRON</strong>
             </div>
           </div>
         </div>
@@ -248,13 +248,13 @@ export default function MachineIntelligenceExperience() {
       <div className="machine-intelligence-investor-strip">
         <div>
           <span className="machine-intelligence-panel-label">
-            HS / MI1 / PRIVATE R&amp;D / FUNDING
+            HS / TRON / PRIVATE R&amp;D / FUNDING
           </span>
 
           <p>
-            MI1 is Hamson Software's private Machine Intelligence R&amp;D
-            programme, developed internally by Neil Hamson. It is not a
-            commercial product; public progress supports technical review
+            TRON is Hamson Software's private Machine Intelligence R&amp;D
+            programme, developed internally by Neil Hamson. It is an internal engineering assistant, not for sale or
+            distribution; public progress supports technical review
             and potential funding discussions.
           </p>
         </div>
@@ -263,7 +263,7 @@ export default function MachineIntelligenceExperience() {
           className="brand-button brand-button-secondary"
           href="/machine-intelligence"
         >
-          VIEW MI1 R&amp;D
+          VIEW TRON R&amp;D
         </a>
       </div>
     </div>

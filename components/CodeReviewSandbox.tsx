@@ -76,7 +76,7 @@ export default function CodeReviewSandbox() {
     if (!diff) return;
     const lines = [
       "PUBLIC CODE REVIEW SANDBOX — BROWSER-ONLY TEXT COMPARISON",
-      "This report is not an MI1 output, code test, or repository approval.",
+      "This report is not an TRON output, code test, or repository approval.",
       `Review decision: ${decision ?? "not recorded"}`,
       "",
       "BEFORE:", comparedSource.before, "", "AFTER:", comparedSource.after, "", "LINE DIFF:",
@@ -104,7 +104,7 @@ export default function CodeReviewSandbox() {
         <span className="mi-review-indicator">BROWSER ONLY · NO MODEL CALL</span>
       </div>
       <p className="mi-review-intro">
-        Edit the two snippets to compare a code change, then record your decision. The initial example is illustrative, not output from MI1.
+        Edit the two snippets to compare a code change, then record your decision. The initial example is illustrative, not output from TRON.
       </p>
 
       <div className="mi-review-editors">
@@ -143,7 +143,7 @@ export default function CodeReviewSandbox() {
           <button type="button" disabled={!diff} onClick={exportReview}>EXPORT REVIEW</button>
         </div>
       </div>
-      <p className="mi-review-disclosure">Text comparison and review run entirely in this browser. This does not access MI1, execute code, run tests, approve a real change, or write to Git.</p>
+      <p className="mi-review-disclosure">Text comparison and review run entirely in this browser. This does not access TRON, execute code, run tests, approve a real change, or write to Git.</p>
     </div>
   );
 }

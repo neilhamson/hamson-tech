@@ -70,9 +70,9 @@ function Header() {
 
           <Link
             href="/machine-intelligence"
-            aria-label="MI1 — Machine Intelligence"
+            aria-label="TRON — Machine Intelligence"
           >
-            MI1
+            TRON
           </Link>
 
           <Link href="/about-us">
@@ -101,9 +101,9 @@ function Header() {
 
             <Link
               href="/machine-intelligence"
-              aria-label="MI1 — Machine Intelligence"
+              aria-label="TRON — Machine Intelligence"
             >
-              MI1
+              TRON
             </Link>
 
             <Link href="/about-us">
@@ -312,7 +312,7 @@ export default function BitcoinPage() {
         </div>
         <p className={campaign.warning}><strong>TEST BUILD ONLY.</strong> The public wallet runs on Bitcoin Signet; test coins have no monetary value. The separate Mainnet receive-only development build is not approved for real funds. Do not send BTC to a development wallet.</p>
         <h3 className={campaign.subheading}>SUPPORT THE NEXT DEVELOPMENT STAGE.</h3>
-        <p className={campaign.note}>Wallet development is currently paused while work continues on MI1. Commercial development sponsorship is the priority for funding further wallet engineering, recovery and transaction testing, independent security review and release preparation. Voluntary supporter interest is also welcome. Enquiries do not constitute an investment offer; this page does not accept payments, deposits or pre-orders. No release date is promised.</p>
+        <p className={campaign.note}>Wallet development is currently paused while work continues on TRON. Commercial development sponsorship is the priority for funding further wallet engineering, recovery and transaction testing, independent security review and release preparation. Voluntary supporter interest is also welcome. Enquiries do not constitute an investment offer; this page does not accept payments, deposits or pre-orders. No release date is promised.</p>
         <div className={campaign.actions}>
           <Link href="/contact-us#wallet-interest" className={campaign.primary}>DISCUSS SPONSORSHIP / SUPPORT</Link>
           <a href="https://wallet.hamson.tech" target="_blank" rel="noopener noreferrer" className={campaign.secondary}>VIEW SIGNET TEST BUILD</a>
@@ -333,7 +333,7 @@ export default function BitcoinPage() {
             and encrypted browser persistence now operational. Mainnet sending remains unavailable in the public build; a separate
             Mainnet receive-only implementation is under development and is
             not approved for real funds. Wallet development is currently
-            paused while MI1 work continues.
+            paused while TRON work continues.
           </p>
         </div>
       </section>

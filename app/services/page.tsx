@@ -8,12 +8,12 @@ import styles from "./services.module.css";
 export const metadata: Metadata = {
   title: "Hamson Software | Software by Neil Hamson",
   description:
-    "Explore live Hamson Software systems, UK Bitcoin tools, commercial Windows release preparation and private MI1 Machine Intelligence development by Neil Hamson.",
+    "Explore live Hamson Software systems, UK Bitcoin tools, commercial Windows release preparation and private TRON Machine Intelligence development by Neil Hamson.",
   alternates: { canonical: "/services" },
   openGraph: {
     title: "Hamson Software | Software by Neil Hamson",
     description:
-      "Live software, UK Bitcoin tools, Windows commercial release preparation and private MI1 Machine Intelligence development by Neil Hamson.",
+      "Live software, UK Bitcoin tools, Windows commercial release preparation and private TRON Machine Intelligence development by Neil Hamson.",
     url: "/services",
     siteName: "Neil Hamson",
     type: "website",
@@ -31,9 +31,9 @@ function Header() {
         <nav className="navigation" aria-label="Main navigation">
           <Link
             href="/machine-intelligence"
-            aria-label="MI1 — Machine Intelligence"
+            aria-label="TRON — Machine Intelligence"
           >
-            MI1
+            TRON
           </Link>
           <Link href="/bitcoin">BITCOIN</Link>
           <Link href="/services">SOFTWARE</Link>
@@ -58,9 +58,9 @@ function Header() {
           <nav aria-label="Mobile navigation">
             <Link
               href="/machine-intelligence"
-              aria-label="MI1 — Machine Intelligence"
+              aria-label="TRON — Machine Intelligence"
             >
-              MI1
+              TRON
             </Link>
             <Link href="/bitcoin">BITCOIN</Link>
             <Link href="/services">SOFTWARE</Link>
@@ -143,7 +143,7 @@ export default function SoftwarePage() {
                 <small>COMMERCIAL PREP</small>
               </div>
               <div>
-                <span>MI1</span>
+                <span>TRON</span>
                 <strong>R&amp;D</strong>
                 <small>PRIVATE / ACTIVE</small>
               </div>
@@ -175,7 +175,7 @@ export default function SoftwarePage() {
           </a>
 
           <a href="#mi1-development">
-            <span>03 / MI1</span>
+            <span>03 / TRON</span>
             <strong>PRIVATE / ACTIVE</strong>
             <small>VIEW ↓</small>
           </a>
@@ -214,7 +214,7 @@ export default function SoftwarePage() {
                 <h3>ASK HAMSON.TECH</h3>
                 <p className={styles.productLead}>
                   The site-wide chatbot and full technical interface provide a
-                  live route into published Hamson Software work, MI1 evidence
+                  live route into published Hamson Software work, TRON evidence
                   and technical information.
                 </p>
 
@@ -226,8 +226,8 @@ export default function SoftwarePage() {
               <dl className={styles.productReadout}>
                 <div><dt>SITE-WIDE CHAT</dt><dd>LIVE</dd></div>
                 <div><dt>TECHNICAL INTERFACE</dt><dd>LIVE</dd></div>
-                <div><dt>PUBLISHED MI1 EVIDENCE</dt><dd>AVAILABLE</dd></div>
-                <div><dt>PRIVATE MI1 ACCESS</dt><dd>ISOLATED</dd></div>
+                <div><dt>PUBLISHED TRON EVIDENCE</dt><dd>AVAILABLE</dd></div>
+                <div><dt>PRIVATE TRON ACCESS</dt><dd>ISOLATED</dd></div>
               </dl>
             </div>
           </article>
@@ -307,34 +307,34 @@ export default function SoftwarePage() {
           <div className={styles.miCopy}>
             <span className={styles.sectionCode}>PRIVATE R&amp;D / 03</span>
             <h2 id="mi-title">
-              MI1
+              TRON
               <span>HUMAN-REVIEWED MACHINE INTELLIGENCE.</span>
             </h2>
             <p>
-              MI1 is Neil Hamson&apos;s private Machine Intelligence development
-              system. It is being engineered around bounded changes, explicit
+              TRON is Neil Hamson&apos;s private Machine Intelligence engineering
+              assistant, developed for internal use rather than sale or distribution. It is being engineered around bounded changes, explicit
               human approval and validation rather than unrestricted autonomous
               action.
             </p>
             <Link className="brand-button brand-button-secondary" href="/machine-intelligence">
-              EXPLORE MI1
+              EXPLORE TRON
             </Link>
           </div>
 
-          <aside className={styles.miConsole} aria-label="MI1 development state">
+          <aside className={styles.miConsole} aria-label="TRON development state">
             <div className={styles.consoleTop}>
-              <span>MI1 / DEVELOPMENT STATE</span>
+              <span>TRON / DEVELOPMENT STATE</span>
               <LiveStatus>ACTIVE</LiveStatus>
             </div>
             <div className={styles.miRows}>
               <div><span>DEVELOPMENT LOOP</span><strong>IMPLEMENTED</strong></div>
               <div><span>HUMAN REVIEW</span><strong>REQUIRED</strong></div>
               <div><span>AUTHORITY</span><strong>BOUNDED</strong></div>
-              <div><span>PUBLIC RELEASE</span><strong>NOT ANNOUNCED</strong></div>
+              <div><span>DISTRIBUTION</span><strong>INTERNAL ONLY</strong></div>
             </div>
             <p>
               Public pages describe the current engineering direction without
-              exposing the private MI1 core.
+              exposing the private TRON core.
             </p>
           </aside>
         </div>

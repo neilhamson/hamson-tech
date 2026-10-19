@@ -70,7 +70,7 @@ export const productConfig = {
     technicalInterfaceName: "Hamson Technical Interface",
     operatorName: "Neil Hamson",
     operatorFirstName: "Neil",
-    privateSystemName: "MI1",
+    privateSystemName: "TRON",
   },
 
   contact: {
@@ -88,12 +88,12 @@ export const productConfig = {
     eyebrow: "HAMSON.SOFTWARE / LIVE INTERFACE",
     title: "Explore the systems.",
     emptyState:
-      "Ask about Hamson Software, the live interface, Hamson Bitcoin, MI1 R&D or published technical material.",
+      "Ask about Hamson Software, the live interface, Hamson Bitcoin, TRON R&D or published technical material.",
     inputPlaceholder:
-      "Ask about Hamson Software products, Bitcoin, MI1 R&D or published evidence...",
+      "Ask about Hamson Software products, Bitcoin, TRON R&D or published evidence...",
     closedLabel: "ASK HAMSON.TECH",
     openLabel: "CLOSE INTERFACE",
-    closedSubtitle: "SOFTWARE · BITCOIN · MI1 R&D",
+    closedSubtitle: "SOFTWARE · BITCOIN · TRON R&D",
     openSubtitle: "LIVE INTERFACE OPEN",
     emailLabel: "CONTACT HAMSON SOFTWARE",
     copyBlockedMessage:
@@ -112,8 +112,8 @@ export const productConfig = {
         mode: "general",
       },
       {
-        label: "MI1 R&D",
-        text: "What has MI1 actually demonstrated?",
+        label: "TRON R&D",
+        text: "What has TRON actually demonstrated?",
         mode: "general",
       },
       {
@@ -128,9 +128,9 @@ export const productConfig = {
     ariaLabel: "Hamson Software Live Interface",
     title: "Use the live interface.",
     intro:
-      "Hamson Software products · Hamson Bitcoin · private MI1 R&D",
+      "Hamson Software products · Hamson Bitcoin · private TRON R&D",
     queryPlaceholder:
-      "Ask about Hamson Software products, Hamson Bitcoin, MI1 R&D or published evidence...",
+      "Ask about Hamson Software products, Hamson Bitcoin, TRON R&D or published evidence...",
     emailLabel: "CONTACT HAMSON SOFTWARE",
     copyBlockedMessage:
       "Your browser blocked clipboard access. You can still contact Hamson Software directly.",
@@ -139,10 +139,10 @@ export const productConfig = {
     footerStatusLabels: [
       "LIVE PRODUCT INTERFACE",
       "PUBLIC PRODUCT INFORMATION",
-      "NOT MI1",
+      "NOT TRON",
     ],
     disclaimer:
-      "This public interface provides information about Hamson Software products and published technical material. It is a separate system and does not expose or operate the private MI1 core.",
+      "This public interface provides information about Hamson Software products and published technical material. It is a separate system and does not expose or operate the private TRON core.",
     prompts: [
       {
         label: "LIVE INTERFACE",
@@ -155,8 +155,8 @@ export const productConfig = {
         mode: "general",
       },
       {
-        label: "MI1 R&D",
-        text: "What has MI1 actually demonstrated?",
+        label: "TRON R&D",
+        text: "What has TRON actually demonstrated?",
         mode: "general",
       },
       {

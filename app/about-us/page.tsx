@@ -7,12 +7,12 @@ import styles from "./about.module.css";
 export const metadata: Metadata = {
   title: "About Dr Neil Hamson | Computer Scientist & Software Engineer",
   description:
-    "Dr Neil Hamson is a computer scientist and software engineer. Read about his Computing BSc (Hons), Computer Science PhD, software delivery experience, Hamson Software and MI1 development.",
+    "Dr Neil Hamson is a computer scientist and software engineer. Read about his Computing BSc (Hons), Computer Science PhD, software delivery experience, Hamson Software and TRON development.",
   alternates: { canonical: "/about-us" },
   openGraph: {
     title: "About Dr Neil Hamson | Computer Scientist & Software Engineer",
     description:
-      "Computer scientist and software engineer behind Hamson Software, MI1 and public technical systems.",
+      "Computer scientist and software engineer behind Hamson Software, TRON and public technical systems.",
     url: "/about-us",
     siteName: "Neil Hamson",
     type: "profile",
@@ -73,12 +73,12 @@ const systems = [
   },
   {
     code: "02",
-    title: "MI1",
+    title: "TRON",
     state: "PRIVATE / ACTIVE",
     detail:
       "Private Machine Intelligence development focused on human-reviewed code changes.",
     href: "/machine-intelligence",
-    action: "EXPLORE MI1",
+    action: "EXPLORE TRON",
   },
   {
     code: "03",
@@ -102,9 +102,9 @@ function Header() {
         <nav className="navigation" aria-label="Main navigation">
           <Link
             href="/machine-intelligence"
-            aria-label="MI1 — Machine Intelligence"
+            aria-label="TRON — Machine Intelligence"
           >
-            MI1
+            TRON
           </Link>
           <Link href="/bitcoin">BITCOIN</Link>
           <Link href="/services">SOFTWARE</Link>
@@ -130,9 +130,9 @@ function Header() {
           <nav aria-label="Mobile navigation">
             <Link
               href="/machine-intelligence"
-              aria-label="MI1 — Machine Intelligence"
+              aria-label="TRON — Machine Intelligence"
             >
-              MI1
+              TRON
             </Link>
             <Link href="/bitcoin">BITCOIN</Link>
             <Link href="/services">SOFTWARE</Link>
@@ -211,7 +211,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <span>CURRENT SYSTEMS</span>
-                <strong>SOFTWARE / MI1 / BITCOIN</strong>
+                <strong>SOFTWARE / TRON / BITCOIN</strong>
               </div>
               <div>
                 <span>STATE</span>
@@ -255,7 +255,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <dt>CURRENT</dt>
-                <dd>HAMSON SOFTWARE / MI1</dd>
+                <dd>HAMSON SOFTWARE / TRON</dd>
               </div>
             </dl>
 
@@ -339,7 +339,7 @@ export default function AboutPage() {
           </div>
 
           <p>
-            Current work is centred on Hamson Software, MI1 and live Bitcoin
+            Current work is centred on Hamson Software, TRON and live Bitcoin
             systems rather than maintaining a separate publishing programme.
           </p>
         </div>
@@ -370,7 +370,7 @@ export default function AboutPage() {
             <span className={styles.sectionCode}>DIRECT CHANNEL / 04</span>
             <h2>DISCUSS THE WORK.</h2>
             <p>
-              Relevant enquiries concerning Hamson Software, MI1, licensing,
+              Relevant enquiries concerning Hamson Software, TRON, licensing,
               development funding or technical collaboration can be routed
               directly through the Contact system.
             </p>

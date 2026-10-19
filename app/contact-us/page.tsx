@@ -8,12 +8,12 @@ import styles from "./contact.module.css";
 export const metadata: Metadata = {
   title: "Contact Dr Neil Hamson | Hamson Software",
   description:
-    "Contact Dr Neil Hamson regarding Hamson Software, development funding, strategic partnerships, licensing, commercial collaboration and MI1.",
+    "Contact Dr Neil Hamson regarding Hamson Software, development funding, strategic partnerships, licensing, commercial collaboration and TRON.",
   alternates: { canonical: "/contact-us" },
   openGraph: {
     title: "Contact Dr Neil Hamson | Hamson Software",
     description:
-      "Direct contact for Hamson Software funding, partnerships, licensing, commercial collaboration and MI1 technical discussions.",
+      "Direct contact for Hamson Software funding, partnerships, licensing, commercial collaboration and TRON technical discussions.",
     url: "/contact-us",
     siteName: "Neil Hamson",
     type: "website",
@@ -50,11 +50,11 @@ const enquiryRoutes = [
   },
   {
     code: "04",
-    title: "MI1",
+    title: "TRON",
     routeClass: "MACHINE INTELLIGENCE",
     state: "SELECTIVE",
     channel: "DIRECT",
-    subject: "MI1 — Technical or Strategic Enquiry",
+    subject: "TRON — Technical or Strategic Enquiry",
     copy: "Technical, research, funding or strategic discussions relating to the private Machine Intelligence work.",
   },
   {
@@ -86,9 +86,9 @@ function Header() {
         <nav className="navigation" aria-label="Main navigation">
           <Link
             href="/machine-intelligence"
-            aria-label="MI1 — Machine Intelligence"
+            aria-label="TRON — Machine Intelligence"
           >
-            MI1
+            TRON
           </Link>
           <Link href="/bitcoin">BITCOIN</Link>
           <Link href="/services">SOFTWARE</Link>
@@ -113,9 +113,9 @@ function Header() {
           <nav aria-label="Mobile navigation">
             <Link
               href="/machine-intelligence"
-              aria-label="MI1 — Machine Intelligence"
+              aria-label="TRON — Machine Intelligence"
             >
-              MI1
+              TRON
             </Link>
             <Link href="/bitcoin">BITCOIN</Link>
             <Link href="/services">SOFTWARE</Link>
@@ -168,7 +168,7 @@ export default function ContactPage() {
             </h1>
 
             <p className={styles.lede}>
-              Direct contact regarding Hamson Software products, MI1, development
+              Direct contact regarding Hamson Software products, TRON, development
               funding, licensing and relevant strategic or commercial partnerships.
             </p>
 
@@ -247,7 +247,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <dt>SCOPE</dt>
-                <dd>HAMSON SOFTWARE / MI1</dd>
+                <dd>HAMSON SOFTWARE / TRON</dd>
               </div>
             </dl>
           </aside>

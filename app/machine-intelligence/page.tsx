@@ -4,8 +4,8 @@ import { PageShell, pageMetadata } from "../_components/SubpageShell";
 import styles from "./machine-intelligence.module.css";
 
 export const metadata = pageMetadata(
-  "MI1: Private Machine Intelligence System | Neil Hamson",
-  "MI1 is Neil Hamson's private Machine Intelligence development system: persistent state, bounded tools, human-controlled code changes and verified local model experiments.",
+  "TRON: Private Machine Intelligence System | Neil Hamson",
+  "TRON is Neil Hamson's private Machine Intelligence development system: persistent state, bounded tools, human-controlled code changes and verified local model experiments.",
   "/machine-intelligence",
 );
 
@@ -36,12 +36,12 @@ const evidence = [
   [
     "QWEN3-14B / LLAMA.CPP",
     "VERIFIED",
-    "Local Qwen3-14B Q4_K_M inference generated output on CPU. This does not establish a proprietary MI1 model.",
+    "Local Qwen3-14B Q4_K_M inference generated output on CPU. This does not establish a proprietary TRON model.",
   ],
   [
-    "MODEL-GENERATED FULL CYCLE",
-    "OPEN",
-    "A complete MI1-generated proposal through approved application, validation and approved local commit is not yet evidenced.",
+    "CONTROLLED DEVELOPMENT CYCLE",
+    "VERIFIED",
+    "A controlled software-development cycle was documented on 20 September 2026, including an approved local commit. Broader repeatability remains under development.",
   ],
 ] as const;
 
@@ -57,21 +57,22 @@ const authority = [
 export default function MachineIntelligencePage() {
   return (
     <PageShell
-      eyebrow="MI1 / PRIVATE MACHINE INTELLIGENCE"
+      eyebrow="TRON / PRIVATE MACHINE INTELLIGENCE"
       title={<span className={styles.heroTitle}>CONTROLLED SOFTWARE DEVELOPMENT.</span>}
       lede={
         <p className={styles.heroLede}>
-          A private development system combining persistent project state,
-          model reasoning and bounded tools with explicit human authority.
+          TRON is a private Machine Intelligence engineering assistant, built to
+          support software development through bounded tools, model reasoning
+          and explicit human authority. It is not for sale or distribution.
         </p>
       }
       compactHero
       accent="blue"
     >
       <main className={styles.interface}>
-        <nav className={styles.controlBus} aria-label="MI1 control bus">
+        <nav className={styles.controlBus} aria-label="TRON control bus">
           <div className={styles.busIdentity}>
-            <span>MI1 / CONTROL BUS</span>
+            <span>TRON / CONTROL BUS</span>
             <strong>SIGNAL / HARDWARE / AUTHORITY</strong>
           </div>
 
@@ -104,7 +105,7 @@ export default function MachineIntelligencePage() {
         <section className={styles.console} id="console" aria-labelledby="console-title">
           <header className={styles.consoleHeader}>
             <div>
-              <span className={styles.micro}>MI1 / DEVELOPMENT CONTROL SURFACE</span>
+              <span className={styles.micro}>TRON / DEVELOPMENT CONTROL SURFACE</span>
               <h2 id="console-title">SYSTEM ACTIVE</h2>
             </div>
 
@@ -120,7 +121,7 @@ export default function MachineIntelligencePage() {
                 <span className={styles.label}>CURRENT MODE</span>
                 <strong>BOUNDED REPOSITORY DEVELOPMENT</strong>
                 <p>
-                  MI1 can select and inspect a local Git repository while
+                  TRON can select and inspect a local Git repository while
                   preserving restricted write authority, separate approval
                   gates and no autonomous push.
                 </p>
@@ -151,15 +152,15 @@ export default function MachineIntelligencePage() {
             </div>
 
             <div className={styles.taskStrip}>
-              <span>CURRENT EVIDENCE GATE</span>
-              <strong>COMPLETE MODEL-GENERATED DEVELOPMENT CYCLE</strong>
+              <span>DOCUMENTED DEVELOPMENT CYCLE</span>
+              <strong>HUMAN-APPROVED CHANGE AND LOCAL COMMIT</strong>
               <p>
                 Proposal → approval → application → validation → separate
                 commit approval → local commit.
               </p>
             </div>
 
-            <div className={styles.loop} aria-label="MI1 Development Loop v1.0">
+            <div className={styles.loop} aria-label="TRON Development Loop v1.0">
               {loop.map(([number, title, type], index) => (
                 <div className={styles.loopStep} key={number}>
                   <div className={styles.stepTop}>
@@ -212,7 +213,7 @@ export default function MachineIntelligencePage() {
             <summary>
               <div>
                 <span>ENGINEERING STATUS</span>
-                <strong>4 VERIFIED / 1 OPEN</strong>
+                <strong>5 EVIDENCE RECORDS</strong>
               </div>
               <small>OPEN +</small>
             </summary>
@@ -330,15 +331,15 @@ export default function MachineIntelligencePage() {
 
         <section className={styles.closeout}>
           <div>
-            <span className={styles.micro}>MI1 / CURRENT POSITION</span>
+            <span className={styles.micro}>TRON / CURRENT POSITION</span>
             <strong>PRIVATE. CONTROLLED. UNDER ACTIVE DEVELOPMENT.</strong>
           </div>
           <p>
-            The next material proof point is the complete model-driven cycle.
-            Until it is verified, MI1 is presented as an active private
-            development system rather than a finished autonomous product.
+            A controlled development cycle has been documented. Repeatability and
+            broader capability remain under development. TRON is a private
+            engineering assistant, not a product for sale or distribution.
           </p>
-          <Link href="/contact-us">DISCUSS MI1</Link>
+          <Link href="/contact-us">DISCUSS TRON</Link>
         </section>
       </main>
     </PageShell>

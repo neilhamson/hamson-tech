@@ -30,9 +30,9 @@ function Header() {
         <nav className="navigation" aria-label="Main navigation">
           <Link
             href="/machine-intelligence"
-            aria-label="MI1 — Machine Intelligence"
+            aria-label="TRON — Machine Intelligence"
           >
-            MI1
+            TRON
           </Link>
 
           <Link href="/bitcoin">BITCOIN</Link>
@@ -51,9 +51,9 @@ function Header() {
           <nav aria-label="Mobile navigation">
             <Link
               href="/machine-intelligence"
-              aria-label="MI1 — Machine Intelligence"
+              aria-label="TRON — Machine Intelligence"
             >
-              MI1
+              TRON
             </Link>
             <Link href="/bitcoin">BITCOIN</Link>
             <Link href="/services">SOFTWARE</Link>

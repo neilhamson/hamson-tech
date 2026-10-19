@@ -3,13 +3,13 @@ import type { KnowledgeRecord } from "@/lib/knowledgeRecord";
 export const productKnowledge: readonly KnowledgeRecord[] = [
   {
     id: "mi1-overview",
-    title: "MI1 overview",
+    title: "TRON overview",
     status: "DOCUMENTED",
     summary:
-      "MI1 is Neil Hamson's private Machine Intelligence software system. Its core source code is not public.",
+      "TRON (formerly MI1) is Neil Hamson's private Machine Intelligence engineering assistant for internal software development. It is not for sale or distribution; its core source code is not public.",
     facts: [
-      "MI1 is developed by Neil Hamson.",
-      "The MI1 core remains private.",
+      "TRON is developed by Neil Hamson.",
+      "The TRON core remains private.",
       "Public technical evidence is published separately from the private implementation.",
     ],
     sourceLabel: "MI1 Evidence Repository",
@@ -92,11 +92,11 @@ export const productKnowledge: readonly KnowledgeRecord[] = [
     title: "Public source repositories",
     status: "VERIFIED",
     summary:
-      "Public evidence and public website source are available separately from the private MI1 core.",
+      "Public evidence and public website source are available separately from the private TRON core (formerly MI1).",
     facts: [
       "MI1 public evidence: https://github.com/neilhamson/mi1-evidence",
       "hamson.tech public website source: https://github.com/neilhamson/hamson-tech",
-      "MI1 core source is not public.",
+      "TRON core source is not public.",
     ],
     sourceLabel: "Public GitHub repositories",
     sourceUrl: "https://github.com/neilhamson",
